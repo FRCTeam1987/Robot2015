@@ -6,9 +6,13 @@
 class OI
 {
 private:
+	Joystick *stick;
+	JoystickButton *shiftHiButton;
+	JoystickButton *defecateLoButton;
 
 public:
 	OI();
+	Joystick *getStick();
 };
 
 #endif

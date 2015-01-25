@@ -4,6 +4,10 @@
 
 // Initialize a single static instance of all of your subsystems to NULL
 ExampleSubsystem* CommandBase::examplesubsystem = NULL;
+DriveTrain* CommandBase::driveTrain = NULL;
+SqueezyLifter* CommandBase::squeezyLifter = NULL;
+Pusher* CommandBase::pusher = NULL;
+Conveyor* CommandBase::conveyor = NULL;
 OI* CommandBase::oi = NULL;
 
 CommandBase::CommandBase(char const *name) :
@@ -22,6 +26,10 @@ void CommandBase::init()
 	// Create a single static instance of all of your subsystems. The following
 	// line should be repeated for each subsystem in the project.
 	examplesubsystem = new ExampleSubsystem();
+	driveTrain = new DriveTrain();
+	squeezyLifter = new SqueezyLifter();
+	pusher = new Pusher();
+	conveyor = new Conveyor();
 
 	oi = new OI();
 }
