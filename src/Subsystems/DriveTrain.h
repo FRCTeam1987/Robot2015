@@ -3,6 +3,7 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "../lib/xbox/XboxController.h"
 
 class DriveTrain: public Subsystem
 {
@@ -27,6 +28,8 @@ public:
 	double GetEncoder();
 	void ShiftHi();
 	void DefecateLo();
+	void XboxDrive(XboxController * xbox);
+
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include "DriveTrain.h"
 #include "../RobotMap.h"
+#include "../Commands/DriveTrain/Drive.h"
 
 DriveTrain::DriveTrain() :
 		Subsystem("ExampleSubsystem")
@@ -22,6 +23,7 @@ void DriveTrain::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new Drive());
 }
 
 // Put methods for controlling this subsystem
@@ -55,4 +57,9 @@ void DriveTrain::ShiftHi()
 void DriveTrain::DefecateLo()
 {
 	shifter->Set(DoubleSolenoid::kReverse);
+}
+
+void DriveTrain::XboxDrive(XboxController * xbox)
+{
+	robotDrive->ArcadeDrive(xbox->GetY(), xbox->GetX());
 }
