@@ -4,6 +4,7 @@
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 #include "../lib/xbox/XboxController.h"
+#include "../lib/navx/IMUAdvanced.h"
 
 class DriveTrain: public Subsystem
 {
@@ -15,8 +16,10 @@ private:
 	DoubleSolenoid *shifter;
 	Encoder* encoder;
 	NetworkTable *table;
-	SerialPort *serialport;
+	SerialPort *serial_port;
 	RobotDrive *robotDrive;
+	DigitalInput *practiceRobotJumper;
+	IMUAdvanced *imu;
 
 
 public:
@@ -29,6 +32,8 @@ public:
 	void ShiftHi();
 	void DefecateLo();
 	void XboxDrive(XboxController * xbox);
+
+	bool IsPracticeBot();
 
 };
 

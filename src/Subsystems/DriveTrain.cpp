@@ -10,8 +10,11 @@ DriveTrain::DriveTrain() :
 	shifter = new DoubleSolenoid(SHIFT_A, SHIFT_B);
 	encoder = new Encoder(ENCODER_PIN_A, ENCODER_PIN_B);
 	table = NetworkTable::GetTable("datatable");
-	serialport = new SerialPort(56700, SerialPort::kMXP);
+	serial_port = new SerialPort(56700, SerialPort::kMXP);
+	uint8_t update_rate_hz = 50;
+    imu = new IMUAdvanced(serial_port,update_rate_hz);
 	robotDrive = new RobotDrive(leftDrive, rightDrive);
+	practiceRobotJumper = new DigitalInput(10);
 
 	ResetGyro();
 	ResetEncoder();
@@ -31,7 +34,7 @@ void DriveTrain::InitDefaultCommand()
 
 void DriveTrain::DriveArcade(Joystick *stick)
 {
-	robotDrive->ArcadeDrive(stick);
+	robotDrive->ArcadeDrive(-stick->GetY(), stick->GetX());
 }
 
 void DriveTrain::ResetGyro()
@@ -61,5 +64,10 @@ void DriveTrain::DefecateLo()
 
 void DriveTrain::XboxDrive(XboxController * xbox)
 {
-	robotDrive->ArcadeDrive(xbox->GetY(), xbox->GetX());
+	robotDrive->ArcadeDrive(-xbox->GetY(), xbox->GetX());
+}
+
+bool DriveTrain::IsPracticeBot()
+{
+	return !practiceRobotJumper->Get();
 }

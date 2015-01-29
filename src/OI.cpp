@@ -2,6 +2,7 @@
 #include "RobotMap.h"
 #include "Commands/DriveTrain/ShiftHi.h"
 #include "Commands/DriveTrain/DefecateLo.h"
+#include "Commands/PrintStuff.h"
 
 
 OI::OI()
@@ -17,6 +18,7 @@ OI::OI()
 
 	SmartDashboard::PutData("Shift High", new ShiftHi());
 	SmartDashboard::PutData("Defecate Low", new DefecateLo());
+	SmartDashboard::PutData("Print Stuff", new PrintStuff());
 }
 
 Joystick *OI::getStick()
