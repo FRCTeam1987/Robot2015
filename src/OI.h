@@ -8,7 +8,7 @@ class OI
 private:
 	Joystick *stick;
 	JoystickButton *shiftHiButton;
-	JoystickButton *defecateLoButton;
+	JoystickButton *shiftLowButton;
 
 public:
 	OI();

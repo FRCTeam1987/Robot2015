@@ -1,9 +1,9 @@
+#include <Commands/DriveTrain/ShiftLow.h>
 #include "OI.h"
 #include "RobotMap.h"
 #include "Commands/DriveTrain/ShiftHi.h"
-#include "Commands/DriveTrain/DefecateLo.h"
 #include "Commands/PrintStuff.h"
-
+#include "Subsystems/DriveTrain.h"
 
 OI::OI()
 {
@@ -11,13 +11,13 @@ OI::OI()
 
 	stick = new Joystick(0);
 	shiftHiButton = new JoystickButton(stick, SHIFTHIGHBUTTON);
-	defecateLoButton = new JoystickButton(stick, SHIFTLOWBUTTON);
+	shiftLowButton = new JoystickButton(stick, SHIFTLOWBUTTON);
 
 	shiftHiButton->WhenPressed(new ShiftHi());
-	defecateLoButton->WhenPressed(new DefecateLo());
+	shiftLowButton->WhenPressed(new ShiftLow());
 
 	SmartDashboard::PutData("Shift High", new ShiftHi());
-	SmartDashboard::PutData("Defecate Low", new DefecateLo());
+	SmartDashboard::PutData("Shift Low", new ShiftLow());
 	SmartDashboard::PutData("Print Stuff", new PrintStuff());
 }
 

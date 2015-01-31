@@ -11,6 +11,7 @@ PrintStuff::PrintStuff()
 void PrintStuff::Initialize()
 {
 	printf("IsPracticeBot - %s\n", driveTrain->IsPracticeBot() ? "Yes" : "No");
+//	printf("Yaw = %f\n", driveTrain->GetGyroAngle());
 }
 
 // Called repeatedly when this Command is scheduled to run

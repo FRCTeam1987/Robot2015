@@ -2,6 +2,9 @@
 #include "Commands/Command.h"
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
+#include "Subsystems/DriveTrain.h"
+#include "Commands/Auto/DriveStraight.h"
+#include "Commands/Auto/AutoTurn.h"
 
 class Robot: public IterativeRobot
 {
@@ -12,8 +15,10 @@ private:
 	void RobotInit()
 	{
 		CommandBase::init();
-		autonomousCommand = new ExampleCommand();
+		autonomousCommand = new AutoTurn(0.5, -90);
+//		autonomousCommand = new DriveStraight(50, .6);
 		lw = LiveWindow::GetInstance();
+
 	}
 	
 	void DisabledPeriodic()

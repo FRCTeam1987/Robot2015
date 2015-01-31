@@ -19,8 +19,6 @@ private:
 	SerialPort *serial_port;
 	RobotDrive *robotDrive;
 	DigitalInput *practiceRobotJumper;
-	IMUAdvanced *imu;
-
 
 public:
 	DriveTrain();
@@ -30,11 +28,13 @@ public:
 	void ResetEncoder();
 	double GetEncoder();
 	void ShiftHi();
-	void DefecateLo();
+	void ShiftLow();
 	void XboxDrive(XboxController * xbox);
-
+	float GetGyroAngle();
 	bool IsPracticeBot();
-
+	IMUAdvanced *imu;
+	void AutoDrive(float speed, float rotation);
+	void AutoTankDrive(float left, float right);
 };
 
 #endif

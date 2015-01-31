@@ -17,6 +17,8 @@ void Drive::Initialize()
 void Drive::Execute()
 {
 	driveTrain->DriveArcade(oi->getStick());
+	SmartDashboard::PutNumber("Yaw", driveTrain->imu->GetYaw());
+	SmartDashboard::PutNumber("Angle", driveTrain->GetGyroAngle());
 }
 
 // Make this return true when this Command no longer needs to run execute()
