@@ -35,6 +35,14 @@ const int SHIFTHIGHBUTTON = 7;
 const int SHIFTLOWBUTTON = 8;
 
 //Squeezy Lifter
+const int SWITCHOPENCLOSEPIN = 2;
+const int SWITCHHASTOTEPIN = 3;
+const int STRINGPOTPIN = 0;
+const int MOTORLIFT = 2;
+const int PISTONOPENCLOSE_A = 2;
+const int PISTONOPENCLOSE_B = 3;
+
+const int TOTEHEIGHT = 15;
 
 
 //Pusher (Salt and Pepper)

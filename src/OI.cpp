@@ -1,9 +1,11 @@
 #include <Commands/DriveTrain/ShiftLow.h>
 #include "OI.h"
 #include "RobotMap.h"
+#include "Subsystems/DriveTrain.h"
 #include "Commands/DriveTrain/ShiftHi.h"
 #include "Commands/PrintStuff.h"
-#include "Subsystems/DriveTrain.h"
+#include "Commands/SqueezyLifter/SqueezyOpenClose.h"
+
 
 OI::OI()
 {
@@ -16,9 +18,11 @@ OI::OI()
 	shiftHiButton->WhenPressed(new ShiftHi());
 	shiftLowButton->WhenPressed(new ShiftLow());
 
-	SmartDashboard::PutData("Shift High", new ShiftHi());
-	SmartDashboard::PutData("Shift Low", new ShiftLow());
+	SmartDashboard::PutData("Drive Train - Shift High", new ShiftHi());
+	SmartDashboard::PutData("Drive Train - Shift Low", new ShiftLow());
 	SmartDashboard::PutData("Print Stuff", new PrintStuff());
+//	SmartDashboard::PutData("Squeezy/Lifter - Close Squeezy", new SqueezyClose());
+//	SmartDashboard::PutData("Squeezy/Lifter - Open Squeezy", new SqueezyOpen());
 }
 
 Joystick *OI::getStick()
