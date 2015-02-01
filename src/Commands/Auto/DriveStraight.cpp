@@ -9,13 +9,14 @@ DriveStraight::DriveStraight(float distance, float speed)
 	m_speed = speed;
 	kP = 0.03;
 	SetTimeout(5);
-	initialYaw = 0;
+//	initialYaw = 0;
 }
 
 // Called just before this Command runs the first time
 void DriveStraight::Initialize()
 {
-	initialYaw = driveTrain->imu->GetYaw();
+//	initialYaw = driveTrain->imu->GetYaw()
+	driveTrain->ResetGyro();
 	driveTrain->ResetEncoder();
 }
 
@@ -23,7 +24,7 @@ void DriveStraight::Initialize()
 void DriveStraight::Execute()
 {
 	float gyroAngle = driveTrain->GetGyroAngle();
-	driveTrain->AutoDrive(m_speed, (gyroAngle - initialYaw) * kP);
+	driveTrain->AutoDrive(m_speed, gyroAngle * kP);
 }
 
 // Make this return true when this Command no longer needs to run execute()

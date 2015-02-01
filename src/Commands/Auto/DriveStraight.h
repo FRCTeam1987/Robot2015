@@ -11,7 +11,7 @@ private:
 	float m_distance;
 	float m_speed;
 	float kP;
-	float initialYaw;
+//	float initialYaw;
 
 public:
 	DriveStraight(float distance, float speed);

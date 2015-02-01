@@ -9,18 +9,20 @@ DriveTrain::DriveTrain() :
 	rightDrive = new Talon(RIGHTDRIVEMOTOR);
 	shifter = new DoubleSolenoid(SHIFT_A, SHIFT_B);
 	encoder = new Encoder(ENCODER_PIN_A, ENCODER_PIN_B);
+    encoder->SetDistancePerPulse(DISTANCEPERPULSE);
 	table = NetworkTable::GetTable("datatable");
 	serial_port = new SerialPort(57600, SerialPort::kMXP);
 	uint8_t update_rate_hz = 50;
     imu = new IMUAdvanced(serial_port,update_rate_hz);
 	robotDrive = new RobotDrive(leftDrive, rightDrive);
 	practiceRobotJumper = new DigitalInput(10);
+	gyro = new Gyro(GYROPIN);
 
 	ResetGyro();
 	ResetEncoder();
-	encoder->SetDistancePerPulse(1);
 
 	LiveWindow::GetInstance()->AddSensor("Drive Train", "Encoder", encoder);
+	LiveWindow::GetInstance()->AddSensor("Drive Train", "Gyro", gyro);
 }
 
 void DriveTrain::InitDefaultCommand()
@@ -40,7 +42,7 @@ void DriveTrain::DriveArcade(Joystick *stick)
 
 void DriveTrain::ResetGyro()
 {
-	imu->ZeroYaw();
+	gyro->Reset();
 }
 
 void DriveTrain::ResetEncoder()
@@ -70,7 +72,7 @@ void DriveTrain::XboxDrive(XboxController * xbox)
 
 float DriveTrain::GetGyroAngle()
 {
-	return imu->GetYaw();
+	return gyro->GetAngle();
 }
 
 bool DriveTrain::IsPracticeBot()

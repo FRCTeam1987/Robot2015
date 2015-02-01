@@ -7,11 +7,14 @@
 class Pusher: public Subsystem
 {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
+	DigitalInput *switchPosition;
+	DoubleSolenoid *piston;
 public:
 	Pusher();
 	void InitDefaultCommand();
+	bool getPosition();
+	void push();
+	void retract();
 };
 
 #endif

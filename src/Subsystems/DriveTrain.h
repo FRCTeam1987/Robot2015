@@ -19,6 +19,7 @@ private:
 	SerialPort *serial_port;
 	RobotDrive *robotDrive;
 	DigitalInput *practiceRobotJumper;
+	Gyro *gyro;
 
 public:
 	DriveTrain();

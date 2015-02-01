@@ -7,7 +7,7 @@
 class AutoTurn: public CommandBase
 {
 private:
-	float initialYaw;
+//	float initialYaw;
 	float m_speed;
 	float m_angle;
 

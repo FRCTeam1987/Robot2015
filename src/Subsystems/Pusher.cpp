@@ -4,7 +4,14 @@
 Pusher::Pusher() :
 		Subsystem("ExampleSubsystem")
 {
+	piston = new DoubleSolenoid(PUSHERPISTON_A, PUSHERPISTON_B);
+	switchPosition = new DigitalInput(PUSHERPOSITION);
 
+	//Actuators
+	LiveWindow::GetInstance()->AddActuator("Pusher", "Solenoid", piston);
+
+	//Sensors
+	LiveWindow::GetInstance()->AddSensor("Pusher", "Position", switchPosition); //Live Window missing
 }
 
 void Pusher::InitDefaultCommand()
@@ -13,5 +20,17 @@ void Pusher::InitDefaultCommand()
 	//SetDefaultCommand(new MySpecialCommand());
 }
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+bool Pusher::getPosition()
+{
+	return switchPosition->Get();
+}
+
+void Pusher::push()
+{
+	piston->Set(DoubleSolenoid::kForward);
+}
+
+void Pusher::retract()
+{
+	piston->Set(DoubleSolenoid::kReverse);
+}

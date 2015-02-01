@@ -26,27 +26,31 @@ const int LEFTDRIVEMOTOR = 0;
 const int RIGHTDRIVEMOTOR = 1;
 const int SHIFT_A = 0;
 const int SHIFT_B = 1;
+const int GYROPIN = 1;
 const int ENCODER_PIN_A = 0;
 const int ENCODER_PIN_B = 1;
-const int WALLFINDER = 2;
-const int PLATFORMFINDER = 3;
+const double DISTANCEPERPULSE = 0.07536;
+const int WALLFINDER = 5;      //Live Window missing
+const int PLATFORMFINDER = 6;  //Live Window missing
 
 const int SHIFTHIGHBUTTON = 7;
 const int SHIFTLOWBUTTON = 8;
 
 //Squeezy Lifter
-const int SWITCHOPENCLOSEPIN = 2;
-const int SWITCHHASTOTEPIN = 3;
+const int SWITCHOPENCLOSEPIN = 2;  //Live Window missing
+const int SWITCHHASTOTEPIN = 3;    //Live Window missing
 const int STRINGPOTPIN = 0;
 const int MOTORLIFT = 2;
-const int PISTONOPENCLOSE_A = 2;
-const int PISTONOPENCLOSE_B = 3;
+const int SQUEEZYPISTONOPENCLOSE_A = 2;
+const int SQUEEZYPISTONOPENCLOSE_B = 3;
 
 const int TOTEHEIGHT = 15;
 
 
 //Pusher (Salt and Pepper)
-
+const int PUSHERPISTON_A = 4;
+const int PUSHERPISTON_B = 5;
+const int PUSHERPOSITION = 4;  //Live Window missing
 
 //Conveyor
 

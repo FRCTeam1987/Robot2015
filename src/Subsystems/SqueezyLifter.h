@@ -4,6 +4,7 @@
 #include "Commands/Subsystem.h"
 #include "Conveyor.h" //Sensor m_breakerToteOffConveyor
 #include "WPILib.h"
+#include "../lib/LiveCANTalon.h"
 
 class SqueezyLifter: public Subsystem
 {
@@ -14,10 +15,10 @@ private:
 	AnalogInput *m_potHeight;
 
 	//Actuators
-	CANTalon *m_motorLift;
+	LiveCANTalon *m_motorLift;
 	DoubleSolenoid *m_pistonOpenClose;
 
-	int numberOfTotes = 0;
+	int m_numberOfTotes = 0;
 
 public:
 	const bool kOpen = true;
@@ -31,6 +32,10 @@ public:
 	bool isStackerReady();
 	bool isOpen();
 	void openClose(bool input);
+	int getNumberOfTotes();
+	void incrementToteCount();
+	void setNumberOfTotes(int numTotes);
+	void clearNumberOfTotes();
 };
 
 #endif
