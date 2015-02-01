@@ -18,11 +18,11 @@ OI::OI()
 	shiftHiButton->WhenPressed(new ShiftHi());
 	shiftLowButton->WhenPressed(new ShiftLow());
 
+	SmartDashboard::PutData("SqueezyLifter - Close Squeezy", new SqueezyOpenClose(false));
+	SmartDashboard::PutData("SqueezyLifter - Open Squeezy", new SqueezyOpenClose(true));
 	SmartDashboard::PutData("Drive Train - Shift High", new ShiftHi());
 	SmartDashboard::PutData("Drive Train - Shift Low", new ShiftLow());
 	SmartDashboard::PutData("Print Stuff", new PrintStuff());
-	SmartDashboard::PutData("Squeezy/Lifter - Close Squeezy", new SqueezyOpenClose(false));
-	SmartDashboard::PutData("Squeezy/Lifter - Open Squeezy", new SqueezyOpenClose(true));
 }
 
 Joystick* OI::getStick()
