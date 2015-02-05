@@ -1,5 +1,6 @@
 #include "Pusher.h"
 #include "../RobotMap.h"
+#include "../Commands/Pusher/PushInOut.h"
 
 Pusher::Pusher() :
 		Subsystem("ExampleSubsystem")
@@ -12,6 +13,8 @@ Pusher::Pusher() :
 
 	//Sensors
 	LiveWindow::GetInstance()->AddSensor("Pusher", "Position", switchPosition); //Live Window missing
+
+
 }
 
 void Pusher::InitDefaultCommand()
@@ -33,4 +36,9 @@ void Pusher::push()
 void Pusher::retract()
 {
 	piston->Set(DoubleSolenoid::kReverse);
+}
+
+void Pusher::inOut(bool input)
+{
+	piston->Set(input ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
 }

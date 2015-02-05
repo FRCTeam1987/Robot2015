@@ -34,14 +34,9 @@ int16_t SqueezyLifter::getLifterHeight()
 	return m_potHeight->GetValue();
 }
 
-bool SqueezyLifter::squeezyOpenClose()
-{
-	return m_switchOpenClose->Get();
-}
-
 bool SqueezyLifter::hasTote()
 {
-	return m_switchHasTote->Get();
+	return !m_switchHasTote->Get();
 }
 
 bool SqueezyLifter::isStackerReady()

@@ -9,6 +9,9 @@ private:
 	Joystick *stick;
 	JoystickButton *shiftHiButton;
 	JoystickButton *shiftLowButton;
+	JoystickButton *printStuff;
+	JoystickButton *toggleSqueeze;
+
 
 public:
 	OI();

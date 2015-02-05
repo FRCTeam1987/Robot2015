@@ -15,6 +15,8 @@ public:
 	bool getPosition();
 	void push();
 	void retract();
+	void inOut(bool input);
+	//Random Comment
 };
 
 #endif

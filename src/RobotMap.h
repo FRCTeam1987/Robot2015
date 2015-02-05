@@ -44,6 +44,8 @@ const int MOTORLIFT = 2;
 const int SQUEEZYPISTONOPENCLOSE_A = 2;
 const int SQUEEZYPISTONOPENCLOSE_B = 3;
 
+const int TOGGLESQUEEZEBUTTON = 6;
+
 const int TOTEHEIGHT = 15;
 
 
@@ -55,6 +57,7 @@ const int PUSHERPOSITION = 4;  //Live Window missing
 //Conveyor
 
 
-
+//Other
+const int PRINTSTUFFBUTTON = 5;
 
 #endif

@@ -27,7 +27,6 @@ public:
 	SqueezyLifter();
 	void InitDefaultCommand();
 	int16_t getLifterHeight();
-	bool squeezyOpenClose();
 	bool hasTote();
 	bool isStackerReady();
 	bool isOpen();
