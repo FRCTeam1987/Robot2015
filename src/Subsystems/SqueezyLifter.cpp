@@ -6,7 +6,7 @@ SqueezyLifter::SqueezyLifter() :
 {
 	//Sensors
 	m_switchOpenClose = new DigitalInput(SWITCHOPENCLOSEPIN);
-	m_switchHasTote = new DigitalInput(SWITCHHASTOTEPIN);
+	m_proximityHasTote = new DigitalInput(SWITCHHASTOTEPIN);
 	m_potHeight = new AnalogInput(STRINGPOTPIN);
 
 	//Actuators
@@ -19,7 +19,7 @@ SqueezyLifter::SqueezyLifter() :
 
 	//Sensors LiveWindow
 	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Open Close Switch", m_switchOpenClose);
-	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Have Tote", m_switchHasTote);
+	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Have Tote", m_proximityHasTote);
 	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Lifter Height", m_potHeight);
 }
 
@@ -36,12 +36,12 @@ int16_t SqueezyLifter::getLifterHeight()
 
 bool SqueezyLifter::hasTote()
 {
-	return !m_switchHasTote->Get();
+	return !m_proximityHasTote->Get();
 }
 
 bool SqueezyLifter::isStackerReady()
 {
-	return m_potHeight->GetValue() >= TOTEHEIGHT;
+	return m_potHeight->GetValue() >= HOLDHEIGHT;
 }
 
 bool SqueezyLifter::isOpen()
@@ -51,14 +51,7 @@ bool SqueezyLifter::isOpen()
 
 void SqueezyLifter::openClose(bool input)
 {
-//	if(input)
-//	{
-//		m_pistonOpenClose->Set(DoubleSolenoid::kForward);
-//	}else{
-//		m_pistonOpenClose->Set(DoubleSolenoid::kReverse);
-//	}
 	m_pistonOpenClose->Set(input ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
-//	(input? m_pistonOpenClose->Set(DoubleSolenoid::kForward) : m_pistonOpenClose->Set(DoubleSolenoid::kReverse))
 }
 int SqueezyLifter::getNumberOfTotes()
 {
@@ -75,4 +68,12 @@ void SqueezyLifter::setNumberOfTotes(int numTotes)
 void SqueezyLifter::clearNumberOfTotes()
 {
 	m_numberOfTotes = 0;
+}
+void SqueezyLifter::squeezyUp()
+{
+	m_motorLift->Set(SQUEEZYMOTORLIFTSPEED);
+}
+void SqueezyLifter::squeezyDown()
+{
+	m_motorLift->Set(-SQUEEZYMOTORLIFTSPEED);
 }

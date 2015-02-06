@@ -6,11 +6,16 @@
 
 class SqueezyOpenClose: public CommandBase
 {
+public:
+	enum SqueezyDirection {
+		kOpen, kClose
+	};
+
 private:
-	bool m_open;
+	SqueezyDirection m_direction;
 
 public:
-	SqueezyOpenClose(bool input);
+	SqueezyOpenClose(SqueezyDirection direction);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

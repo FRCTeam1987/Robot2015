@@ -11,7 +11,7 @@ class SqueezyLifter: public Subsystem
 private:
 	//Sensors
 	DigitalInput *m_switchOpenClose;
-	DigitalInput *m_switchHasTote;
+	DigitalInput *m_proximityHasTote;
 	AnalogInput *m_potHeight;
 
 	//Actuators
@@ -35,6 +35,8 @@ public:
 	void incrementToteCount();
 	void setNumberOfTotes(int numTotes);
 	void clearNumberOfTotes();
+	void squeezyUp();
+	void squeezyDown();
 };
 
 #endif

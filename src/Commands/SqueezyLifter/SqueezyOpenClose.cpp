@@ -1,15 +1,15 @@
 #include "SqueezyOpenClose.h"
 
-SqueezyOpenClose::SqueezyOpenClose(bool input)
+SqueezyOpenClose::SqueezyOpenClose(SqueezyDirection direction)
 {
 	Requires(squeezyLifter);
-	m_open = input;
+	m_direction = direction;
 }
 
 // Called just before this Command runs the first time
 void SqueezyOpenClose::Initialize()
 {
-	squeezyLifter->openClose(m_open);
+	squeezyLifter->openClose(m_direction == kOpen);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -21,7 +21,10 @@ void SqueezyOpenClose::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool SqueezyOpenClose::IsFinished()
 {
-	return true;
+	if(m_direction == kOpen)
+		return squeezyLifter->isOpen();
+	else
+		return !squeezyLifter->isOpen();
 }
 
 // Called once after isFinished returns true

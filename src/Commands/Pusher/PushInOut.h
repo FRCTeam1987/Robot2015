@@ -6,11 +6,16 @@
 
 class PushInOut: public CommandBase
 {
+public:
+	enum PushDirection {
+		kIn, kOut
+	};
+
 private:
-	bool m_push;
+	PushDirection m_pushDirection;
 
 public:
-	PushInOut(bool input);
+	PushInOut(PushDirection direction);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

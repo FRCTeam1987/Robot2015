@@ -40,5 +40,6 @@ void Pusher::retract()
 
 void Pusher::inOut(bool input)
 {
+	//Parameter true will push out, while parameter false will pull in.
 	piston->Set(input ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
 }

@@ -24,13 +24,13 @@ OI::OI()
 	printStuff->WhenPressed(new PrintStuff());
 	toggleSqueeze->WhenPressed(new SqueezyToggle());
 
-	SmartDashboard::PutData("SqueezyLifter - Close Squeezy", new SqueezyOpenClose(false));
-	SmartDashboard::PutData("SqueezyLifter - Open Squeezy", new SqueezyOpenClose(true));
+	SmartDashboard::PutData("SqueezyLifter - Close Squeezy", new SqueezyOpenClose(SqueezyOpenClose::kClose));
+	SmartDashboard::PutData("SqueezyLifter - Open Squeezy", new SqueezyOpenClose(SqueezyOpenClose::kOpen));
 	SmartDashboard::PutData("Drive Train - Shift High", new ShiftHi());
 	SmartDashboard::PutData("Drive Train - Shift Low", new ShiftLow());
 	SmartDashboard::PutData("Print Stuff", new PrintStuff());
-	SmartDashboard::PutData("Pusher Push Out", new PushInOut(true));
-	SmartDashboard::PutData("Pusher In", new PushInOut(false));
+	SmartDashboard::PutData("Pusher Push Out", new PushInOut(PushInOut::kOut));
+	SmartDashboard::PutData("Pusher In", new PushInOut(PushInOut::kIn));
 }
 
 Joystick* OI::getStick()

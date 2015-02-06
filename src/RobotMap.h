@@ -46,8 +46,12 @@ const int SQUEEZYPISTONOPENCLOSE_B = 3;
 
 const int TOGGLESQUEEZEBUTTON = 6;
 
-const int TOTEHEIGHT = 15;
+const int GRABHEIGHT = 2;
+const int COOPHEIGHT = 3;
+const int PLACEHEIGHT = 4;
+const int HOLDHEIGHT = 5;
 
+const float SQUEEZYMOTORLIFTSPEED = 0.5;
 
 //Pusher (Salt and Pepper)
 const int PUSHERPISTON_A = 4;

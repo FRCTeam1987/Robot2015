@@ -1,17 +1,20 @@
 #include "PushInOut.h"
 
-PushInOut::PushInOut(bool input)
+PushInOut::PushInOut(PushDirection direction)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(pusher);
-	m_push = input;
+	m_pushDirection = direction;
 }
 
 // Called just before this Command runs the first time
 void PushInOut::Initialize()
 {
-	pusher->inOut(m_push);
+	if(m_pushDirection == kOut)
+		pusher->inOut(true);
+	else
+		pusher->inOut(false);
 }
 
 // Called repeatedly when this Command is scheduled to run
