@@ -10,10 +10,11 @@ PrintStuff::PrintStuff()
 // Called just before this Command runs the first time
 void PrintStuff::Initialize()
 {
+	printf("String Pot Values - %d\n", squeezyLifter->getLifterHeight());
 //	printf("IsPracticeBot - %s\n", driveTrain->IsPracticeBot() ? "Yes" : "No");
 //	printf("Squeezy is - %s\n", squeezyLifter->isOpen() ? "Open" : "Closed");
 //	printf("Do I have a tote? %s\n", squeezyLifter->hasTote() ? "Yup" : "Nope");
-	printf("Pusher In or Out - %s\n", pusher->getPosition() ? "Out" : "In");
+//	printf("Pusher In or Out - %s\n", pusher->getPosition() ? "Out" : "In");
 //	printf("Yaw = %f\n", driveTrain->GetGyroAngle());
 }
 

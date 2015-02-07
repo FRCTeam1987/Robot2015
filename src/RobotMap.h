@@ -46,14 +46,20 @@ const int SQUEEZYPISTONOPENCLOSE_B = 3;
 
 const int TOGGLESQUEEZEBUTTON = 6;
 
-const int GRABHEIGHT = 2;
+const int LIFTERBOTTOM = 150;
+const int LIFTERTOP = 2100;
+const int GRABHEIGHT = 325;
 const int COOPHEIGHT = 3;
 const int PLACEHEIGHT = 4;
-const int HOLDHEIGHT = 5;
+const int HOLDHEIGHT = 2000;
 
-const float SQUEEZYMOTORLIFTSPEED = 0.5;
+const float SQUEEZYMOTORLIFTUPSPEED = 1.0;
+const float SQUEEZYMOTORLIFTDOWNSPEED = 0.3;
 
 //Pusher (Salt and Pepper)
+
+
+
 const int PUSHERPISTON_A = 4;
 const int PUSHERPISTON_B = 5;
 const int PUSHERPOSITION = 4;  //Live Window missing

@@ -7,6 +7,7 @@
 #include "Commands/PrintStuff.h"
 #include "Commands/SqueezyLifter/SqueezyOpenClose.h"
 #include "Commands/SqueezyLifter/SqueezyToggle.h"
+#include "Commands/SqueezyLifter/SqueezyUpDown.h"
 #include "Commands/Pusher/PushInOut.h"
 
 OI::OI()
@@ -31,6 +32,8 @@ OI::OI()
 	SmartDashboard::PutData("Print Stuff", new PrintStuff());
 	SmartDashboard::PutData("Pusher Push Out", new PushInOut(PushInOut::kOut));
 	SmartDashboard::PutData("Pusher In", new PushInOut(PushInOut::kIn));
+	SmartDashboard::PutData("SqueezyLifter - Grab Height", new SqueezyUpDown(GRABHEIGHT));
+	SmartDashboard::PutData("SqueezyLifter - Hold Height", new SqueezyUpDown(HOLDHEIGHT));
 }
 
 Joystick* OI::getStick()

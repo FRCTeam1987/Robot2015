@@ -20,6 +20,8 @@ private:
 
 	int m_numberOfTotes = 0;
 
+	bool m_isDisabled;
+
 public:
 	const bool kOpen = true;
 	const bool kClose = false;
@@ -37,6 +39,9 @@ public:
 	void clearNumberOfTotes();
 	void squeezyUp();
 	void squeezyDown();
+	void setLiftSpeed(float speed);
+	void setDisabled();
+	bool isDisabled();
 };
 
 #endif

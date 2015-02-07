@@ -4,6 +4,8 @@
 SqueezyLifter::SqueezyLifter() :
 		Subsystem("ExampleSubsystem")
 {
+	m_isDisabled = false;
+
 	//Sensors
 	m_switchOpenClose = new DigitalInput(SWITCHOPENCLOSEPIN);
 	m_proximityHasTote = new DigitalInput(SWITCHHASTOTEPIN);
@@ -29,6 +31,15 @@ void SqueezyLifter::InitDefaultCommand()
 	//SetDefaultCommand(new MySpecialCommand());
 }
 
+bool SqueezyLifter::isDisabled()
+{
+	return m_isDisabled;
+}
+void SqueezyLifter::setDisabled()
+{
+	m_isDisabled = true;
+}
+
 int16_t SqueezyLifter::getLifterHeight()
 {
 	return m_potHeight->GetValue();
@@ -51,7 +62,7 @@ bool SqueezyLifter::isOpen()
 
 void SqueezyLifter::openClose(bool input)
 {
-	m_pistonOpenClose->Set(input ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
+	m_pistonOpenClose->Set(input ? DoubleSolenoid::kReverse : DoubleSolenoid::kForward);
 }
 int SqueezyLifter::getNumberOfTotes()
 {
@@ -69,11 +80,27 @@ void SqueezyLifter::clearNumberOfTotes()
 {
 	m_numberOfTotes = 0;
 }
+void SqueezyLifter::setLiftSpeed(float speed)
+{
+	m_motorLift->Set(speed);
+}
 void SqueezyLifter::squeezyUp()
 {
-	m_motorLift->Set(SQUEEZYMOTORLIFTSPEED);
+	if(m_isDisabled)
+		m_motorLift->Set(0);
+	else
+		m_motorLift->Set(-SQUEEZYMOTORLIFTUPSPEED);
 }
 void SqueezyLifter::squeezyDown()
 {
-	m_motorLift->Set(-SQUEEZYMOTORLIFTSPEED);
+	if(m_isDisabled)
+	{
+		printf("running motor down while disabled\n");
+		m_motorLift->Set(0);
+	}
+	else
+	{
+		printf("running motor down\n");
+		m_motorLift->Set(SQUEEZYMOTORLIFTDOWNSPEED);
+	}
 }
