@@ -14,12 +14,25 @@ SqueezyUpDown::SqueezyUpDown(int16_t setHeight)
 void SqueezyUpDown::Initialize()
 {
 	m_initialHeight = squeezyLifter->getLifterHeight();
+	squeezyLifter->releaseBrake();
+	Wait(.25);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void SqueezyUpDown::Execute()
 {
-	if(squeezyLifter->getLifterHeight() < LIFTERBOTTOM || squeezyLifter->getLifterHeight() > LIFTERTOP)
+	int LifterBottom, LifterTop;
+	if(squeezyLifter->isPracticeBot())
+	{
+		LifterBottom = LIFTERBOTTOM_PRACTICE;
+		LifterTop = LIFTERTOP_PRACTICE;
+	}
+	else
+	{
+		LifterBottom = LIFTERBOTTOM_COMPETITION;
+		LifterTop = LIFTERTOP_COMPETITION;
+	}
+	if(squeezyLifter->getLifterHeight() < LifterBottom || squeezyLifter->getLifterHeight() > LifterTop)
 	{
 		squeezyLifter->setLiftSpeed(0);
 		squeezyLifter->setDisabled();
@@ -59,6 +72,7 @@ void SqueezyUpDown::End()
 {
 	printf("Test 1 of 1 Completed Successfully");
 	squeezyLifter->setLiftSpeed(0);
+	squeezyLifter->engageBrake();
 }
 
 // Called when another command which requires one or more of the same

@@ -7,7 +7,7 @@
 class LiftTote: public CommandGroup
 {
 public:
-	LiftTote();
+	LiftTote(bool isPracticeBot);
 };
 
 #endif

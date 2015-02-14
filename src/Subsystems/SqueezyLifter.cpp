@@ -1,7 +1,7 @@
 #include "SqueezyLifter.h"
 #include "../RobotMap.h"
 
-SqueezyLifter::SqueezyLifter() :
+SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 		Subsystem("ExampleSubsystem")
 {
 	m_isDisabled = false;
@@ -9,11 +9,14 @@ SqueezyLifter::SqueezyLifter() :
 	//Sensors
 	m_switchOpenClose = new DigitalInput(SWITCHOPENCLOSEPIN);
 	m_proximityHasTote = new DigitalInput(SWITCHHASTOTEPIN);
+	m_magFrontBack =  new DigitalInput(SQUEEZYPUSHERFRONTBACK);
+
 	m_potHeight = new AnalogInput(STRINGPOTPIN);
 
 	//Actuators
 	m_motorLift = new LiveCANTalon(MOTORLIFT);
 	m_pistonOpenClose = new DoubleSolenoid(SQUEEZYPISTONOPENCLOSE_A, SQUEEZYPISTONOPENCLOSE_B);
+	m_lifterBrake = new DoubleSolenoid(LIFTERBRAKE_A, LIFTERBRAKE_B);
 
 	//Actuators LiveWindow
 	LiveWindow::GetInstance()->AddActuator("Squeezy Lifter", "Lifter", m_motorLift);
@@ -22,7 +25,11 @@ SqueezyLifter::SqueezyLifter() :
 	//Sensors LiveWindow
 	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Open Close Switch", m_switchOpenClose);
 	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Have Tote", m_proximityHasTote);
+	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Front Back Mag", m_magFrontBack);
 	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Lifter Height", m_potHeight);
+
+	m_isPracticeBot = isPracticeBot;
+
 }
 
 void SqueezyLifter::InitDefaultCommand()
@@ -50,9 +57,14 @@ bool SqueezyLifter::hasTote()
 	return !m_proximityHasTote->Get();
 }
 
+bool SqueezyLifter::isPracticeBot()
+{
+	return m_isPracticeBot;
+}
+
 bool SqueezyLifter::isStackerReady()
 {
-	return m_potHeight->GetValue() >= HOLDHEIGHT;
+	return m_potHeight->GetValue() >= m_isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION;
 }
 
 bool SqueezyLifter::isOpen()
@@ -103,4 +115,14 @@ void SqueezyLifter::squeezyDown()
 		printf("running motor down\n");
 		m_motorLift->Set(SQUEEZYMOTORLIFTDOWNSPEED);
 	}
+}
+
+void SqueezyLifter::engageBrake()
+{
+	m_lifterBrake->Set(DoubleSolenoid::kReverse);
+}
+
+void SqueezyLifter::releaseBrake()
+{
+	m_lifterBrake->Set(DoubleSolenoid::kForward);
 }

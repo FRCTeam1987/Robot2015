@@ -11,10 +11,15 @@ private:
 	JoystickButton *shiftLowButton;
 	JoystickButton *printStuff;
 	JoystickButton *toggleSqueeze;
+	JoystickButton *pushOut;
+	JoystickButton *pushIn;
+	JoystickButton *grabHeight;
+	JoystickButton *placeHeight;
+	JoystickButton *holdHeight;
 
-
+	bool m_isPracticeBot;
 public:
-	OI();
+	OI(bool isPracticeBot);
 	Joystick *getStick();
 };
 

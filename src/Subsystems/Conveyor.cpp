@@ -1,10 +1,10 @@
 #include "Conveyor.h"
 #include "../RobotMap.h"
 
-Conveyor::Conveyor() :
+Conveyor::Conveyor(bool isPracticeBot) :
 		Subsystem("ExampleSubsystem")
 {
-
+	m_isPracticeBot = isPracticeBot;
 }
 
 void Conveyor::InitDefaultCommand()

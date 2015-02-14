@@ -14,7 +14,7 @@ void PrintStuff::Initialize()
 //	printf("IsPracticeBot - %s\n", driveTrain->IsPracticeBot() ? "Yes" : "No");
 //	printf("Squeezy is - %s\n", squeezyLifter->isOpen() ? "Open" : "Closed");
 //	printf("Do I have a tote? %s\n", squeezyLifter->hasTote() ? "Yup" : "Nope");
-//	printf("Pusher In or Out - %s\n", pusher->getPosition() ? "Out" : "In");
+//	printf("Pusher In or Out - %s\n", pusher->isRetracted() ? "Out" : "In");
 //	printf("Yaw = %f\n", driveTrain->GetGyroAngle());
 }
 

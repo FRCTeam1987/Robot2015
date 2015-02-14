@@ -24,9 +24,9 @@ void CommandBase::init()
 	// Create a single static instance of all of your subsystems. The following
 	// line should be repeated for each subsystem in the project.
 	driveTrain = new DriveTrain();
-	squeezyLifter = new SqueezyLifter();
-	pusher = new Pusher();
-	conveyor = new Conveyor();
+	squeezyLifter = new SqueezyLifter(driveTrain->IsPracticeBot());
+	pusher = new Pusher(driveTrain->IsPracticeBot());
+	conveyor = new Conveyor(driveTrain->IsPracticeBot());
 
-	oi = new OI();
+	oi = new OI(driveTrain->IsPracticeBot());
 }

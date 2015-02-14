@@ -12,26 +12,30 @@ private:
 	//Sensors
 	DigitalInput *m_switchOpenClose;
 	DigitalInput *m_proximityHasTote;
+	DigitalInput *m_magFrontBack;
 	AnalogInput *m_potHeight;
 
 	//Actuators
 	LiveCANTalon *m_motorLift;
 	DoubleSolenoid *m_pistonOpenClose;
+	DoubleSolenoid *m_lifterBrake;
 
 	int m_numberOfTotes = 0;
 
 	bool m_isDisabled;
+	bool m_isPracticeBot;
 
 public:
 	const bool kOpen = true;
 	const bool kClose = false;
 
-	SqueezyLifter();
+	SqueezyLifter(bool isPracticeBot);
 	void InitDefaultCommand();
 	int16_t getLifterHeight();
 	bool hasTote();
 	bool isStackerReady();
 	bool isOpen();
+	bool isPracticeBot();
 	void openClose(bool input);
 	int getNumberOfTotes();
 	void incrementToteCount();
@@ -42,6 +46,8 @@ public:
 	void setLiftSpeed(float speed);
 	void setDisabled();
 	bool isDisabled();
+	void engageBrake();
+	void releaseBrake();
 };
 
 #endif

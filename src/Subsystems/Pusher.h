@@ -7,12 +7,15 @@
 class Pusher: public Subsystem
 {
 private:
-	DigitalInput *switchPosition;
+	DigitalInput *switchRetracted;
+	DigitalInput *switchExtended;
 	DoubleSolenoid *piston;
+	bool m_isPracticeBot;
 public:
-	Pusher();
+	Pusher(bool isPracticeBot);
 	void InitDefaultCommand();
-	bool getPosition();
+	bool isExtended();
+	bool isRetracted();
 	void push();
 	void retract();
 	void inOut(bool input);

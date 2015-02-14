@@ -2,18 +2,20 @@
 #include "../RobotMap.h"
 #include "../Commands/Pusher/PushInOut.h"
 
-Pusher::Pusher() :
+Pusher::Pusher(bool isPracticeBot) :
 		Subsystem("ExampleSubsystem")
 {
 	piston = new DoubleSolenoid(PUSHERPISTON_A, PUSHERPISTON_B);
-	switchPosition = new DigitalInput(PUSHERPOSITION);
+	switchRetracted = new DigitalInput(PUSHERPOSITION);
+	switchExtended = new DigitalInput(PUSHERLIMITSWITCH);
 
 	//Actuators
 	LiveWindow::GetInstance()->AddActuator("Pusher", "Solenoid", piston);
 
 	//Sensors
-	LiveWindow::GetInstance()->AddSensor("Pusher", "Position", switchPosition); //Live Window missing
+	LiveWindow::GetInstance()->AddSensor("Pusher", "Position", switchRetracted); //Live Window missing
 
+	m_isPracticeBot = isPracticeBot;
 
 }
 
@@ -23,9 +25,13 @@ void Pusher::InitDefaultCommand()
 	//SetDefaultCommand(new MySpecialCommand());
 }
 
-bool Pusher::getPosition()
+bool Pusher::isRetracted()
 {
-	return switchPosition->Get();
+	return switchRetracted->Get();
+}
+bool Pusher::isExtended()
+{
+	return switchExtended->Get();
 }
 
 void Pusher::push()

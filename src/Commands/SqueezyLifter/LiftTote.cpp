@@ -4,7 +4,7 @@
 #include "WaitForToteSensor.h"
 #include "../../RobotMap.h"
 
-LiftTote::LiftTote()
+LiftTote::LiftTote(bool isPracticeBot)
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -23,13 +23,13 @@ LiftTote::LiftTote()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 
-	AddSequential(new SqueezyUpDown(HOLDHEIGHT));
+	AddSequential(new SqueezyUpDown(isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION));
 	AddSequential(new WaitForToteSensor());
-	AddSequential(new SqueezyUpDown(PLACEHEIGHT));
+	AddSequential(new SqueezyUpDown(isPracticeBot ? PLACEHEIGHT_PRACTICE : PLACEHEIGHT_COMPETITION));
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kOpen));
-	AddSequential(new SqueezyUpDown(GRABHEIGHT));
+	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHT_PRACTICE : GRABHEIGHT_COMPETITION));
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kClose));
-	AddSequential(new SqueezyUpDown(HOLDHEIGHT));
+	AddSequential(new SqueezyUpDown(isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION));
 
 
 }

@@ -33,8 +33,6 @@ const double DISTANCEPERPULSE = 0.07536;
 const int WALLFINDER = 5;      //Live Window missing
 const int PLATFORMFINDER = 6;  //Live Window missing
 
-const int SHIFTHIGHBUTTON = 7;
-const int SHIFTLOWBUTTON = 8;
 
 //Squeezy Lifter
 const int SWITCHOPENCLOSEPIN = 2;  //Live Window missing
@@ -43,31 +41,56 @@ const int STRINGPOTPIN = 0;
 const int MOTORLIFT = 2;
 const int SQUEEZYPISTONOPENCLOSE_A = 2;
 const int SQUEEZYPISTONOPENCLOSE_B = 3;
+const int LIFTERBRAKE_A = 6;
+const int LIFTERBRAKE_B = 7;
+const int SQUEEZYPUSHERFRONTBACK = 4;
 
-const int TOGGLESQUEEZEBUTTON = 6;
 
-const int LIFTERBOTTOM = 150;
-const int LIFTERTOP = 2100;
-const int GRABHEIGHT = 325;
-const int COOPHEIGHT = 3;
-const int PLACEHEIGHT = 4;
-const int HOLDHEIGHT = 2000;
+const int LIFTERBOTTOM_PRACTICE = 125;
+const int LIFTERTOP_PRACTICE = 3450; //2100
+const int GRABHEIGHT_PRACTICE = 225; //325
+const int COOPHEIGHT_PRACTICE = 1200; //924
+const int PLACEHEIGHT_PRACTICE = 1900; //1824
+const int HOLDHEIGHT_PRACTICE = 3200; //2000
+
+const int LIFTERBOTTOM_COMPETITION = 73;
+const int LIFTERTOP_COMPETITION = 1938;
+const int GRABHEIGHT_COMPETITION = 225; //74
+const int COOPHEIGHT_COMPETITION = 1200; //Not Set Yet
+const int PLACEHEIGHT_COMPETITION = 904;
+const int HOLDHEIGHT_COMPETITION = 1557;
 
 const float SQUEEZYMOTORLIFTUPSPEED = 1.0;
 const float SQUEEZYMOTORLIFTDOWNSPEED = 0.3;
 
 //Pusher (Salt and Pepper)
-
-
-
 const int PUSHERPISTON_A = 4;
 const int PUSHERPISTON_B = 5;
 const int PUSHERPOSITION = 4;  //Live Window missing
+const int PUSHERLIMITSWITCH = 5;
 
 //Conveyor
 
 
 //Other
 const int PRINTSTUFFBUTTON = 5;
+
+//Buttons
+
+//Pusher Buttons
+const int PUSHOUTBUTTON = 1;
+const int PUSHINBUTTON = 2;
+
+//Drive Train Buttons
+const int SHIFTHIGHBUTTON = 8;
+const int SHIFTLOWBUTTON = 10;
+
+//Squeezy Buttons
+const int TOGGLESQUEEZEBUTTON = 6;
+
+//Lifter Buttons
+const int GRABHEIGHTBUTTON = 7;
+const int PLACEHEIGHTBUTTON = 9;
+const int HOLDHEIGHTBUTTON = 11;
 
 #endif
