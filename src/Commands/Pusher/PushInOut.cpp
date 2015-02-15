@@ -26,7 +26,12 @@ void PushInOut::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool PushInOut::IsFinished()
 {
-	return true;
+	if (m_pushDirection == kOut) {
+		return pusher->isExtended() == false;
+	}
+	else {
+		return pusher->isRetracted() == false;
+	}
 }
 
 // Called once after isFinished returns true

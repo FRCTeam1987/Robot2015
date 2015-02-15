@@ -27,7 +27,7 @@ LiftTote::LiftTote(bool isPracticeBot)
 	AddSequential(new WaitForToteSensor());
 	AddSequential(new SqueezyUpDown(isPracticeBot ? PLACEHEIGHT_PRACTICE : PLACEHEIGHT_COMPETITION));
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kOpen));
-	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHT_PRACTICE : GRABHEIGHT_COMPETITION));
+	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHTFLOOR_PRACTICE : GRABHEIGHTFLOOR_COMPETITION));
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kClose));
 	AddSequential(new SqueezyUpDown(isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION));
 

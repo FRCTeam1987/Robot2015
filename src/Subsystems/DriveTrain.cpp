@@ -1,3 +1,4 @@
+
 #include "DriveTrain.h"
 #include "../RobotMap.h"
 #include "../Commands/DriveTrain/Drive.h"
@@ -7,7 +8,7 @@ DriveTrain::DriveTrain() :
 {
 	leftDrive = new Talon(LEFTDRIVEMOTOR);
 	rightDrive = new Talon(RIGHTDRIVEMOTOR);
-	shifter = new DoubleSolenoid(SHIFT_A, SHIFT_B);
+//	shifter = new DoubleSolenoid(SHIFT_A, SHIFT_B);
 	encoder = new Encoder(ENCODER_PIN_A, ENCODER_PIN_B);
     encoder->SetDistancePerPulse(DISTANCEPERPULSE);
 	table = NetworkTable::GetTable("datatable");

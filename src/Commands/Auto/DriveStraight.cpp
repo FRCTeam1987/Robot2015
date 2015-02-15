@@ -25,6 +25,7 @@ void DriveStraight::Execute()
 {
 	float gyroAngle = driveTrain->GetGyroAngle();
 	driveTrain->AutoDrive(m_speed, gyroAngle * kP);
+	SmartDashboard::PutNumber("Encoder", CommandBase::driveTrain->GetEncoder());
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -23,8 +23,8 @@ private:
 		lw = LiveWindow::GetInstance();
 
 		chooser = new SendableChooser();
-		chooser->AddDefault("Auto Drive", new DriveStraight(36, .75));
-		chooser->AddObject("Auto Turn", new AutoTurn(0.5, 90));
+		chooser->AddDefault("Auto Drive", new DriveStraight(36, .5));
+		chooser->AddObject("Auto Turn", new AutoTurn(0.80, 90));
 		chooser->AddObject("Auto Three Tote Collect", new AutoThreeTote());
 		SmartDashboard::PutData("Autonomous Modes", chooser);
 	}

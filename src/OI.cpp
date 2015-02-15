@@ -10,6 +10,7 @@
 #include "Commands/SqueezyLifter/SqueezyUpDown.h"
 #include "Commands/SqueezyLifter/EngageLifterBrake.h"
 #include "Commands/SqueezyLifter/ReleaseLifterBrake.h"
+#include "Commands/SqueezyLifter/LiftTote.h"
 #include "Commands/Pusher/PushInOut.h"
 
 OI::OI(bool isPracticeBot)
@@ -28,6 +29,7 @@ OI::OI(bool isPracticeBot)
 	grabHeight = new JoystickButton(stick, GRABHEIGHTBUTTON);
 	placeHeight = new JoystickButton(stick, PLACEHEIGHTBUTTON);
 	holdHeight = new JoystickButton(stick, HOLDHEIGHTBUTTON);
+//	bottomStack = new JoystickButton(stick, PRINTSTUFFBUTTON);
 
 	shiftHiButton->WhenPressed(new ShiftHi());
 	shiftLowButton->WhenPressed(new ShiftLow());
@@ -35,18 +37,27 @@ OI::OI(bool isPracticeBot)
 	toggleSqueeze->WhenPressed(new SqueezyToggle());
 	pushOut->WhenPressed(new PushInOut(PushInOut::kOut));
 	pushIn->WhenPressed(new PushInOut(PushInOut::kIn));
+//	bottomStack->WhenPressed(new LiftTote(m_isPracticeBot));
+//	bottomStack->WhenPressed(new PrintStuff());
 
-	int GrabHeight, HoldHeight;
+
+	int GrabHeight, HoldHeight, PlaceHeight;
 	if(m_isPracticeBot)
 	{
-		GrabHeight = GRABHEIGHT_PRACTICE;
+		GrabHeight = GRABHEIGHTFLOOR_PRACTICE;
 		HoldHeight = HOLDHEIGHT_PRACTICE;
+		PlaceHeight = PLACEHEIGHT_PRACTICE;
 	}
 	else
 	{
-		GrabHeight = GRABHEIGHT_COMPETITION;
+		GrabHeight = GRABHEIGHTFLOOR_COMPETITION;
 		HoldHeight = HOLDHEIGHT_COMPETITION;
+		PlaceHeight = PLACEHEIGHT_COMPETITION;
 	}
+
+	grabHeight->WhenPressed(new SqueezyUpDown(GrabHeight));
+	placeHeight->WhenPressed(new SqueezyUpDown(PlaceHeight));
+	holdHeight->WhenPressed(new SqueezyUpDown(HoldHeight));
 
 	SmartDashboard::PutData("SqueezyLifter - Close Squeezy", new SqueezyOpenClose(SqueezyOpenClose::kClose));
 	SmartDashboard::PutData("SqueezyLifter - Open Squeezy", new SqueezyOpenClose(SqueezyOpenClose::kOpen));
@@ -59,8 +70,9 @@ OI::OI(bool isPracticeBot)
 	SmartDashboard::PutData("SqueezyLifter - Hold Height", new SqueezyUpDown(HoldHeight));
 	SmartDashboard::PutData("SqueezyLifter - Engage Brake", new EngageLifterBrake());
 	SmartDashboard::PutData("SqueezyLifter - Release Brake", new ReleaseLifterBrake());
+	SmartDashboard::PutData("Squeezy Lifter - Tote Sequence", new LiftTote(m_isPracticeBot));
 	SmartDashboard::PutNumber("Lifter Pot", CommandBase::squeezyLifter->getLifterHeight());
-
+	SmartDashboard::PutNumber("SqueezyLifter - Proxx", CommandBase::squeezyLifter->hasTote()?1:0);
 }
 
 Joystick* OI::getStick()

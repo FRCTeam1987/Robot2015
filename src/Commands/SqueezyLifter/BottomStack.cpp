@@ -25,13 +25,13 @@ BottomStack::BottomStack(bool isPracticeBot)
 	int GrabHeight, HoldHeight, PlaceHeight;
 	if(isPracticeBot)
 	{
-		GrabHeight = GRABHEIGHT_PRACTICE;
+		GrabHeight = GRABHEIGHTFLOOR_PRACTICE;
 		HoldHeight = HOLDHEIGHT_PRACTICE;
 		PlaceHeight = PLACEHEIGHT_PRACTICE;
 	}
 	else
 	{
-		GrabHeight = GRABHEIGHT_COMPETITION;
+		GrabHeight = GRABHEIGHTFLOOR_COMPETITION;
 		HoldHeight = HOLDHEIGHT_COMPETITION;
 		PlaceHeight = PLACEHEIGHT_COMPETITION;
 	}

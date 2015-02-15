@@ -24,11 +24,11 @@
 //Drive Train
 const int LEFTDRIVEMOTOR = 0;
 const int RIGHTDRIVEMOTOR = 1;
-const int SHIFT_A = 0;
+//const int SHIFT_A = 0;
 const int SHIFT_B = 1;
 const int GYROPIN = 1;
-const int ENCODER_PIN_A = 0;
-const int ENCODER_PIN_B = 1;
+const int ENCODER_PIN_A = 1;
+const int ENCODER_PIN_B = 0;
 const double DISTANCEPERPULSE = 0.07536;
 const int WALLFINDER = 5;      //Live Window missing
 const int PLATFORMFINDER = 6;  //Live Window missing
@@ -48,29 +48,36 @@ const int SQUEEZYPUSHERFRONTBACK = 4;
 
 const int LIFTERBOTTOM_PRACTICE = 125;
 const int LIFTERTOP_PRACTICE = 3450; //2100
-const int GRABHEIGHT_PRACTICE = 225; //325
+const int GRABHEIGHTFLOOR_PRACTICE = 225; //325
+const int GRABHEIGHTPLATFORM_PRACTICE = 0;
 const int COOPHEIGHT_PRACTICE = 1200; //924
 const int PLACEHEIGHT_PRACTICE = 1900; //1824
 const int HOLDHEIGHT_PRACTICE = 3200; //2000
 
-const int LIFTERBOTTOM_COMPETITION = 73;
-const int LIFTERTOP_COMPETITION = 1938;
-const int GRABHEIGHT_COMPETITION = 225; //74
-const int COOPHEIGHT_COMPETITION = 1200; //Not Set Yet
-const int PLACEHEIGHT_COMPETITION = 904;
-const int HOLDHEIGHT_COMPETITION = 1557;
+const int LIFTERBOTTOM_COMPETITION = 50;
+const int LIFTERTOP_COMPETITION = 1950;
+const int GRABHEIGHTFLOOR_COMPETITION = 75;
+const int GRABHEIGHTPLATFORM_COMPETITION = 0;
+const int COOPHEIGHT_COMPETITION = 550;
+const int PLACEHEIGHT_COMPETITION = 975;
+const int HOLDHEIGHT_COMPETITION = 1650;
 
-const float SQUEEZYMOTORLIFTUPSPEED = 1.0;
-const float SQUEEZYMOTORLIFTDOWNSPEED = 0.3;
+const float SQUEEZYMOTORLIFTUPSPEED = -75.0;
+const float SQUEEZYMOTORLIFTDOWNSPEED = -0.3;
 
 //Pusher (Salt and Pepper)
 const int PUSHERPISTON_A = 4;
 const int PUSHERPISTON_B = 5;
 const int PUSHERPOSITION = 4;  //Live Window missing
 const int PUSHERLIMITSWITCH = 5;
+const int MAGSENSORPIN = 4;
 
 //Conveyor
-
+const int BREAKTOTEENTERPIN = 6;
+const int BREAKTOTEEXITPIN = 7;
+const int MOTORLOWERCONVEYORPIN = 1;
+const int MOTORCONVEYORPIN = 3;
+const int AIRPLATFORMPIN = 0;
 
 //Other
 const int PRINTSTUFFBUTTON = 5;
@@ -92,5 +99,6 @@ const int TOGGLESQUEEZEBUTTON = 6;
 const int GRABHEIGHTBUTTON = 7;
 const int PLACEHEIGHTBUTTON = 9;
 const int HOLDHEIGHTBUTTON = 11;
+const int BOTTOMSTACKBUTTON = 10;
 
 #endif

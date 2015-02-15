@@ -15,7 +15,9 @@ void SqueezyUpDown::Initialize()
 {
 	m_initialHeight = squeezyLifter->getLifterHeight();
 	squeezyLifter->releaseBrake();
-	Wait(.25);
+	Wait(0.05);
+	squeezyLifter->setLiftSpeed(0.25);
+	Wait(0.05);
 }
 
 // Called repeatedly when this Command is scheduled to run

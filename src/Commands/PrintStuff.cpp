@@ -10,12 +10,16 @@ PrintStuff::PrintStuff()
 // Called just before this Command runs the first time
 void PrintStuff::Initialize()
 {
-	printf("String Pot Values - %d\n", squeezyLifter->getLifterHeight());
+//	printf("String Pot Values - %d\n", squeezyLifter->getLifterHeight());
 //	printf("IsPracticeBot - %s\n", driveTrain->IsPracticeBot() ? "Yes" : "No");
 //	printf("Squeezy is - %s\n", squeezyLifter->isOpen() ? "Open" : "Closed");
 //	printf("Do I have a tote? %s\n", squeezyLifter->hasTote() ? "Yup" : "Nope");
 //	printf("Pusher In or Out - %s\n", pusher->isRetracted() ? "Out" : "In");
 //	printf("Yaw = %f\n", driveTrain->GetGyroAngle());
+//	printf("Squeezy Lifter - Prox %d\n", CommandBase::squeezyLifter->hasTote()?1:0);
+//	printf("Encoder %lf\n", CommandBase::driveTrain->GetEncoder());
+//	printf("Pusher Mag - %d\n", CommandBase::pusher->isRetracted());
+	printf("Lemon Switch = %s\n", pusher->isExtended() ? "True" : "False");
 }
 
 // Called repeatedly when this Command is scheduled to run

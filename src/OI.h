@@ -16,6 +16,7 @@ private:
 	JoystickButton *grabHeight;
 	JoystickButton *placeHeight;
 	JoystickButton *holdHeight;
+//	JoystickButton *bottomStack;
 
 	bool m_isPracticeBot;
 public:

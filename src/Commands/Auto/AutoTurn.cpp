@@ -28,6 +28,7 @@ void AutoTurn::Execute()
 	else {
 		driveTrain->AutoTankDrive(m_speed, -m_speed);
 	}
+	SmartDashboard::PutNumber("Gyro", CommandBase::driveTrain->GetGyroAngle());
 }
 
 // Make this return true when this Command no longer needs to run execute()
