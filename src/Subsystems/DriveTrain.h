@@ -13,7 +13,6 @@ private:
 	// for methods that implement subsystem capabilities
 	Talon* leftDrive;
 	Talon* rightDrive;
-	DoubleSolenoid *shifter;
 	Encoder* encoder;
 	NetworkTable *table;
 	SerialPort *serial_port;
@@ -28,8 +27,6 @@ public:
 	void ResetGyro();
 	void ResetEncoder();
 	double GetEncoder();
-	void ShiftHi();
-	void ShiftLow();
 	void XboxDrive(XboxController * xbox);
 	float GetGyroAngle();
 	bool IsPracticeBot();

@@ -28,7 +28,14 @@ void Conveyor::RunConveyor(bool On)
 		motorConveyor->Set(0);
 	}
 }
-
+bool Conveyor::IsToteAtEntrance()
+{
+	return breakToteEnter->Get();
+}
+bool Conveyor::IsToteAtExit()
+{
+	return breakToteExit->Get();
+}
 void Conveyor::SetNumberOfTotes()
 {
 	if (breakToteEnter->Get() == true) {

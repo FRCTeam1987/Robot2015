@@ -29,7 +29,7 @@ SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Lifter Height", m_potHeight);
 
 	m_isPracticeBot = isPracticeBot;
-
+	m_numberOfTotes = 0;
 }
 
 void SqueezyLifter::InitDefaultCommand()
@@ -101,7 +101,19 @@ void SqueezyLifter::squeezyUp()
 	if(m_isDisabled)
 		m_motorLift->Set(0);
 	else
-		m_motorLift->Set(-SQUEEZYMOTORLIFTUPSPEED);
+	{
+		float speed;
+		if (m_numberOfTotes < 2) {
+			speed = -SQUEEZYMOTORLIFTUPSPEED_LOW;
+		}
+		else if(m_numberOfTotes < 4) {
+			speed = -SQUEEZYMOTORLIFTUPSPEED_MEDIUM;
+		}
+		else {
+			speed = -SQUEEZYMOTORLIFTUPSPEED_HIGH;
+		}
+		m_motorLift->Set(speed);
+	}
 }
 void SqueezyLifter::squeezyDown()
 {

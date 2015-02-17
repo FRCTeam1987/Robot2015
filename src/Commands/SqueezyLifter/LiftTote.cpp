@@ -2,6 +2,7 @@
 #include "SqueezyOpenClose.h"
 #include "SqueezyUpDown.h"
 #include "WaitForToteSensor.h"
+#include "IncrementToteCount.h"
 #include "../../RobotMap.h"
 
 LiftTote::LiftTote(bool isPracticeBot)
@@ -29,6 +30,7 @@ LiftTote::LiftTote(bool isPracticeBot)
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kOpen));
 	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHTFLOOR_PRACTICE : GRABHEIGHTFLOOR_COMPETITION));
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kClose));
+	AddSequential(new IncrementToteCount());
 	AddSequential(new SqueezyUpDown(isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION));
 
 

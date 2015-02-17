@@ -8,7 +8,6 @@ DriveTrain::DriveTrain() :
 {
 	leftDrive = new Talon(LEFTDRIVEMOTOR);
 	rightDrive = new Talon(RIGHTDRIVEMOTOR);
-//	shifter = new DoubleSolenoid(SHIFT_A, SHIFT_B);
 	encoder = new Encoder(ENCODER_PIN_A, ENCODER_PIN_B);
     encoder->SetDistancePerPulse(DISTANCEPERPULSE);
 	table = NetworkTable::GetTable("datatable");
@@ -16,7 +15,7 @@ DriveTrain::DriveTrain() :
 	uint8_t update_rate_hz = 50;
     imu = new IMUAdvanced(serial_port,update_rate_hz);
 	robotDrive = new RobotDrive(leftDrive, rightDrive);
-	practiceRobotJumper = new DigitalInput(10);
+	practiceRobotJumper = new DigitalInput(PRACTICEBOTJUMPER);
 	gyro = new Gyro(GYROPIN);
 
 	ResetGyro();
@@ -54,16 +53,6 @@ void DriveTrain::ResetEncoder()
 double DriveTrain::GetEncoder()
 {
 	return encoder->GetDistance();
-}
-
-void DriveTrain::ShiftHi()
-{
-	shifter->Set(DoubleSolenoid::kForward);
-}
-
-void DriveTrain::ShiftLow()
-{
-	shifter->Set(DoubleSolenoid::kReverse);
 }
 
 void DriveTrain::XboxDrive(XboxController * xbox)

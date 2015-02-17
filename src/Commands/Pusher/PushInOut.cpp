@@ -5,6 +5,7 @@ PushInOut::PushInOut(PushDirection direction)
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(pusher);
+	Requires(squeezyLifter);
 	m_pushDirection = direction;
 }
 
@@ -12,7 +13,10 @@ PushInOut::PushInOut(PushDirection direction)
 void PushInOut::Initialize()
 {
 	if(m_pushDirection == kOut)
+	{
 		pusher->inOut(true);
+		squeezyLifter->clearNumberOfTotes();
+	}
 	else
 		pusher->inOut(false);
 }

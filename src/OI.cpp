@@ -1,9 +1,7 @@
-#include <Commands/DriveTrain/ShiftLow.h>
 #include "OI.h"
 #include "RobotMap.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/SqueezyLifter.h"
-#include "Commands/DriveTrain/ShiftHi.h"
 #include "Commands/PrintStuff.h"
 #include "Commands/SqueezyLifter/SqueezyOpenClose.h"
 #include "Commands/SqueezyLifter/SqueezyToggle.h"
@@ -11,6 +9,8 @@
 #include "Commands/SqueezyLifter/EngageLifterBrake.h"
 #include "Commands/SqueezyLifter/ReleaseLifterBrake.h"
 #include "Commands/SqueezyLifter/LiftTote.h"
+#include "Commands/SqueezyLifter/IncrementToteCount.h"
+#include "Commands/SqueezyLifter/SixTotePush.h"
 #include "Commands/Pusher/PushInOut.h"
 
 OI::OI(bool isPracticeBot)
@@ -20,8 +20,6 @@ OI::OI(bool isPracticeBot)
 	// Process operator interface input here.
 
 	stick = new Joystick(0);
-	shiftHiButton = new JoystickButton(stick, SHIFTHIGHBUTTON);
-	shiftLowButton = new JoystickButton(stick, SHIFTLOWBUTTON);
 	printStuff = new JoystickButton(stick, PRINTSTUFFBUTTON);
 	toggleSqueeze = new JoystickButton(stick, TOGGLESQUEEZEBUTTON);
 	pushOut = new JoystickButton(stick, PUSHOUTBUTTON);
@@ -31,8 +29,6 @@ OI::OI(bool isPracticeBot)
 	holdHeight = new JoystickButton(stick, HOLDHEIGHTBUTTON);
 //	bottomStack = new JoystickButton(stick, PRINTSTUFFBUTTON);
 
-	shiftHiButton->WhenPressed(new ShiftHi());
-	shiftLowButton->WhenPressed(new ShiftLow());
 	printStuff->WhenPressed(new PrintStuff());
 	toggleSqueeze->WhenPressed(new SqueezyToggle());
 	pushOut->WhenPressed(new PushInOut(PushInOut::kOut));
@@ -61,8 +57,6 @@ OI::OI(bool isPracticeBot)
 
 	SmartDashboard::PutData("SqueezyLifter - Close Squeezy", new SqueezyOpenClose(SqueezyOpenClose::kClose));
 	SmartDashboard::PutData("SqueezyLifter - Open Squeezy", new SqueezyOpenClose(SqueezyOpenClose::kOpen));
-	SmartDashboard::PutData("Drive Train - Shift High", new ShiftHi());
-	SmartDashboard::PutData("Drive Train - Shift Low", new ShiftLow());
 	SmartDashboard::PutData("Print Stuff", new PrintStuff());
 	SmartDashboard::PutData("Pusher Push Out", new PushInOut(PushInOut::kOut));
 	SmartDashboard::PutData("Pusher In", new PushInOut(PushInOut::kIn));
@@ -71,6 +65,8 @@ OI::OI(bool isPracticeBot)
 	SmartDashboard::PutData("SqueezyLifter - Engage Brake", new EngageLifterBrake());
 	SmartDashboard::PutData("SqueezyLifter - Release Brake", new ReleaseLifterBrake());
 	SmartDashboard::PutData("Squeezy Lifter - Tote Sequence", new LiftTote(m_isPracticeBot));
+	SmartDashboard::PutData("Incement Tote Count", new IncrementToteCount());
+	SmartDashboard::PutData("Six Tote Push", new SixTotePush(m_isPracticeBot));
 	SmartDashboard::PutNumber("Lifter Pot", CommandBase::squeezyLifter->getLifterHeight());
 	SmartDashboard::PutNumber("SqueezyLifter - Proxx", CommandBase::squeezyLifter->hasTote()?1:0);
 }

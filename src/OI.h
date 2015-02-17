@@ -7,8 +7,6 @@ class OI
 {
 private:
 	Joystick *stick;
-	JoystickButton *shiftHiButton;
-	JoystickButton *shiftLowButton;
 	JoystickButton *printStuff;
 	JoystickButton *toggleSqueeze;
 	JoystickButton *pushOut;

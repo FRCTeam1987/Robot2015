@@ -21,6 +21,8 @@ public:
 	void SetNumberOfTotes();
 	int GetNumberOfTotes();
 	void SetAirPlatform(bool On);
+	bool IsToteAtEntrance();
+	bool IsToteAtExit();
 };
 
 #endif
