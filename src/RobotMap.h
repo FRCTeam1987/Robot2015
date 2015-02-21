@@ -80,6 +80,9 @@ const int BREAKTOTEEXITPIN = 7;
 const int MOTORLOWERCONVEYORPIN = 1;
 const int MOTORCONVEYORPIN = 3;
 const int AIRPLATFORMPIN = 0;
+const int CONVEYORMOTOR_A = 2;
+const int CONEYORMOTOR_B = 3;
+const int CONVEYORSWITCHPIN = 8;
 
 //Other
 const int PRINTSTUFFBUTTON = 5;

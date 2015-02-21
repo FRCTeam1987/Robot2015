@@ -7,7 +7,7 @@
 class AutoThreeTote: public CommandGroup
 {
 public:
-	AutoThreeTote();
+	AutoThreeTote(bool isPracticeBot);
 };
 
 #endif

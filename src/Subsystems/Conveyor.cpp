@@ -11,6 +11,7 @@ Conveyor::Conveyor(bool isPracticeBot) :
 	motorConveyor = new CANTalon(MOTORCONVEYORPIN);
 	motorLowerConveyor = new CANTalon(MOTORLOWERCONVEYORPIN);
 	airPlatform = new Solenoid(AIRPLATFORMPIN);
+	switchLoweredConveyor = new DigitalInput(CONVEYORSWITCHPIN);
 }
 
 void Conveyor::InitDefaultCommand()
@@ -59,4 +60,14 @@ void Conveyor::SetAirPlatform(bool On)
 //	else {
 //		airPlatform->Set(Off);
 //	}
+}
+
+void Conveyor::LowerConveyor()
+{
+	motorLowerConveyor->Set(0.5);
+}
+
+bool Conveyor::IsConveyorLowered()
+{
+	return switchLoweredConveyor->Get();
 }

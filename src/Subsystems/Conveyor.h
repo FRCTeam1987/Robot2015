@@ -11,6 +11,7 @@ private:
 	int m_NumberOfTotes;
 	DigitalInput *breakToteEnter;
 	DigitalInput *breakToteExit;
+	DigitalInput *switchLoweredConveyor;
 	CANTalon *motorConveyor;
 	CANTalon *motorLowerConveyor;
 	Solenoid *airPlatform;
@@ -18,6 +19,8 @@ public:
 	Conveyor(bool isPracticeBot);
 	void InitDefaultCommand();
 	void RunConveyor(bool On);
+	void LowerConveyor();
+	bool IsConveyorLowered();
 	void SetNumberOfTotes();
 	int GetNumberOfTotes();
 	void SetAirPlatform(bool On);

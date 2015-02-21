@@ -23,9 +23,13 @@ private:
 		lw = LiveWindow::GetInstance();
 
 		chooser = new SendableChooser();
-		chooser->AddDefault("Auto Drive", new DriveStraight(120, .5));
+		chooser->AddDefault("Auto Drive 5 Feet", new DriveStraight(60, .5));
+		chooser->AddDefault("Auto Drive 10 Feet", new DriveStraight(180, .5));
+		chooser->AddDefault("Auto Drive 15 Feet", new DriveStraight(260, .5));
+		chooser->AddDefault("Auto Drive 20 Feet", new DriveStraight(340, .5));
+		chooser->AddDefault("Auto Drive 25 Feet", new DriveStraight(400, .5));
 		chooser->AddObject("Auto Turn", new AutoTurn(0.75, 90));
-		chooser->AddObject("Auto Three Tote Collect", new AutoThreeTote());
+		chooser->AddObject("Auto Three Tote Collect", new AutoThreeTote(CommandBase::driveTrain->IsPracticeBot()));
 		SmartDashboard::PutData("Autonomous Modes", chooser);
 	}
 	

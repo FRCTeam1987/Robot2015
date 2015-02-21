@@ -112,6 +112,7 @@ void SqueezyLifter::squeezyUp()
 		else {
 			speed = -SQUEEZYMOTORLIFTUPSPEED_HIGH;
 		}
+		speed = 1.0;
 		m_motorLift->Set(speed);
 	}
 }
@@ -125,7 +126,9 @@ void SqueezyLifter::squeezyDown()
 	else
 	{
 		printf("running motor down\n");
-		m_motorLift->Set(SQUEEZYMOTORLIFTDOWNSPEED);
+//		m_motorLift->Set(SQUEEZYMOTORLIFTDOWNSPEED);
+		m_motorLift->Set(-0.5);
+
 	}
 }
 

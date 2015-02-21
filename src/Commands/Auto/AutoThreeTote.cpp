@@ -1,8 +1,15 @@
+//This Is An Untested Command
+
 #include "AutoThreeTote.h"
 #include "DriveStraight.h"
+#include "AutoDriveToteSensor.h"
+#include "../SqueezyLifter/LiftTote.h"
+#include "../SqueezyLifter/SqueezyUpDown.h"
+#include "../SqueezyLifter/SqueezyOpenClose.h"
 #include "AutoTurn.h"
+#include "../../RobotMap.h"
 
-AutoThreeTote::AutoThreeTote()
+AutoThreeTote::AutoThreeTote(bool isPracticeBot)
 {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -21,13 +28,16 @@ AutoThreeTote::AutoThreeTote()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 
-	AddSequential(new DriveStraight(24, .5));
-	AddSequential(new WaitCommand(1));
-	AddSequential(new DriveStraight(24, .5));
-	AddSequential(new WaitCommand(2));
-	AddSequential(new DriveStraight(24, .5));
-	AddSequential(new WaitCommand(3));
+	AddSequential(new AutoDriveToteSensor(0.5));
+	AddSequential(new LiftTote(isPracticeBot));
+	AddSequential(new AutoDriveToteSensor(0.5));
+	AddSequential(new LiftTote(isPracticeBot));
+	AddSequential(new AutoDriveToteSensor(0.5));
+	AddSequential(new LiftTote(isPracticeBot));
 	AddSequential(new AutoTurn(0.5, 90));
-	AddSequential(new DriveStraight(24, .5));
+	AddSequential(new DriveStraight(60, .5));
+	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHTFLOOR_PRACTICE : GRABHEIGHTFLOOR_COMPETITION));
+	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kOpen));
+	AddSequential(new DriveStraight(-60, .5));
 }
 
