@@ -10,10 +10,10 @@ PrintStuff::PrintStuff()
 // Called just before this Command runs the first time
 void PrintStuff::Initialize()
 {
-	printf("String Pot Values - %d\n", squeezyLifter->getLifterHeight());
+//	printf("String Pot Values - %d\n", squeezyLifter->getLifterHeight());
 //	printf("IsPracticeBot - %s\n", driveTrain->IsPracticeBot() ? "Yes" : "No");
 //	printf("Squeezy is - %s\n", squeezyLifter->isOpen() ? "Open" : "Closed");
-//	printf("Do I have a tote? %s\n", squeezyLifter->hasTote() ? "Yup" : "Nope");
+	printf("Do I have a tote? %s\n", squeezyLifter->hasTote() ? "Yup" : "Nope");
 //	printf("Pusher In or Out - %s\n", pusher->isRetracted() ? "Out" : "In");
 //	printf("Gyro = %f\n", driveTrain->GetGyroAngle());
 //	printf("Squeezy Lifter - Prox %d\n", CommandBase::squeezyLifter->hasTote()?1:0);
@@ -23,6 +23,7 @@ void PrintStuff::Initialize()
 	printf("Tote Conveyor Entrance Sensor = %s\n", conveyor->IsToteAtEntrance() ? "Tote" : "No Tote");
 	printf("Tote Conveyor Exit Sensor = %s\n", conveyor->IsToteAtExit() ? "Tote" : "No Tote");
 //	printf("Tote Count = %d\n", squeezyLifter->getNumberOfTotes());
+	printf("Conveyor State is - %c\n", conveyor->GetConveyorState());
 }
 
 // Called repeatedly when this Command is scheduled to run

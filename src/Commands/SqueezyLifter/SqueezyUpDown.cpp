@@ -1,5 +1,6 @@
 #include "SqueezyUpDown.h"
 #include "../../RobotMap.h"
+#include "../../lib/library.h"
 
 SqueezyUpDown::SqueezyUpDown(int16_t setHeight)
 {
@@ -13,6 +14,8 @@ SqueezyUpDown::SqueezyUpDown(int16_t setHeight)
 // Called just before this Command runs the first time
 void SqueezyUpDown::Initialize()
 {
+	if(m_goalHeight != HOLDHEIGHT_PRACTICE && m_goalHeight != HOLDHEIGHT_COMPETITION)
+		CommandBase::conveyor->SetLifterReady(false);
 	m_initialHeight = squeezyLifter->getLifterHeight();
 	squeezyLifter->releaseBrake();
 	Wait(0.05);
@@ -77,7 +80,11 @@ void SqueezyUpDown::End()
 	squeezyLifter->engageBrake();
 
 	if(m_goalHeight == HOLDHEIGHT_PRACTICE || m_goalHeight == HOLDHEIGHT_COMPETITION)
+	{
 		CommandBase::conveyor->SetLifterReady(true);
+	    if(abs(m_initialHeight - m_goalHeight) > squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION)
+			CommandBase::conveyor->SetConveyorState(CommandBase::conveyor->GetConveyorState() - 1);
+	}
 	else
 		CommandBase::conveyor->SetLifterReady(false);
 //	SmartDashboard::PutString('str', 'val');

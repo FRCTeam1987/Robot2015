@@ -59,8 +59,8 @@ OI::OI(bool isPracticeBot)
 		PlaceHeightPlatform = PLACEHEIGHTPLATFORM_COMPETITION;
 	}
 
-	grabHeight->WhenPressed(new SqueezyUpDown(GrabHeight));
-	placeHeight->WhenPressed(new SqueezyUpDown(PlaceHeight));
+	grabHeight->WhenPressed(new SqueezyUpDown(GrabHeightPlatform));
+	placeHeight->WhenPressed(new SqueezyUpDown(PlaceHeightPlatform));
 	holdHeight->WhenPressed(new SqueezyUpDown(HoldHeight));
 
 	SmartDashboard::PutData("SqueezyLifter - Close Squeezy", new SqueezyOpenClose(SqueezyOpenClose::kClose));

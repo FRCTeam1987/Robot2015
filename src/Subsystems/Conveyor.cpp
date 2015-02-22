@@ -8,6 +8,7 @@ Conveyor::Conveyor(bool isPracticeBot) :
 	m_isPracticeBot = isPracticeBot;
 	m_NumberOfTotes = 0;
 	m_lifterReady = false;
+	m_conveyorState = 'E';
 
 	breakToteEnter = new DigitalInput(BREAKTOTEENTERPIN);
 	breakToteExit = new DigitalInput(BREAKTOTEEXITPIN);
@@ -89,4 +90,28 @@ void Conveyor::SetLifterReady(bool ready)
 bool Conveyor::IsLifterReady()
 {
 	return m_lifterReady;
+}
+
+void Conveyor::DetermineConveyorState()
+{
+	int sensorCount = 0;
+
+	if(IsToteAtEntrance())
+		sensorCount++;
+	if(IsToteAtExit())
+		sensorCount++;
+	if(CommandBase::squeezyLifter->hasTote())
+		sensorCount++;
+
+	m_conveyorState = 'A' + sensorCount;
+}
+
+char Conveyor::GetConveyorState()
+{
+	return m_conveyorState;
+}
+
+void Conveyor::SetConveyorState(char state)
+{
+	m_conveyorState = state;
 }

@@ -7,8 +7,8 @@
 class ConveyorDefault: public CommandBase
 {
 private:
-	bool m_lifterWaitingForTote;
-	bool m_exitWaitingForTote;
+//	bool m_lifterWaitingForTote;
+//	bool m_exitWaitingForTote;
 
 public:
 	ConveyorDefault();
