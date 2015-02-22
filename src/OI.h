@@ -14,9 +14,11 @@ private:
 	JoystickButton *grabHeight;
 	JoystickButton *placeHeight;
 	JoystickButton *holdHeight;
+	JoystickButton *runConveyor;
 //	JoystickButton *bottomStack;
 
 	bool m_isPracticeBot;
+
 public:
 	OI(bool isPracticeBot);
 	Joystick *getStick();

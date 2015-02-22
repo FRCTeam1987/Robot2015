@@ -75,6 +75,13 @@ void SqueezyUpDown::End()
 	printf("Test 1 of 1 Completed Successfully");
 	squeezyLifter->setLiftSpeed(0);
 	squeezyLifter->engageBrake();
+
+	if(m_goalHeight == HOLDHEIGHT_PRACTICE || m_goalHeight == HOLDHEIGHT_COMPETITION)
+		CommandBase::conveyor->SetLifterReady(true);
+	else
+		CommandBase::conveyor->SetLifterReady(false);
+//	SmartDashboard::PutString('str', 'val');
+	SmartDashboard::PutString("Lifter Is Ready:", CommandBase::conveyor->IsLifterReady() ? "true" : "false");
 }
 
 // Called when another command which requires one or more of the same

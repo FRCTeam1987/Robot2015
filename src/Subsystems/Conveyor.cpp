@@ -1,41 +1,50 @@
 #include "Conveyor.h"
 #include "../RobotMap.h"
+#include "../Commands/Conveyor/ConveyorDefault.h"
 
 Conveyor::Conveyor(bool isPracticeBot) :
 		Subsystem("ExampleSubsystem")
 {
 	m_isPracticeBot = isPracticeBot;
 	m_NumberOfTotes = 0;
+	m_lifterReady = false;
+
 	breakToteEnter = new DigitalInput(BREAKTOTEENTERPIN);
 	breakToteExit = new DigitalInput(BREAKTOTEEXITPIN);
-	motorConveyor = new CANTalon(MOTORCONVEYORPIN);
-	motorLowerConveyor = new CANTalon(MOTORLOWERCONVEYORPIN);
+	motorConveyorBelt = new CANTalon(MOTORCONVEYORPIN);
+	motorConveyorRoller = new Talon(CONVEYORMOTOR_ROLLER);
+	motorLowerConveyor = new CANTalon(CONVEYORMOTOR_WINCH);
 	airPlatform = new Solenoid(AIRPLATFORMPIN);
 	switchLoweredConveyor = new DigitalInput(CONVEYORSWITCHPIN);
+
+//	LiveWindow::GetInstance()->AddActuator("Conveyor", "Conveyor Motor", motorConveyor);
 }
 
 void Conveyor::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new ConveyorDefault);
 }
 
 void Conveyor::RunConveyor(bool On)
 {
 	if (On == true) {
-		motorConveyor->Set(0.5);
+		motorConveyorBelt->Set(-1.0);
+		motorConveyorRoller->Set(-0.40);
 	}
 	else {
-		motorConveyor->Set(0);
+		motorConveyorBelt->Set(0);
+		motorConveyorRoller->Set(0);
 	}
 }
 bool Conveyor::IsToteAtEntrance()
 {
-	return breakToteEnter->Get();
+	return !breakToteEnter->Get();
 }
 bool Conveyor::IsToteAtExit()
 {
-	return breakToteExit->Get();
+	return !breakToteExit->Get();
 }
 void Conveyor::SetNumberOfTotes()
 {
@@ -70,4 +79,14 @@ void Conveyor::LowerConveyor()
 bool Conveyor::IsConveyorLowered()
 {
 	return switchLoweredConveyor->Get();
+}
+
+void Conveyor::SetLifterReady(bool ready)
+{
+	m_lifterReady = ready;
+}
+
+bool Conveyor::IsLifterReady()
+{
+	return m_lifterReady;
 }
