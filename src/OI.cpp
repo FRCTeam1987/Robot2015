@@ -70,6 +70,7 @@ OI::OI(bool isPracticeBot)
 	SmartDashboard::PutData("Pusher In", new PushInOut(PushInOut::kIn));
 	SmartDashboard::PutData("SqueezyLifter - Grab Height", new SqueezyUpDown(GrabHeight));
 	SmartDashboard::PutData("SqueezyLifter - Grab Height Platform", new SqueezyUpDown(GrabHeightPlatform));
+	SmartDashboard::PutData("SqueezyLifter - Place Height", new SqueezyUpDown(PlaceHeight));
 	SmartDashboard::PutData("SqueezyLifter - Place Height Platform", new SqueezyUpDown(PlaceHeightPlatform));
 	SmartDashboard::PutData("SqueezyLifter - Hold Height", new SqueezyUpDown(HoldHeight));
 	SmartDashboard::PutData("SqueezyLifter - Engage Brake", new EngageLifterBrake());

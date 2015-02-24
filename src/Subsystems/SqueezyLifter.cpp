@@ -7,10 +7,7 @@ SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 	m_isDisabled = false;
 
 	//Sensors
-	m_switchOpenClose = new DigitalInput(SWITCHOPENCLOSEPIN);
 	m_proximityHasTote = new DigitalInput(SWITCHHASTOTEPIN);
-	m_magFrontBack =  new DigitalInput(SQUEEZYPUSHERFRONTBACK);
-
 	m_potHeight = new AnalogInput(STRINGPOTPIN);
 
 	//Actuators
@@ -23,9 +20,7 @@ SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 	LiveWindow::GetInstance()->AddActuator("Squeezy Lifter","Open Close", m_pistonOpenClose);
 
 	//Sensors LiveWindow
-	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Open Close Switch", m_switchOpenClose);
 	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Have Tote", m_proximityHasTote);
-	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Front Back Mag", m_magFrontBack);
 	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Lifter Height", m_potHeight);
 
 	m_isPracticeBot = isPracticeBot;
@@ -65,11 +60,6 @@ bool SqueezyLifter::isPracticeBot()
 bool SqueezyLifter::isStackerReady()
 {
 	return m_potHeight->GetValue() >= m_isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION;
-}
-
-bool SqueezyLifter::isOpen()
-{
-	return m_switchOpenClose->Get();
 }
 
 void SqueezyLifter::openClose(bool input)

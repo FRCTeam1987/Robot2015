@@ -3,8 +3,6 @@
 
 LowerConveyor::LowerConveyor()
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(conveyor);
 	SetTimeout(3);
 }
@@ -24,7 +22,7 @@ void LowerConveyor::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool LowerConveyor::IsFinished()
 {
-	return conveyor->IsConveyorLowered() == true;
+	return IsTimedOut();
 }
 
 // Called once after isFinished returns true

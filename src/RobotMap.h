@@ -3,50 +3,48 @@
 
 #include "WPILib.h"
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
- 
-// For example to map the left and right motors, you could define the
-// following variables to use with your drivetrain subsystem.
-//const int LEFTMOTOR = 1;
-//const int RIGHTMOTOR = 2;
-
-// If you are using multiple modules, make sure to define both the port
-// number and the module. For example you with a rangefinder:
-//const int RANGE_FINDER_PORT = 1;
-//const int RANGE_FINDER_MODULE = 1;
-
-const int PRACTICEBOTJUMPER = 9;
-
-//Drive Train
-const int LEFTDRIVEMOTOR = 0;
-const int RIGHTDRIVEMOTOR = 1;
-//const int SHIFT_A = 0;
-const int SHIFT_B = 1;
-const int GYROPIN = 1;
-const int ENCODER_PIN_A = 1;
-const int ENCODER_PIN_B = 0;
-const double DISTANCEPERPULSE = 0.07536;
-const int WALLFINDER = 5;      //Live Window missing
-const int PLATFORMFINDER = 6;  //Live Window missing
+//DIO
+const int ENCODER_PIN_B = 0; //Drive Train
+const int ENCODER_PIN_A = 1; //Drive Train
+const int PUSHERPOSITION = 2; //Pusher
+const int SWITCHHASTOTEPIN = 3; //Squeezy Lifter
+//No Sensor in DIO 4
+const int PUSHERLIMITSWITCH = 5; //Pusher
+const int BREAKTOTEENTERPIN = 6; //Conveyer
+const int BREAKTOTEEXITPIN = 7; //Conveyer
+//No Sensor in DIO 8
+const int PRACTICEBOTJUMPER = 9; //JUMPER
 
 
-//Squeezy Lifter
-const int SWITCHOPENCLOSEPIN = 2;  //Live Window missing
-const int SWITCHHASTOTEPIN = 3;    //Live Window missing
-const int STRINGPOTPIN = 0;
-const int MOTORLIFT = 2;
-const int SQUEEZYPISTONOPENCLOSE_A = 2;
-const int SQUEEZYPISTONOPENCLOSE_B = 3;
-const int LIFTERBRAKE_A = 6;
-const int LIFTERBRAKE_B = 7;
-const int SQUEEZYPUSHERFRONTBACK = 4;
+//Analog
+const int STRINGPOTPIN = 0; //Squeezy Lifter
+const int GYROPIN = 1; //Drive Train
 
 
+//PWM
+const int LEFTDRIVEMOTOR = 0; //Drive Train
+const int RIGHTDRIVEMOTOR = 1; //Drive Train
+//No PWM in 2
+const int CONVEYORMOTOR_ROLLER = 3; //Conveyer
+
+
+//CAN BUS
+const int CONVEYORMOTOR_WINCH = 1; //Conveyer
+const int MOTORLIFT = 2; //Squeezy Lifter
+const int CONVEYORMOTOR_BELT = 3; //Conveyer
+
+
+//PCM
+const int PLATFORM_OUT = 1; //Conveyer
+const int SQUEEZYPISTONOPENCLOSE_A = 2; //Squeezy Lifter
+const int SQUEEZYPISTONOPENCLOSE_B = 3; //Squeezy Lifter
+const int PUSHERPISTON_A = 4; //Pusher
+const int PUSHERPISTON_B = 5; //Pusher
+const int LIFTERBRAKE_A = 6; //Squeezy Lifter
+const int LIFTERBRAKE_B = 7; //Squeezy Lifter
+
+
+//Lifter Heights
 const int LIFTERBOTTOM_PRACTICE = 75;
 const int LIFTERTOP_PRACTICE = 3450;
 const int GRABHEIGHTFLOOR_PRACTICE = 150;
@@ -67,49 +65,28 @@ const int PLACEHEIGHTPLATFORM_COMPETITION = 0; //Need to find value
 const int HOLDHEIGHT_COMPETITION = 1650;
 const int HEIGHTTOLERANCE_COMPETITION = 100; //Need to find value
 
+
+//Lifter Speeds
 const float SQUEEZYMOTORLIFTUPSPEED_LOW = -0.5;
 const float SQUEEZYMOTORLIFTUPSPEED_MEDIUM = -0.625;
 const float SQUEEZYMOTORLIFTUPSPEED_HIGH = -0.75;
 const float SQUEEZYMOTORLIFTDOWNSPEED = -0.1;
 
-//Pusher (Salt and Pepper)
-const int PUSHERPISTON_A = 4;
-const int PUSHERPISTON_B = 5;
-const int PUSHERPOSITION = 10;
-const int PUSHERLIMITSWITCH = 5;
-
-//Conveyor
-const int BREAKTOTEENTERPIN = 6;
-const int BREAKTOTEEXITPIN = 7;
-const int MOTORCONVEYORPIN = 3;
-const int AIRPLATFORMPIN = 0;
-const int CONVEYORMOTOR_WINCH = 2;
-const int CONVEYORMOTOR_ROLLER = 3;
-const int CONVEYORSWITCHPIN = 8;
-
-//Other
-const int PRINTSTUFFBUTTON = 5;
 
 //Buttons
+const int PUSHOUTBUTTON = 1; //Pusher
+const int PUSHINBUTTON = 2; //Pusher
+const int TOGGLESQUEEZEBUTTON = 6; //Squeezy Lifter
+const int GRABHEIGHTBUTTON = 7; //Lifter
+const int PLACEHEIGHTBUTTON = 9; //Lifter
+const int HOLDHEIGHTBUTTON = 11; //Lifter
+const int BOTTOMSTACKBUTTON = 12; //Lifter
+const int RUNCONVEYORBUTTON = 8; //Conveyor
+const int PRINTSTUFFBUTTON = 5; //Print Stuff
 
-//Pusher Buttons
-const int PUSHOUTBUTTON = 1;
-const int PUSHINBUTTON = 2;
 
-//Drive Train Buttons
-const int SHIFTHIGHBUTTON = 8;
-const int SHIFTLOWBUTTON = 10;
+//Variables
+const double DISTANCEPERPULSE = 0.07536;
 
-//Squeezy Buttons
-const int TOGGLESQUEEZEBUTTON = 6;
-
-//Lifter Buttons
-const int GRABHEIGHTBUTTON = 7;
-const int PLACEHEIGHTBUTTON = 9;
-const int HOLDHEIGHTBUTTON = 11;
-const int BOTTOMSTACKBUTTON = 12;
-
-//Conveyor Buttons
-const int RUNCONVEYORBUTTON = 8;
 
 #endif

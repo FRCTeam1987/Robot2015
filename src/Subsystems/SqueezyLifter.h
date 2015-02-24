@@ -10,9 +10,7 @@ class SqueezyLifter: public Subsystem
 {
 private:
 	//Sensors
-	DigitalInput *m_switchOpenClose;
 	DigitalInput *m_proximityHasTote;
-	DigitalInput *m_magFrontBack;
 	AnalogInput *m_potHeight;
 
 	//Actuators

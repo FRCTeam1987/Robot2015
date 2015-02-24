@@ -14,7 +14,7 @@ private:
 	char m_conveyorState;
 	DigitalInput *breakToteEnter;
 	DigitalInput *breakToteExit;
-	DigitalInput *switchLoweredConveyor;
+//	DigitalInput *switchLoweredConveyor;
 	CANTalon *motorConveyorBelt;
 	Talon *motorConveyorRoller;
 	CANTalon *motorLowerConveyor;

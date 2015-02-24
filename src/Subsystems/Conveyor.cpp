@@ -12,11 +12,11 @@ Conveyor::Conveyor(bool isPracticeBot) :
 
 	breakToteEnter = new DigitalInput(BREAKTOTEENTERPIN);
 	breakToteExit = new DigitalInput(BREAKTOTEEXITPIN);
-	motorConveyorBelt = new CANTalon(MOTORCONVEYORPIN);
+	motorConveyorBelt = new CANTalon(CONVEYORMOTOR_BELT);
 	motorConveyorRoller = new Talon(CONVEYORMOTOR_ROLLER);
 	motorLowerConveyor = new CANTalon(CONVEYORMOTOR_WINCH);
-	airPlatform = new Solenoid(AIRPLATFORMPIN);
-	switchLoweredConveyor = new DigitalInput(CONVEYORSWITCHPIN);
+	airPlatform = new Solenoid(PLATFORM_OUT);
+//	switchLoweredConveyor = new DigitalInput(CONVEYORSWITCHPIN);
 
 //	LiveWindow::GetInstance()->AddActuator("Conveyor", "Conveyor Motor", motorConveyor);
 }
@@ -77,10 +77,10 @@ void Conveyor::LowerConveyor()
 	motorLowerConveyor->Set(0.5);
 }
 
-bool Conveyor::IsConveyorLowered()
-{
-	return switchLoweredConveyor->Get();
-}
+//bool Conveyor::IsConveyorLowered()
+//{
+//	return switchLoweredConveyor->Get();
+//}
 
 void Conveyor::SetLifterReady(bool ready)
 {
