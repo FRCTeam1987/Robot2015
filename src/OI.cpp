@@ -41,14 +41,15 @@ OI::OI(bool isPracticeBot)
 //	bottomStack->WhenPressed(new PrintStuff());
 
 
-	int GrabHeight, GrabHeightPlatform, HoldHeight, PlaceHeight, PlaceHeightPlatform;
+	int GrabHeight, GrabHeightPlatform, HoldHeight, PlaceHeight, PlaceHeightScoringPlatform, PlaceHeightConveyorPlatform;
 	if(m_isPracticeBot)
 	{
 		GrabHeight = GRABHEIGHTFLOOR_PRACTICE;
-		GrabHeightPlatform = GRABHEIGHTPLATFORM_PRACTICE;
+		GrabHeightPlatform = GRABHEIGHTSCORINGPLATFORM_PRACTICE;
 		HoldHeight = HOLDHEIGHT_PRACTICE;
 		PlaceHeight = PLACEHEIGHT_PRACTICE;
-		PlaceHeightPlatform = PLACEHEIGHTPLATFORM_PRACTICE;
+		PlaceHeightScoringPlatform = PLACEHEIGHTSCORINGPLATFORM_PRACTICE;
+		PlaceHeightConveyorPlatform = PLACEHEIGHTCONVEYORPLATFORM_PRACTICE;
 	}
 	else
 	{
@@ -56,11 +57,12 @@ OI::OI(bool isPracticeBot)
 		GrabHeightPlatform = GRABHEIGHTPLATFORM_COMPETITION;
 		HoldHeight = HOLDHEIGHT_COMPETITION;
 		PlaceHeight = PLACEHEIGHT_COMPETITION;
-		PlaceHeightPlatform = PLACEHEIGHTPLATFORM_COMPETITION;
+		PlaceHeightScoringPlatform = PLACEHEIGHTSCORINGPLATFORM_COMPETITION;
+		PlaceHeightConveyorPlatform = PLACEHEIGHTCONVEYORPLATFORM_COMPETITION;
 	}
 
 	grabHeight->WhenPressed(new SqueezyUpDown(GrabHeightPlatform));
-	placeHeight->WhenPressed(new SqueezyUpDown(PlaceHeightPlatform));
+	placeHeight->WhenPressed(new SqueezyUpDown(PlaceHeightScoringPlatform));
 	holdHeight->WhenPressed(new SqueezyUpDown(HoldHeight));
 
 	SmartDashboard::PutData("SqueezyLifter - Close Squeezy", new SqueezyOpenClose(SqueezyOpenClose::kClose));
@@ -71,7 +73,8 @@ OI::OI(bool isPracticeBot)
 	SmartDashboard::PutData("SqueezyLifter - Grab Height", new SqueezyUpDown(GrabHeight));
 	SmartDashboard::PutData("SqueezyLifter - Grab Height Platform", new SqueezyUpDown(GrabHeightPlatform));
 	SmartDashboard::PutData("SqueezyLifter - Place Height", new SqueezyUpDown(PlaceHeight));
-	SmartDashboard::PutData("SqueezyLifter - Place Height Platform", new SqueezyUpDown(PlaceHeightPlatform));
+	SmartDashboard::PutData("SqueezyLifter - Place Height Scoring Platform", new SqueezyUpDown(PlaceHeightScoringPlatform));
+	SmartDashboard::PutData("Squeezy Lifter - Place Height Conveyor Platform", new SqueezyUpDown(PlaceHeightConveyorPlatform));
 	SmartDashboard::PutData("SqueezyLifter - Hold Height", new SqueezyUpDown(HoldHeight));
 	SmartDashboard::PutData("SqueezyLifter - Engage Brake", new EngageLifterBrake());
 	SmartDashboard::PutData("SqueezyLifter - Release Brake", new ReleaseLifterBrake());

@@ -9,6 +9,7 @@ AutoDriveToteSensor::AutoDriveToteSensor(float speed)
 	Requires(driveTrain);
 	Requires(squeezyLifter);
 	m_speed = speed;
+	m_maxDistance = 120;
 	kP = 0.03;
 }
 
@@ -30,6 +31,7 @@ void AutoDriveToteSensor::Execute()
 bool AutoDriveToteSensor::IsFinished()
 {
 	return squeezyLifter->hasTote() == true;
+	return driveTrain->GetEncoder() >= m_maxDistance;
 }
 
 // Called once after isFinished returns true

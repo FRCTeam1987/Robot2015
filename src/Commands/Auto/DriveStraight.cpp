@@ -8,7 +8,6 @@ DriveStraight::DriveStraight(float distance, float speed)
 	m_distance = distance;
 	m_speed = speed;
 	kP = 0.03;
-	SetTimeout(5);
 //	initialYaw = 0;
 }
 

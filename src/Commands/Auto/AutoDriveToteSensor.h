@@ -8,6 +8,7 @@ class AutoDriveToteSensor: public CommandBase
 {
 private:
 	float m_speed;
+	float m_maxDistance;
 	float kP;
 
 public:
