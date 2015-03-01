@@ -13,7 +13,7 @@ ConveyorDefault::ConveyorDefault()
 // Called just before this Command runs the first time
 void ConveyorDefault::Initialize()
 {
-
+	SetInterruptible(true);
 }
 
 // Called repeatedly when this Command is scheduled to run

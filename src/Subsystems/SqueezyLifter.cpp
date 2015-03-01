@@ -1,10 +1,12 @@
 #include "SqueezyLifter.h"
 #include "../RobotMap.h"
+#include "../Commands/SqueezyLifter/SqueezyDefault.h"
 
 SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 		Subsystem("ExampleSubsystem")
 {
 	m_isDisabled = false;
+	m_isPaused = false;
 
 	//Sensors
 	m_proximityHasTote = new DigitalInput(SWITCHHASTOTEPIN);
@@ -29,8 +31,7 @@ SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 
 void SqueezyLifter::InitDefaultCommand()
 {
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+//	SetDefaultCommand(new SqueezyDefault());
 }
 
 bool SqueezyLifter::isDisabled()
@@ -130,4 +131,14 @@ void SqueezyLifter::engageBrake()
 void SqueezyLifter::releaseBrake()
 {
 	m_lifterBrake->Set(DoubleSolenoid::kForward);
+}
+
+void SqueezyLifter::setPause(bool isPaused)
+{
+	m_isPaused = isPaused;
+}
+
+bool SqueezyLifter::isPaused()
+{
+	return m_isPaused;
 }

@@ -15,7 +15,7 @@ Conveyor::Conveyor(bool isPracticeBot) :
 	motorConveyorBelt = new CANTalon(CONVEYORMOTOR_BELT);
 	motorConveyorRoller = new Talon(CONVEYORMOTOR_ROLLER);
 	motorLowerConveyor = new CANTalon(CONVEYORMOTOR_WINCH);
-	airPlatform = new Solenoid(PLATFORM_OUT);
+	conveyorPlatform = new Solenoid(PLATFORM_OUT);
 //	switchLoweredConveyor = new DigitalInput(CONVEYORSWITCHPIN);
 
 //	LiveWindow::GetInstance()->AddActuator("Conveyor", "Conveyor Motor", motorConveyor);
@@ -23,9 +23,7 @@ Conveyor::Conveyor(bool isPracticeBot) :
 
 void Conveyor::InitDefaultCommand()
 {
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new ConveyorDefault);
+//	SetDefaultCommand(new ConveyorDefault);
 }
 
 void Conveyor::RunConveyor(bool On)
@@ -62,19 +60,24 @@ int Conveyor::GetNumberOfTotes()
 	return m_NumberOfTotes;
 }
 
-void Conveyor::SetAirPlatform(bool On)
+void Conveyor::SetConveyorPlatform(bool On)
 {
-//	if (On == true) {
-		airPlatform->Set(On);
-//	}
-//	else {
-//		airPlatform->Set(Off);
-//	}
+	conveyorPlatform->Set(On);
 }
 
-void Conveyor::LowerConveyor()
+void Conveyor::LowerRaiseConveyor(bool direction)
 {
-	motorLowerConveyor->Set(0.5);
+	if(direction)
+	{
+		motorLowerConveyor->Set(0.75);   //Raising is true
+	}else{
+		motorLowerConveyor->Set(-0.3);   //Lowering is false
+	}
+}
+
+void Conveyor::StopLoweringConveyor()
+{
+	motorLowerConveyor->Set(0);
 }
 
 //bool Conveyor::IsConveyorLowered()

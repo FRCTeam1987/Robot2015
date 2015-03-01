@@ -18,17 +18,18 @@ private:
 	CANTalon *motorConveyorBelt;
 	Talon *motorConveyorRoller;
 	CANTalon *motorLowerConveyor;
-	Solenoid *airPlatform;
+	Solenoid *conveyorPlatform;
 
 public:
 	Conveyor(bool isPracticeBot);
 	void InitDefaultCommand();
 	void RunConveyor(bool On);
-	void LowerConveyor();
+	void LowerRaiseConveyor(bool direction);
+	void StopLoweringConveyor();
 	bool IsConveyorLowered();
 	void SetNumberOfTotes();
 	int GetNumberOfTotes();
-	void SetAirPlatform(bool On);
+	void SetConveyorPlatform(bool On);
 	bool IsToteAtEntrance();
 	bool IsToteAtExit();
 	void SetLifterReady(bool ready);

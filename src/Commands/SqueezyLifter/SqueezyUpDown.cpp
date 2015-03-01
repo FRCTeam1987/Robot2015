@@ -14,13 +14,21 @@ SqueezyUpDown::SqueezyUpDown(int16_t setHeight)
 // Called just before this Command runs the first time
 void SqueezyUpDown::Initialize()
 {
-	if(m_goalHeight != HOLDHEIGHT_PRACTICE && m_goalHeight != HOLDHEIGHT_COMPETITION)
-		CommandBase::conveyor->SetLifterReady(false);
-	m_initialHeight = squeezyLifter->getLifterHeight();
-	squeezyLifter->releaseBrake();
-	Wait(0.05);
-	squeezyLifter->setLiftSpeed(0.25);
-	Wait(0.05);
+//	SmartDashboard::PutNumber("testing - init goal height", squeezyLifter->getLifterHeight());
+//	SmartDashboard::PutNumber("testing - goal height", m_goalHeight);
+	printf("testing - init height: %d, goal height: %d\n", squeezyLifter->getLifterHeight(), m_goalHeight);
+	if(abs(squeezyLifter->getLifterHeight() - m_goalHeight) > (squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION)) {
+		printf("Driving a little\n");
+		if(m_goalHeight != HOLDHEIGHT_PRACTICE && m_goalHeight != HOLDHEIGHT_COMPETITION)
+			CommandBase::conveyor->SetLifterReady(false);
+		m_initialHeight = squeezyLifter->getLifterHeight();
+		squeezyLifter->releaseBrake();
+		Wait(0.05);
+		squeezyLifter->setLiftSpeed(0.25);
+		Wait(0.05);
+	} else if(m_goalHeight == HOLDHEIGHT_PRACTICE || m_goalHeight == HOLDHEIGHT_COMPETITION) {
+		CommandBase::conveyor->SetLifterReady(true);
+	}
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -45,12 +53,13 @@ void SqueezyUpDown::Execute()
 	}
 //	printf("m_goalHeight: %d, m_initialHeight: %d, lifterHeight: %d\n",
 //			m_goalHeight, m_initialHeight, squeezyLifter->getLifterHeight());
-
-	if (squeezyLifter->getLifterHeight() > m_goalHeight) {
-		squeezyLifter->squeezyDown();
-	}
-	else {
-		squeezyLifter->squeezyUp();
+	if(abs(squeezyLifter->getLifterHeight() - m_goalHeight) > (squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION)) {
+		if (squeezyLifter->getLifterHeight() > m_goalHeight) {
+			squeezyLifter->squeezyDown();
+		}
+		else {
+			squeezyLifter->squeezyUp();
+		}
 	}
 }
 
@@ -62,11 +71,9 @@ bool SqueezyUpDown::IsFinished()
 	if(squeezyLifter->isDisabled()) {
 		isFinished = true;
 	}
-	else if (m_initialHeight > m_goalHeight) {
-		isFinished = squeezyLifter->getLifterHeight() <= m_goalHeight;
-	}
-	else {
-		isFinished = squeezyLifter->getLifterHeight() >= m_goalHeight;
+	else
+	{
+		isFinished = abs(squeezyLifter->getLifterHeight() - m_goalHeight) < (squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION);
 	}
 
 	return isFinished;
@@ -82,7 +89,8 @@ void SqueezyUpDown::End()
 	if(m_goalHeight == HOLDHEIGHT_PRACTICE || m_goalHeight == HOLDHEIGHT_COMPETITION)
 	{
 		CommandBase::conveyor->SetLifterReady(true);
-	    if(abs(m_initialHeight - m_goalHeight) > squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION)
+		printf("Ending lift - conveyor state = %c\n", CommandBase::conveyor->GetConveyorState());
+	    if(abs(m_initialHeight - m_goalHeight) > (squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION))
 			CommandBase::conveyor->SetConveyorState(CommandBase::conveyor->GetConveyorState() - 1);
 	}
 	else
@@ -95,5 +103,5 @@ void SqueezyUpDown::End()
 // subsystems is scheduled to run
 void SqueezyUpDown::Interrupted()
 {
-
+	printf("Interrupted \n");
 }

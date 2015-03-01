@@ -13,7 +13,7 @@ SixTotePush::SixTotePush(bool isPracticeBot)
 	AddSequential(new SqueezyUpDown(isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION));
 	AddSequential(new WaitForToteSensor());
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kOpen));
-	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHTFLOOR_PRACTICE : GRABHEIGHTFLOOR_COMPETITION));
+	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHTCONVEYORPLATFORM_PRACTICE : GRABHEIGHTFLOOR_COMPETITION)); //change to conveyor platform height
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kClose));
 	AddSequential(new SqueezyUpDown(isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION));
 	AddSequential(new IncrementToteCount());

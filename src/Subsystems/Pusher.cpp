@@ -16,7 +16,7 @@ Pusher::Pusher(bool isPracticeBot) :
 	LiveWindow::GetInstance()->AddSensor("Pusher", "Position", switchRetracted); //Live Window missing
 
 	m_isPracticeBot = isPracticeBot;
-
+	piston->Set(DoubleSolenoid::kReverse);
 }
 
 void Pusher::InitDefaultCommand()

@@ -22,6 +22,7 @@ private:
 
 	bool m_isDisabled;
 	bool m_isPracticeBot;
+	bool m_isPaused;
 
 public:
 	const bool kOpen = true;
@@ -46,6 +47,8 @@ public:
 	bool isDisabled();
 	void engageBrake();
 	void releaseBrake();
+	void setPause(bool isPaused);
+	bool isPaused();
 };
 
 #endif

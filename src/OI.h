@@ -15,6 +15,8 @@ private:
 	JoystickButton *placeHeight;
 	JoystickButton *holdHeight;
 	JoystickButton *runConveyor;
+	JoystickButton *lowerConveyor;
+	JoystickButton *raiseConveyor;
 //	JoystickButton *bottomStack;
 
 	bool m_isPracticeBot;

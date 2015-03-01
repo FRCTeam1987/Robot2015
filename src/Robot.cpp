@@ -7,7 +7,12 @@
 #include "Commands/Auto/AutoTurn.h"
 #include "Commands/Auto/AutoThreeTote.h"
 #include "Commands/Auto/DoNothing.h"
-#include "Commands/Auto/LowerConveyor.h"
+#include "Commands/Conveyor/LowerRaiseConveyor.h"
+#include "Commands/SqueezyLifter/SetPause.h"
+#include "Commands/SqueezyLifter/ClearPause.h"
+#include "Commands/Conveyor/ConveyorDefault.h"
+#include "Commands/SqueezyLifter/SqueezyDefault.h"
+
 
 class Robot: public IterativeRobot
 {
@@ -15,6 +20,8 @@ private:
 	Command *autonomousCommand;
 	LiveWindow *lw;
 	SendableChooser *chooser;
+	ConveyorDefault *conveyorDefault;
+	SqueezyDefault *squeezyDefault;
 
 	void RobotInit()
 	{
@@ -25,16 +32,17 @@ private:
 		lw = LiveWindow::GetInstance();
 
 		chooser = new SendableChooser();
-		chooser->AddDefault("Auto Drive 05 Feet", new DriveStraight(60, .5));
-		chooser->AddDefault("Auto Drive 10 Feet", new DriveStraight(180, .5));
-		chooser->AddDefault("Auto Drive 15 Feet", new DriveStraight(260, .5));
-		chooser->AddDefault("Auto Drive 20 Feet", new DriveStraight(340, .5));
-		chooser->AddDefault("Auto Drive 25 Feet", new DriveStraight(400, .5));
+		chooser->AddDefault("Auto Drive 05 Feet", new DriveStraight(60, 1.0));
+		chooser->AddObject("Auto Drive 10 Feet", new DriveStraight(120, 1.0));
+		chooser->AddObject("Auto Drive 15 Feet", new DriveStraight(180, 1.0));
+		chooser->AddObject("Auto Drive 20 Feet", new DriveStraight(240, 1.0));
+		chooser->AddObject("Auto Drive 25 Feet", new DriveStraight(300, 1.0));
 		chooser->AddObject("Auto Turn", new AutoTurn(0.75, 90));
 		chooser->AddObject("Auto Three Tote Collect", new AutoThreeTote(CommandBase::driveTrain->IsPracticeBot()));
 		chooser->AddObject("Do Nothing Auto", new DoNothing);
-		chooser->AddObject("Lower Conveyor", new LowerConveyor);
-		SmartDashboard::PutData("Autonomous Modes", chooser);
+		chooser->AddObject("Lower Conveyor", new LowerRaiseConveyor(LowerRaiseConveyor::kLower, 1.5));
+//		SmartDashboard::PutData("Autonomous Modes", chooser);
+
 	}
 	
 	void DisabledPeriodic()
@@ -62,6 +70,12 @@ private:
 		// this line or comment it out.
 		if (autonomousCommand != NULL)
 			autonomousCommand->Cancel();
+
+		conveyorDefault = new ConveyorDefault();
+		conveyorDefault->Start();
+
+		squeezyDefault = new SqueezyDefault();
+		squeezyDefault->Start();
 	}
 
 	void TeleopPeriodic()
