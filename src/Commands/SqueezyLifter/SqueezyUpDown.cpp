@@ -95,8 +95,8 @@ void SqueezyUpDown::End()
 	}
 	else
 		CommandBase::conveyor->SetLifterReady(false);
-//	SmartDashboard::PutString('str', 'val');
 	SmartDashboard::PutString("Lifter Is Ready:", CommandBase::conveyor->IsLifterReady() ? "true" : "false");
+
 }
 
 // Called when another command which requires one or more of the same

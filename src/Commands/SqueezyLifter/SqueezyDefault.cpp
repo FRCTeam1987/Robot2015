@@ -3,6 +3,7 @@
 SqueezyDefault::SqueezyDefault()
 {
 //	SetInterruptible(true);
+	printf("Starting Squeezy Default \n");
 	//First Tote
 #if 1
 	AddSequential(new SqueezyUpDown(CommandBase::squeezyLifter->isPracticeBot() ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION));
@@ -10,7 +11,7 @@ SqueezyDefault::SqueezyDefault()
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kOpen));
 	AddSequential(new SqueezyUpDown(CommandBase::squeezyLifter->isPracticeBot() ? GRABHEIGHTCONVEYORPLATFORM_PRACTICE : GRABHEIGHTFLOOR_COMPETITION)); //change to conveyor platform height
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kClose));
-//	AddSequential(new TakeABreak());
+	AddSequential(new TakeABreak());
 	AddSequential(new SqueezyUpDown(CommandBase::squeezyLifter->isPracticeBot() ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION));
 	AddSequential(new IncrementToteCount());
 	//Totes  2-5

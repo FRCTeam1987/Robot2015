@@ -14,10 +14,12 @@ SetPause::SetPause()
 void SetPause::Initialize()
 {
 //	squeezyLifter->setPause(true);
-	squeezyLifter->GetDefaultCommand()->Cancel();
-	squeezyLifter->SetDefaultCommand(new DoNothingSqueezy());
-	conveyor->GetDefaultCommand()->Cancel();
-	conveyor->SetDefaultCommand(new DoNothingConveyor());
+//	squeezyLifter->GetDefaultCommand()->Cancel();
+	squeezyLifter->GetCurrentCommand()->Cancel();
+//	squeezyLifter->SetDefaultCommand(new DoNothingSqueezy());
+//	conveyor->GetDefaultCommand()->Cancel();
+	conveyor->GetCurrentCommand()->Cancel();
+//	conveyor->SetDefaultCommand(new DoNothingConveyor());
 }
 
 // Called repeatedly when this Command is scheduled to run

@@ -13,11 +13,22 @@ ClearPause::ClearPause()
 // Called just before this Command runs the first time
 void ClearPause::Initialize()
 {
-//	squeezyLifter->setPause(false);
-	squeezyLifter->GetDefaultCommand()->Cancel();
-	squeezyLifter->SetDefaultCommand(new SqueezyDefault());
-	conveyor->GetDefaultCommand()->Cancel();
-	conveyor->SetDefaultCommand(new ConveyorDefault());
+	squeezyLifter->setPause(false);
+//	squeezyLifter->GetDefaultCommand()->Cancel();
+	squeezyLifter->GetCurrentCommand()->Cancel();
+//	squeezyLifter->SetDefaultCommand(new SqueezyDefault());
+	printf("0\n");
+	squeezyLifter->SetCurrentCommand(new SqueezyDefault());
+	squeezyLifter->GetCurrentCommand()->Start();
+//	conveyor->GetDefaultCommand()->Cancel();
+	printf("1\n");
+	conveyor->GetCurrentCommand()->Cancel();
+//	conveyor->SetDefaultCommand(new ConveyorDefault());
+	printf("2\n");
+	conveyor->SetCurrentCommand(new ConveyorDefault());
+	printf("3\n");
+	conveyor->GetCurrentCommand()->Start();
+	printf("4\n");
 }
 
 // Called repeatedly when this Command is scheduled to run

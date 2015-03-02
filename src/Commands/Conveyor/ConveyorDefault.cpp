@@ -14,6 +14,7 @@ ConveyorDefault::ConveyorDefault()
 void ConveyorDefault::Initialize()
 {
 	SetInterruptible(true);
+	printf("Starting Conveyor default \n");
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -134,5 +135,5 @@ void ConveyorDefault::End()
 // subsystems is scheduled to run
 void ConveyorDefault::Interrupted()
 {
-
+	conveyor->RunConveyor(false);
 }

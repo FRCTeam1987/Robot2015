@@ -15,7 +15,7 @@ LiftTote::LiftTote(bool isPracticeBot)
 #if 1
 	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHTCONVEYORPLATFORM_PRACTICE : GRABHEIGHTPLATFORM_COMPETITION));
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kClose));
-//	AddSequential(new TakeABreak());
+	AddSequential(new TakeABreak());
 	AddSequential(new IncrementToteCount());
 	AddSequential(new SqueezyUpDown(isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION));
 #endif

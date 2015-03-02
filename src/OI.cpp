@@ -97,8 +97,8 @@ OI::OI(bool isPracticeBot)
 	SmartDashboard::PutData("Conveyor - Conveyor Platform In",new PlatformInOut(PlatformInOut::kIn));
 	SmartDashboard::PutNumber("Lifter Pot", CommandBase::squeezyLifter->getLifterHeight());
 	SmartDashboard::PutNumber("Squeezy Lifter - Proxx", CommandBase::squeezyLifter->hasTote()?1:0);
-//	SmartDashboard::PutData("Squeezy Lifter - Pause", new SetPause());
-//	SmartDashboard::PutData("Squeezy Lifter - Unpause", new ClearPause());
+	SmartDashboard::PutData("Squeezy Lifter - Pause", new SetPause());
+	SmartDashboard::PutData("Squeezy Lifter - Unpause", new ClearPause());
 
 }
 
