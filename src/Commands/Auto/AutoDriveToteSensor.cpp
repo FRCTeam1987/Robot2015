@@ -20,6 +20,7 @@ void AutoDriveToteSensor::Initialize()
 	driveTrain->ResetEncoder();
 }
 
+// Called repeatedly when this Command is scheduled to run
 void AutoDriveToteSensor::Execute()
 {
 	float gyroAngle = driveTrain->GetGyroAngle();
