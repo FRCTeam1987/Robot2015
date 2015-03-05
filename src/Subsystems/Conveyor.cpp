@@ -37,33 +37,6 @@ void Conveyor::RunConveyor(bool On)
 		motorConveyorRoller->Set(0);
 	}
 }
-bool Conveyor::IsToteAtEntrance()
-{
-	return !breakToteEnter->Get();
-}
-bool Conveyor::IsToteAtExit()
-{
-	return !breakToteExit->Get();
-}
-void Conveyor::SetNumberOfTotes()
-{
-	if (breakToteEnter->Get() == true) {
-		m_NumberOfTotes++;
-	}
-	if (breakToteExit->Get() == true) {
-		m_NumberOfTotes--;
-	}
-}
-
-int Conveyor::GetNumberOfTotes()
-{
-	return m_NumberOfTotes;
-}
-
-void Conveyor::SetConveyorPlatform(bool On)
-{
-	conveyorPlatform->Set(On);
-}
 
 void Conveyor::LowerRaiseConveyor(bool direction)
 {
@@ -80,10 +53,25 @@ void Conveyor::StopLoweringConveyor()
 	motorLowerConveyor->Set(0);
 }
 
-//bool Conveyor::IsConveyorLowered()
-//{
-//	return switchLoweredConveyor->Get();
-//}
+int Conveyor::GetNumberOfTotes()
+{
+	return m_NumberOfTotes;
+}
+
+void Conveyor::SetConveyorPlatform(bool On)
+{
+	conveyorPlatform->Set(On);
+}
+
+bool Conveyor::IsToteAtEntrance()
+{
+	return !breakToteEnter->Get();
+}
+
+bool Conveyor::IsToteAtExit()
+{
+	return !breakToteExit->Get();
+}
 
 void Conveyor::SetLifterReady(bool ready)
 {

@@ -25,6 +25,9 @@ private:
 
 	void RobotInit()
 	{
+		CameraServer::GetInstance()->SetQuality(100);
+		//the camera name (ex "cam0") can be found through the roborio web interface
+		CameraServer::GetInstance()->StartAutomaticCapture("cam1");
 		CommandBase::init();
 //		autonomousCommand = new AutoTurn(0.6, -90);
 //		autonomousCommand = new DriveStraight(12, .75);
@@ -41,7 +44,7 @@ private:
 		chooser->AddObject("Auto Three Tote Collect", new AutoThreeTote(CommandBase::driveTrain->IsPracticeBot()));
 		chooser->AddObject("Do Nothing Auto", new DoNothing);
 		chooser->AddObject("Lower Conveyor", new LowerRaiseConveyor(LowerRaiseConveyor::kLower, 1.5));
-//		SmartDashboard::PutData("Autonomous Modes", chooser);
+		SmartDashboard::PutData("Autonomous Modes", chooser);
 
 	}
 	
@@ -87,6 +90,7 @@ private:
 	{
 		lw->Run();
 	}
+
 };
 
 START_ROBOT_CLASS(Robot);

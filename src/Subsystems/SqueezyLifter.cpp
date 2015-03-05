@@ -38,6 +38,7 @@ bool SqueezyLifter::isDisabled()
 {
 	return m_isDisabled;
 }
+
 void SqueezyLifter::setDisabled()
 {
 	m_isDisabled = true;
@@ -67,26 +68,27 @@ void SqueezyLifter::openClose(bool input)
 {
 	m_pistonOpenClose->Set(input ? DoubleSolenoid::kReverse : DoubleSolenoid::kForward);
 }
+
 int SqueezyLifter::getNumberOfTotes()
 {
 	return m_numberOfTotes;
 }
+
 void SqueezyLifter::incrementToteCount()
 {
 	m_numberOfTotes++;
 }
-void SqueezyLifter::setNumberOfTotes(int numTotes)
-{
-	m_numberOfTotes = numTotes;
-}
+
 void SqueezyLifter::clearNumberOfTotes()
 {
 	m_numberOfTotes = 0;
 }
+
 void SqueezyLifter::setLiftSpeed(float speed)
 {
 	m_motorLift->Set(speed);
 }
+
 void SqueezyLifter::squeezyUp()
 {
 	if(m_isDisabled)
@@ -107,6 +109,7 @@ void SqueezyLifter::squeezyUp()
 		m_motorLift->Set(speed);
 	}
 }
+
 void SqueezyLifter::squeezyDown()
 {
 	if(m_isDisabled)
