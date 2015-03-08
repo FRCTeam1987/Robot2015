@@ -29,11 +29,11 @@ AutoThreeTote::AutoThreeTote(bool isPracticeBot)
 	// arm.
 
 	AddSequential(new AutoDriveToteSensor(0.5));
-	AddSequential(new LiftTote(isPracticeBot));
+	AddSequential(new LiftTote(isPracticeBot, 0));
 	AddSequential(new AutoDriveToteSensor(0.5));
-	AddSequential(new LiftTote(isPracticeBot));
+	AddSequential(new LiftTote(isPracticeBot, 1));
 	AddSequential(new AutoDriveToteSensor(0.5));
-	AddSequential(new LiftTote(isPracticeBot));
+	AddSequential(new LiftTote(isPracticeBot, 2));
 	AddSequential(new AutoTurn(0.5, 90));
 	AddSequential(new DriveStraight(60, .5));
 	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHTFLOOR_PRACTICE : GRABHEIGHTFLOOR_COMPETITION));

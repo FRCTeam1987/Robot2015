@@ -18,7 +18,6 @@ private:
 	CANTalon *motorConveyorBelt;
 	Talon *motorConveyorRoller;
 	CANTalon *motorLowerConveyor;
-	Solenoid *conveyorPlatform;
 
 public:
 
@@ -47,11 +46,6 @@ public:
 	 * @return Returns the number of totes on the conveyor.
 	 */
 	int GetNumberOfTotes();
-	/**
-	 * Sets the stacking platform to a desired position.
-	 * @param On If on is true platform extends, if false, the platform retracts.
-	 */
-	void SetConveyorPlatform(bool On);
 	/**
 	 * Sees whether there is a tote at the conveyor entrance, near the human player chute.
 	 * @return Returns true if there is a tote, false if no tote.

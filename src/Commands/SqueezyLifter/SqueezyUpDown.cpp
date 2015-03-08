@@ -26,6 +26,7 @@ void SqueezyUpDown::Initialize()
 		Wait(0.05);
 		squeezyLifter->setLiftSpeed(0.25);
 		Wait(0.05);
+		squeezyLifter->setLiftSpeed(0);
 	} else if(m_goalHeight == HOLDHEIGHT_PRACTICE || m_goalHeight == HOLDHEIGHT_COMPETITION) {
 		CommandBase::conveyor->SetLifterReady(true);
 	}
@@ -49,7 +50,8 @@ void SqueezyUpDown::Execute()
 	{
 		squeezyLifter->setLiftSpeed(0);
 		squeezyLifter->setDisabled();
-		printf("Disabled\n");
+		printf("Lifter Disabled\n");
+		return;
 	}
 //	printf("m_goalHeight: %d, m_initialHeight: %d, lifterHeight: %d\n",
 //			m_goalHeight, m_initialHeight, squeezyLifter->getLifterHeight());
@@ -61,6 +63,8 @@ void SqueezyUpDown::Execute()
 			squeezyLifter->squeezyUp();
 		}
 	}
+	else
+		squeezyLifter->setLiftSpeed(0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -77,12 +81,13 @@ bool SqueezyUpDown::IsFinished()
 	}
 
 	return isFinished;
+
 }
 
 // Called once after isFinished returns true
 void SqueezyUpDown::End()
 {
-	printf("Test 1 of 1 Completed Successfully");
+	printf("Test 1 of 1 Completed Successfully\n");
 	squeezyLifter->setLiftSpeed(0);
 	squeezyLifter->engageBrake();
 
@@ -90,6 +95,11 @@ void SqueezyUpDown::End()
 	{
 		CommandBase::conveyor->SetLifterReady(true);
 		printf("Ending lift - conveyor state = %c\n", CommandBase::conveyor->GetConveyorState());
+	    if(abs(m_initialHeight - m_goalHeight) > (squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION))
+			CommandBase::conveyor->SetConveyorState(CommandBase::conveyor->GetConveyorState() - 1);
+	}
+	else if(m_goalHeight == PLATFORMHOLDHEIGHT_PRACTICE || m_goalHeight == PLATFORMHOLDHEIGHT_COMPETITION)
+	{
 	    if(abs(m_initialHeight - m_goalHeight) > (squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION))
 			CommandBase::conveyor->SetConveyorState(CommandBase::conveyor->GetConveyorState() - 1);
 	}

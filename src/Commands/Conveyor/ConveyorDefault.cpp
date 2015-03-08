@@ -4,6 +4,7 @@ ConveyorDefault::ConveyorDefault()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	printf("ConveyorDefault constructor\n");
 	Requires(conveyor);
 
 //	m_lifterWaitingForTote = false;

@@ -4,7 +4,7 @@ PlatformInOut::PlatformInOut(PlatformDirection direction)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(conveyor);
+	Requires(squeezyLifter);
 	m_direction = direction;
 }
 
@@ -13,11 +13,11 @@ void PlatformInOut::Initialize()
 {
 	if(m_direction == kIn)
 	{
-		conveyor->SetConveyorPlatform(false);
+		squeezyLifter->SetConveyorPlatform(false);
 	}
 	else
 	{
-		conveyor->SetConveyorPlatform(true);
+		squeezyLifter->SetConveyorPlatform(true);
 	}
 }
 

@@ -34,7 +34,7 @@ bool PushInOut::IsFinished()
 		return pusher->isExtended() == false;
 	}
 	else {
-		return pusher->isRetracted() == false;
+		return true;
 	}
 }
 

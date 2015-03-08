@@ -17,6 +17,7 @@ private:
 	LiveCANTalon *m_motorLift;
 	DoubleSolenoid *m_pistonOpenClose;
 	DoubleSolenoid *m_lifterBrake;
+	DoubleSolenoid *conveyorPlatform;
 
 	int m_numberOfTotes = 0;
 
@@ -111,6 +112,11 @@ public:
 	 * @return true if paused
 	 */
 	bool isPaused();
+	/**
+	 * Sets the stacking platform to a desired position.
+	 * @param On If on is true platform extends, if false, the platform retracts.
+	 */
+	void SetConveyorPlatform(bool On);
 };
 
 #endif

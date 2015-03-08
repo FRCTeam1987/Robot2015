@@ -16,6 +16,7 @@ SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 	m_motorLift = new LiveCANTalon(MOTORLIFT);
 	m_pistonOpenClose = new DoubleSolenoid(SQUEEZYPISTONOPENCLOSE_A, SQUEEZYPISTONOPENCLOSE_B);
 	m_lifterBrake = new DoubleSolenoid(LIFTERBRAKE_A, LIFTERBRAKE_B);
+	conveyorPlatform = new DoubleSolenoid(PLATFORM_OUT, PLATFORM_IN);
 
 	//Actuators LiveWindow
 	LiveWindow::GetInstance()->AddActuator("Squeezy Lifter", "Lifter", m_motorLift);
@@ -32,6 +33,11 @@ SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 void SqueezyLifter::InitDefaultCommand()
 {
 //	SetDefaultCommand(new SqueezyDefault());
+}
+
+void SqueezyLifter::SetConveyorPlatform(bool On)
+{
+	conveyorPlatform->Set(On ? DoubleSolenoid::kForward : DoubleSolenoid::kReverse);
 }
 
 bool SqueezyLifter::isDisabled()

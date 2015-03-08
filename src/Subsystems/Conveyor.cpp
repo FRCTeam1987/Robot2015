@@ -15,7 +15,6 @@ Conveyor::Conveyor(bool isPracticeBot) :
 	motorConveyorBelt = new CANTalon(CONVEYORMOTOR_BELT);
 	motorConveyorRoller = new Talon(CONVEYORMOTOR_ROLLER);
 	motorLowerConveyor = new CANTalon(CONVEYORMOTOR_WINCH);
-	conveyorPlatform = new Solenoid(PLATFORM_OUT);
 //	switchLoweredConveyor = new DigitalInput(CONVEYORSWITCHPIN);
 
 //	LiveWindow::GetInstance()->AddActuator("Conveyor", "Conveyor Motor", motorConveyor);
@@ -30,7 +29,7 @@ void Conveyor::RunConveyor(bool On)
 {
 	if (On == true) {
 		motorConveyorBelt->Set(-1.0);
-		motorConveyorRoller->Set(-0.40);
+		motorConveyorRoller->Set(-0.30);//changed and needs to be tested
 	}
 	else {
 		motorConveyorBelt->Set(0);
@@ -56,11 +55,6 @@ void Conveyor::StopLoweringConveyor()
 int Conveyor::GetNumberOfTotes()
 {
 	return m_NumberOfTotes;
-}
-
-void Conveyor::SetConveyorPlatform(bool On)
-{
-	conveyorPlatform->Set(On);
 }
 
 bool Conveyor::IsToteAtEntrance()

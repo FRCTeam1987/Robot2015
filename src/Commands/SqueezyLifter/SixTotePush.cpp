@@ -18,10 +18,10 @@ SixTotePush::SixTotePush(bool isPracticeBot)
 	AddSequential(new SqueezyUpDown(isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION));
 	AddSequential(new IncrementToteCount());
 	//Stacks
-	AddSequential(new LiftTote(isPracticeBot));
-	AddSequential(new LiftTote(isPracticeBot));
-	AddSequential(new LiftTote(isPracticeBot));
-	AddSequential(new LiftTote(isPracticeBot));
+	AddSequential(new LiftTote(isPracticeBot, 1));
+	AddSequential(new LiftTote(isPracticeBot, 2));
+	AddSequential(new LiftTote(isPracticeBot, 3));
+	AddSequential(new LiftTote(isPracticeBot, 4));
 	//Final Tote
 	AddSequential(new SqueezyUpDown(isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION));
 	AddSequential(new WaitForToteSensor());

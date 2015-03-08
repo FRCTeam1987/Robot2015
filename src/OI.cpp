@@ -16,7 +16,7 @@
 #include "Commands/Pusher/PushInOut.h"
 #include "Commands/Conveyor/RunConveyor.h"
 #include "Commands/Conveyor/LowerRaiseConveyor.h"
-#include "Commands/Conveyor/PlatformInOut.h"
+#include "Commands/SqueezyLifter/PlatformInOut.h"
 
 OI::OI(bool isPracticeBot)
 {
@@ -64,7 +64,7 @@ OI::OI(bool isPracticeBot)
 	{
 		GrabHeight = GRABHEIGHTFLOOR_COMPETITION;
 		GrabHeightPlatform = GRABHEIGHTPLATFORM_COMPETITION;
-//		GrabHeightConveyorPlatform = GRABHEIGHTCONVEYORPLATFORM_COMPETITION;
+		GrabHeightConveyorPlatform = GRABHEIGHTCONVEYORPLATFORM_COMPETITION;
 		HoldHeight = HOLDHEIGHT_COMPETITION;
 		PlaceHeight = PLACEHEIGHT_COMPETITION;
 		PlaceHeightScoringPlatform = PLACEHEIGHTSCORINGPLATFORM_COMPETITION;
@@ -88,7 +88,7 @@ OI::OI(bool isPracticeBot)
 	SmartDashboard::PutData("Squeezy Lifter - Hold Height", new SqueezyUpDown(HoldHeight));
 	SmartDashboard::PutData("Squeezy Lifter - Engage Brake", new EngageLifterBrake());
 	SmartDashboard::PutData("Squeezy Lifter - Release Brake", new ReleaseLifterBrake());
-	SmartDashboard::PutData("Squeezy Lifter - Tote Sequence", new LiftTote(m_isPracticeBot));
+	SmartDashboard::PutData("Squeezy Lifter - Tote Sequence", new LiftTote(m_isPracticeBot, 0));
 	SmartDashboard::PutData("Increment Tote Count", new IncrementToteCount());
 	SmartDashboard::PutData("Six Tote Push", new SixTotePush(m_isPracticeBot));
 	SmartDashboard::PutData("Conveyor - Lower Conveyor", new LowerRaiseConveyor(LowerRaiseConveyor::kLower, 1.5)); //kLower

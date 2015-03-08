@@ -74,6 +74,7 @@ private:
 		if (autonomousCommand != NULL)
 			autonomousCommand->Cancel();
 
+		printf("Allocating ConveyorDefault\n");
 		conveyorDefault = new ConveyorDefault();
 		conveyorDefault->Start();
 

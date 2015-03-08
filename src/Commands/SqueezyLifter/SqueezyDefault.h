@@ -11,6 +11,8 @@
 #include "TakeABreak.h"
 #include "../../CommandBase.h"
 #include "../../RobotMap.h"
+#include "PlatformInOut.h"
+#include "../Pusher/PushInOut.h"
 
 class SqueezyDefault: public CommandGroup
 {
