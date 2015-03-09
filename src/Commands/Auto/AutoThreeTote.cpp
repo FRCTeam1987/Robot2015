@@ -36,7 +36,7 @@ AutoThreeTote::AutoThreeTote(bool isPracticeBot)
 	AddSequential(new LiftTote(isPracticeBot, 2));
 	AddSequential(new AutoTurn(0.5, 90));
 	AddSequential(new DriveStraight(60, .5));
-	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHTFLOOR_PRACTICE : GRABHEIGHTFLOOR_COMPETITION));
+	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHTFLOOR_PRACTICE : GRABHEIGHTFLOOR_COMPETITION, 0));
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kOpen));
 	AddSequential(new DriveStraight(-60, .5));
 }

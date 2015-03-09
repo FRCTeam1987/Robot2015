@@ -80,7 +80,7 @@ public:
 	/**
 	 * Moves squeezy lifter down
 	 */
-	void squeezyDown();
+	void squeezyDown(int16_t toteNumber);
 	/**
 	 * Sets lift speed
 	 * @param percent of motor speed

@@ -2,13 +2,14 @@
 #include "../../RobotMap.h"
 #include "../../lib/library.h"
 
-SqueezyUpDown::SqueezyUpDown(int16_t setHeight)
+SqueezyUpDown::SqueezyUpDown(int16_t setHeight, int16_t toteNumber)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(squeezyLifter);
 	m_initialHeight = squeezyLifter->getLifterHeight();
 	m_goalHeight = setHeight;
+	m_toteNumber = toteNumber;
 }
 
 // Called just before this Command runs the first time
@@ -57,7 +58,7 @@ void SqueezyUpDown::Execute()
 //			m_goalHeight, m_initialHeight, squeezyLifter->getLifterHeight());
 	if(abs(squeezyLifter->getLifterHeight() - m_goalHeight) > (squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION)) {
 		if (squeezyLifter->getLifterHeight() > m_goalHeight) {
-			squeezyLifter->squeezyDown();
+			squeezyLifter->squeezyDown(m_toteNumber);
 		}
 		else {
 			squeezyLifter->squeezyUp();

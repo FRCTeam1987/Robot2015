@@ -36,9 +36,9 @@ BottomStack::BottomStack(bool isPracticeBot)
 		PlaceHeight = PLACEHEIGHT_COMPETITION;
 	}
 
-	AddSequential(new SqueezyUpDown(PlaceHeight));
+	AddSequential(new SqueezyUpDown(PlaceHeight, 0));
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kOpen));
-	AddSequential(new SqueezyUpDown(GrabHeight));
+	AddSequential(new SqueezyUpDown(GrabHeight, 1));
 	AddSequential(new SqueezyOpenClose(SqueezyOpenClose::kClose));
-	AddSequential(new SqueezyUpDown(HoldHeight));
+	AddSequential(new SqueezyUpDown(HoldHeight, 1));
 }

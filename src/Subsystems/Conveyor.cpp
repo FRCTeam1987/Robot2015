@@ -41,7 +41,7 @@ void Conveyor::LowerRaiseConveyor(bool direction)
 {
 	if(direction)
 	{
-		motorLowerConveyor->Set(0.75);   //Raising is true
+		motorLowerConveyor->Set(0.5);   //Raising is true
 	}else{
 		motorLowerConveyor->Set(-0.3);   //Lowering is false
 	}

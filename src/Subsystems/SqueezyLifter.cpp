@@ -116,7 +116,7 @@ void SqueezyLifter::squeezyUp()
 	}
 }
 
-void SqueezyLifter::squeezyDown()
+void SqueezyLifter::squeezyDown(int16_t toteNumber)
 {
 	if(m_isDisabled)
 	{
@@ -127,7 +127,14 @@ void SqueezyLifter::squeezyDown()
 	{
 		printf("running motor down\n");
 //		m_motorLift->Set(SQUEEZYMOTORLIFTDOWNSPEED);
-		m_motorLift->Set(-0.5);
+		if(toteNumber == 0)
+		{
+			m_motorLift->Set(-0.35);
+		}
+		else
+		{
+			m_motorLift->Set(-0.5);
+		}
 
 	}
 }
