@@ -34,6 +34,12 @@ bool LowerRaiseConveyor::IsFinished()
 void LowerRaiseConveyor::End()
 {
 	conveyor->StopLoweringConveyor();
+	if(m_direction == kRaise)
+	{
+		conveyor->SetDeployed(false);
+	}else{
+		conveyor->SetDeployed(true);
+	}
 }
 
 // Called when another command which requires one or more of the same

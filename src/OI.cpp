@@ -3,6 +3,7 @@
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/SqueezyLifter.h"
 #include "Commands/PrintStuff.h"
+#include "Commands/StartFullyAuto.h"
 #include "Commands/SqueezyLifter/SqueezyOpenClose.h"
 #include "Commands/SqueezyLifter/SqueezyToggle.h"
 #include "Commands/SqueezyLifter/SqueezyUpDown.h"
@@ -52,7 +53,7 @@ OI::OI(bool isPracticeBot)
 	int GrabHeight, GrabHeightPlatform, GrabHeightConveyorPlatform, HoldHeight, PlaceHeight, PlaceHeightScoringPlatform, PlaceHeightConveyorPlatform;
 	if(m_isPracticeBot)
 	{
-		GrabHeight = GRABHEIGHTFLOOR_PRACTICE;
+		GrabHeight = GRABHEIGHTCONVEYORPLATFORM_PRACTICE;
 		GrabHeightPlatform = GRABHEIGHTSCORINGPLATFORM_PRACTICE;
 		GrabHeightConveyorPlatform = GRABHEIGHTCONVEYORPLATFORM_PRACTICE;
 		HoldHeight = HOLDHEIGHT_PRACTICE;
@@ -91,7 +92,7 @@ OI::OI(bool isPracticeBot)
 	SmartDashboard::PutData("Squeezy Lifter - Tote Sequence", new LiftTote(m_isPracticeBot, 0));
 	SmartDashboard::PutData("Increment Tote Count", new IncrementToteCount());
 	SmartDashboard::PutData("Six Tote Push", new SixTotePush(m_isPracticeBot));
-	SmartDashboard::PutData("Conveyor - Lower Conveyor", new LowerRaiseConveyor(LowerRaiseConveyor::kLower, 1.5)); //kLower
+	SmartDashboard::PutData("Conveyor - Lower Conveyor", new LowerRaiseConveyor(LowerRaiseConveyor::kLower, 1.75)); //kLower
 	SmartDashboard::PutData("Conveyor - Raise Conveyor", new LowerRaiseConveyor(LowerRaiseConveyor::kRaise, 1.25)); //kRaise
 	SmartDashboard::PutData("Conveyor - Conveyor Platform Out", new PlatformInOut(PlatformInOut::kOut));
 	SmartDashboard::PutData("Conveyor - Conveyor Platform In",new PlatformInOut(PlatformInOut::kIn));
@@ -99,7 +100,7 @@ OI::OI(bool isPracticeBot)
 	SmartDashboard::PutNumber("Squeezy Lifter - Proxx", CommandBase::squeezyLifter->hasTote()?1:0);
 	SmartDashboard::PutData("Squeezy Lifter - Pause", new SetPause());
 	SmartDashboard::PutData("Squeezy Lifter - Unpause", new ClearPause());
-
+	SmartDashboard::PutData("Start Fully Auto", new StartFullyAuto());
 }
 
 Joystick* OI::getStick()

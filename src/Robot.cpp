@@ -74,12 +74,12 @@ private:
 		if (autonomousCommand != NULL)
 			autonomousCommand->Cancel();
 
-		printf("Allocating ConveyorDefault\n");
-		conveyorDefault = new ConveyorDefault();
-		conveyorDefault->Start();
-
-		squeezyDefault = new SqueezyDefault();
-		squeezyDefault->Start();
+//		printf("Allocating ConveyorDefault\n");
+//		conveyorDefault = new ConveyorDefault();
+//		conveyorDefault->Start();
+//
+//		squeezyDefault = new SqueezyDefault();
+//		squeezyDefault->Start();
 	}
 
 	void TeleopPeriodic()

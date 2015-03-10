@@ -7,6 +7,7 @@ SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 {
 	m_isDisabled = false;
 	m_isPaused = false;
+	m_platformDeployed = false;
 
 	//Sensors
 	m_proximityHasTote = new DigitalInput(SWITCHHASTOTEPIN);
@@ -28,6 +29,8 @@ SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 
 	m_isPracticeBot = isPracticeBot;
 	m_numberOfTotes = 0;
+
+	SetConveyorPlatform(false);
 }
 
 void SqueezyLifter::InitDefaultCommand()
@@ -157,4 +160,14 @@ void SqueezyLifter::setPause(bool isPaused)
 bool SqueezyLifter::isPaused()
 {
 	return m_isPaused;
+}
+
+void SqueezyLifter::SetPlatformDeployed(bool isDeployed)
+{
+	m_platformDeployed = isDeployed;
+}
+
+bool SqueezyLifter::IsPlatformDeployed()
+{
+	return m_platformDeployed;
 }

@@ -24,6 +24,7 @@ private:
 	bool m_isDisabled;
 	bool m_isPracticeBot;
 	bool m_isPaused;
+	bool m_platformDeployed;
 
 public:
 	const bool kOpen = true;
@@ -117,6 +118,17 @@ public:
 	 * @param On If on is true platform extends, if false, the platform retracts.
 	 */
 	void SetConveyorPlatform(bool On);
+	/**
+	 * Sets the member variable that records platform position
+	 * @param The value that will be assigned to m_platformDeployed, the variable that records platform position
+	 */
+	void SetPlatformDeployed(bool isDeployed);
+	/**
+	 * Checks the member variable that records platform position
+	 * @return Returns the value of the member variable that records platform position
+	 */
+	bool IsPlatformDeployed();
+
 };
 
 #endif

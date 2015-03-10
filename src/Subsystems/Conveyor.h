@@ -12,6 +12,7 @@ private:
 	int m_NumberOfTotes;
 	bool m_lifterReady;
 	char m_conveyorState;
+	bool m_isDeployed;
 	DigitalInput *breakToteEnter;
 	DigitalInput *breakToteExit;
 //	DigitalInput *switchLoweredConveyor;
@@ -80,6 +81,15 @@ public:
 	 * @param state The parameter will become the new state.
 	 */
 	void SetConveyorState(char state);
+	/**
+	 * True if conveyor is deployed
+	 */
+	bool IsDeployed();
+	/**
+	 * Sets conveyor deployed
+	 * @param isDeployed true if conveyor is deployed false otherwise
+	 */
+	void SetDeployed(bool isDeployed);
 };
 
 #endif

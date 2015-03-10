@@ -4,15 +4,12 @@
 
 SqueezyUpDown::SqueezyUpDown(int16_t setHeight, int16_t toteNumber)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(squeezyLifter);
 	m_initialHeight = squeezyLifter->getLifterHeight();
 	m_goalHeight = setHeight;
 	m_toteNumber = toteNumber;
 }
 
-// Called just before this Command runs the first time
 void SqueezyUpDown::Initialize()
 {
 //	SmartDashboard::PutNumber("testing - init goal height", squeezyLifter->getLifterHeight());
@@ -54,13 +51,15 @@ void SqueezyUpDown::Execute()
 		printf("Lifter Disabled\n");
 		return;
 	}
-//	printf("m_goalHeight: %d, m_initialHeight: %d, lifterHeight: %d\n",
-//			m_goalHeight, m_initialHeight, squeezyLifter->getLifterHeight());
-	if(abs(squeezyLifter->getLifterHeight() - m_goalHeight) > (squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION)) {
-		if (squeezyLifter->getLifterHeight() > m_goalHeight) {
+
+	if(abs(squeezyLifter->getLifterHeight() - m_goalHeight) > (squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION))
+	{
+		if (squeezyLifter->getLifterHeight() > m_goalHeight)
+		{
 			squeezyLifter->squeezyDown(m_toteNumber);
 		}
-		else {
+		else
+		{
 			squeezyLifter->squeezyUp();
 		}
 	}

@@ -9,6 +9,7 @@ Conveyor::Conveyor(bool isPracticeBot) :
 	m_NumberOfTotes = 0;
 	m_lifterReady = false;
 	m_conveyorState = 'E';
+	m_isDeployed = false;	//change this value if we start match deployed
 
 	breakToteEnter = new DigitalInput(BREAKTOTEENTERPIN);
 	breakToteExit = new DigitalInput(BREAKTOTEEXITPIN);
@@ -29,7 +30,7 @@ void Conveyor::RunConveyor(bool On)
 {
 	if (On == true) {
 		motorConveyorBelt->Set(-1.0);
-		motorConveyorRoller->Set(-0.30);//changed and needs to be tested
+		motorConveyorRoller->Set(-0.55);//changed and needs to be tested
 	}
 	else {
 		motorConveyorBelt->Set(0);
@@ -99,4 +100,14 @@ char Conveyor::GetConveyorState()
 void Conveyor::SetConveyorState(char state)
 {
 	m_conveyorState = state;
+}
+
+bool Conveyor::IsDeployed()
+{
+	return m_isDeployed;
+}
+
+void Conveyor::SetDeployed(bool isDeployed)
+{
+	m_isDeployed = isDeployed;
 }
