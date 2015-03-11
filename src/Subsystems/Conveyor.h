@@ -32,7 +32,7 @@ public:
 	 * Runs both conveyor motors.
 	 * @param On If on is true, the conveyor will run, if on is false the conveyor will stop.
 	 */
-	void RunConveyor(bool On);
+	void RunConveyor(bool On, bool Forward);
 	/**
 	 * Runs the winch motor to lower or raise the conveyor.
 	 * @param direction If direction is true it will raise the conveyor, if it is false it will lower the conveyor.

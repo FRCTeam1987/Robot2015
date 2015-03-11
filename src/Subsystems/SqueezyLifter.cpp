@@ -5,9 +5,9 @@
 SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 		Subsystem("ExampleSubsystem")
 {
-	m_isDisabled = false;
-	m_isPaused = false;
-	m_platformDeployed = false;
+	setDisabled();
+	setPause(false);
+	SetPlatformDeployed(false);
 
 	//Sensors
 	m_proximityHasTote = new DigitalInput(SWITCHHASTOTEPIN);
@@ -26,6 +26,8 @@ SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 	//Sensors LiveWindow
 	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Have Tote", m_proximityHasTote);
 	LiveWindow::GetInstance()->AddSensor("Squeezy Lifter", "Lifter Height", m_potHeight);
+
+
 
 	m_isPracticeBot = isPracticeBot;
 	m_numberOfTotes = 0;
@@ -51,6 +53,13 @@ bool SqueezyLifter::isDisabled()
 void SqueezyLifter::setDisabled()
 {
 	m_isDisabled = true;
+	SmartDashboard::PutString("02 - Lifter Disabled", "Lifter Disabled");
+}
+
+void SqueezyLifter::setEnabled()
+{
+	m_isDisabled = false;
+	SmartDashboard::PutString("03 - Lifter Enabled", "Lifter Enabled");
 }
 
 int16_t SqueezyLifter::getLifterHeight()
@@ -155,6 +164,7 @@ void SqueezyLifter::releaseBrake()
 void SqueezyLifter::setPause(bool isPaused)
 {
 	m_isPaused = isPaused;
+	SmartDashboard::PutString("04 - Lifter Disabled", m_isPaused ? "Lifter Enabled" : "Lifter Disabled");
 }
 
 bool SqueezyLifter::isPaused()
@@ -165,6 +175,7 @@ bool SqueezyLifter::isPaused()
 void SqueezyLifter::SetPlatformDeployed(bool isDeployed)
 {
 	m_platformDeployed = isDeployed;
+	SmartDashboard::PutString("05 - Conveyor Platform State", m_platformDeployed ? "Platform Extended" : "Platform Retracted");
 }
 
 bool SqueezyLifter::IsPlatformDeployed()

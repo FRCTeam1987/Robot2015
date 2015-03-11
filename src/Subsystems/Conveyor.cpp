@@ -8,8 +8,8 @@ Conveyor::Conveyor(bool isPracticeBot) :
 	m_isPracticeBot = isPracticeBot;
 	m_NumberOfTotes = 0;
 	m_lifterReady = false;
-	m_conveyorState = 'E';
-	m_isDeployed = false;	//change this value if we start match deployed
+	SetConveyorState('E');
+	SetDeployed(false);	//change this value if we start match deployed
 
 	breakToteEnter = new DigitalInput(BREAKTOTEENTERPIN);
 	breakToteExit = new DigitalInput(BREAKTOTEEXITPIN);
@@ -26,11 +26,16 @@ void Conveyor::InitDefaultCommand()
 //	SetDefaultCommand(new ConveyorDefault);
 }
 
-void Conveyor::RunConveyor(bool On)
+void Conveyor::RunConveyor(bool On, bool Forward)
 {
 	if (On == true) {
-		motorConveyorBelt->Set(-1.0);
-		motorConveyorRoller->Set(-0.55);//changed and needs to be tested
+		if(Forward) {
+			motorConveyorBelt->Set(-1.0);
+			motorConveyorRoller->Set(-0.55);//changed and needs to be tested
+		} else {
+			motorConveyorBelt->Set(1.0);
+			motorConveyorRoller->Set(0.55);//changed and needs to be tested
+		}
 	}
 	else {
 		motorConveyorBelt->Set(0);
@@ -100,6 +105,11 @@ char Conveyor::GetConveyorState()
 void Conveyor::SetConveyorState(char state)
 {
 	m_conveyorState = state;
+
+	char buf[2];
+	buf[0] = state;
+	buf[1] = 0;
+	SmartDashboard::PutString("00 - Conveyor State", buf);
 }
 
 bool Conveyor::IsDeployed()
@@ -110,4 +120,5 @@ bool Conveyor::IsDeployed()
 void Conveyor::SetDeployed(bool isDeployed)
 {
 	m_isDeployed = isDeployed;
+	SmartDashboard::PutString("01 - Conveyor Deployment", m_isDeployed ? "Conveyor Deployed" : "Conveyor Up");
 }

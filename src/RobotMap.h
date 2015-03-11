@@ -80,17 +80,24 @@ const float SQUEEZYMOTORLIFTDOWNSPEED = -0.1;
 
 
 //Buttons
-const int PUSHOUTBUTTON = 1; //Pusher
-const int PUSHINBUTTON = 2; //Pusher
-const int TOGGLESQUEEZEBUTTON = 6; //Squeezy Lifter
-const int GRABHEIGHTBUTTON = 11; //Lifter
-const int PLACEHEIGHTBUTTON = 9; //Lifter
+const int PUSHOUTINBUTTON = 1; //Pusher
+const int RUNCONVEYORBUTTON = 2; //Conveyor
+const int REVERSECONVEYORBUTTON = 3;//Conveyor
+const int STARTFULLAUTOBUTTON = 4;//All
+const int PAUSEAUTO = 5;//All
+const int UNPAUSEAUTO = 6;//All
 const int HOLDHEIGHTBUTTON = 7; //Lifter
-const int BOTTOMSTACKBUTTON = 12; //Lifter
-const int RAISECONVEYORBUTTON = 4; //Conveyor
-const int LOWERCONVEYORBUTTON = 3; //Conveyor
-const int RUNCONVEYORBUTTON = 8; //Conveyor
-const int PRINTSTUFFBUTTON = 5; //Print Stuff
+const int LOWERCONVEYORBUTTON = 8; //Conveyor
+const int GRABHEIGHTSCORINGPLATFORMBUTTON = 9; //Lifter
+const int MANUALRAISECONVEYORBUTTON = 10; //Conveyor
+const int GRABHEIGHTCONVEYORPLATFORMBUTTON = 11; //Lifter
+const int MANUALLOWERCONVEYORBUTTON = 12;
+
+//const int BOTTOMSTACKBUTTON = 12; //Lifter
+
+
+
+//const int PRINTSTUFFBUTTON = 5; //Print Stuff
 
 
 //Variables

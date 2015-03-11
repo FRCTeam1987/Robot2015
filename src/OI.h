@@ -7,17 +7,22 @@ class OI
 {
 private:
 	Joystick *stick;
-	JoystickButton *printStuff;
-	JoystickButton *toggleSqueeze;
-	JoystickButton *pushOut;
-	JoystickButton *pushIn;
-	JoystickButton *grabHeight;
-	JoystickButton *placeHeight;
+//	JoystickButton *printStuff;
+//	JoystickButton *toggleSqueeze;
+	JoystickButton *pusher;
+//	JoystickButton *pushIn;
+	JoystickButton *grabHeightConveyorPlatform;
+	JoystickButton *grabHeightScoringPlatform;
 	JoystickButton *holdHeight;
-	JoystickButton *runConveyor;
+	JoystickButton *runConveyorForward;
+	JoystickButton *runConveyorBackward;
 	JoystickButton *lowerConveyor;
-	JoystickButton *raiseConveyor;
-//	JoystickButton *bottomStack;
+//	JoystickButton *raiseConveyor;
+	JoystickButton *startFullAuto;
+	JoystickButton *pauseAuto;
+	JoystickButton *unpauseAuto;
+	JoystickButton *manualLowerConveyor;
+	JoystickButton *manualRaiseConveyor;
 
 	bool m_isPracticeBot;
 

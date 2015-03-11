@@ -92,8 +92,12 @@ public:
 	 */
 	void setDisabled();
 	/**
-	 * Checks to see if lifter is currently disabled
+	 * Enables lift
 	 */
+	void setEnabled();
+	/**
+	* Checks to see if lifter is currently disabled
+	*/
 	bool isDisabled();
 	/**
 	 * Engages lifter brake

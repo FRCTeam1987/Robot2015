@@ -17,7 +17,7 @@ void RunConveyor::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void RunConveyor::Execute()
 {
-	conveyor->RunConveyor(m_On);
+	conveyor->RunConveyor(m_On, true);
 }
 
 // Make this return true when this Command no longer needs to run execute()

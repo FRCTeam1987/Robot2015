@@ -65,7 +65,7 @@ void ConveyorDefault::Execute()
 
 	if(state == 'A')
 	{
-		conveyor->RunConveyor(false);
+		conveyor->RunConveyor(false, true);
 		conveyor->DetermineConveyorState();
 	}
 	else if(state == 'B')
@@ -74,22 +74,22 @@ void ConveyorDefault::Execute()
 		{
 			if(CommandBase::squeezyLifter->hasTote())
 			{
-				conveyor->RunConveyor(false);
+				conveyor->RunConveyor(false, true);
 				conveyor->SetConveyorState('A');
 			}else{
-				conveyor->RunConveyor(true);
+				conveyor->RunConveyor(true, true);
 			}
 
 		}else
 		{
 			if(conveyorExit || CommandBase::squeezyLifter->hasTote())
 			{
-				conveyor->RunConveyor(false);
+				conveyor->RunConveyor(false, true);
 				conveyor->SetConveyorState('E');
 			}
 			else
 			{
-				conveyor->RunConveyor(true);
+				conveyor->RunConveyor(true, true);
 			}
 		}
 	}
@@ -97,21 +97,21 @@ void ConveyorDefault::Execute()
 	{
 		if(lifterReady)
 		{
-			conveyor->RunConveyor(true);
+			conveyor->RunConveyor(true, true);
 		}
 		else if(!conveyorExit && conveyorEntrance)
 		{
-			conveyor->RunConveyor(true);
+			conveyor->RunConveyor(true, true);
 		}
 		else
 		{
-			conveyor->RunConveyor(false);
+			conveyor->RunConveyor(false, true);
 			conveyor->SetConveyorState('E');
 		}
 	}
 	else if(state == 'D')
 	{
-		conveyor->RunConveyor(false);
+		conveyor->RunConveyor(false, true);
 		conveyor->DetermineConveyorState();
 	}
 	else
@@ -136,5 +136,5 @@ void ConveyorDefault::End()
 // subsystems is scheduled to run
 void ConveyorDefault::Interrupted()
 {
-	conveyor->RunConveyor(false);
+	conveyor->RunConveyor(false, true);
 }
