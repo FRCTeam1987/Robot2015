@@ -1,5 +1,8 @@
 #include "SixToteStackAuto.h"
 
+/**
+ * Stack six totes then push stack
+ */
 SixToteStackAuto::SixToteStackAuto()
 {
 		AddSequential(new PushInOut(PushInOut::kIn));
@@ -15,7 +18,7 @@ SixToteStackAuto::SixToteStackAuto()
 		AddSequential(new PlatformInOut(PlatformInOut::kIn));
 		AddSequential(new SqueezyUpDown(CommandBase::squeezyLifter->isPracticeBot() ? GRABHEIGHTSCORINGPLATFORM_PRACTICE : GRABHEIGHTPLATFORM_COMPETITION, 6));
 		AddSequential(new PushInOut(PushInOut::kOut));
-		AddSequential(new WaitCommand(.2));
+		AddSequential(new WaitCommand(.2));//Lets pushers fully push
 		AddSequential(new PushInOut(PushInOut::kIn));
 
 

@@ -1,9 +1,10 @@
 #include "PushInOut.h"
-
+/**
+ * Extends or retracts pusher
+ * @param direction kOut to push out otherwise retract
+ */
 PushInOut::PushInOut(PushDirection direction)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(pusher);
 	Requires(squeezyLifter);
 	m_pushDirection = direction;

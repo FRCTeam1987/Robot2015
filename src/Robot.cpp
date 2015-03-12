@@ -1,6 +1,5 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
-#include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
 #include "Subsystems/DriveTrain.h"
 #include "Commands/Auto/DriveStraight.h"
@@ -12,6 +11,7 @@
 #include "Commands/SqueezyLifter/ClearPause.h"
 #include "Commands/Conveyor/ConveyorDefault.h"
 #include "Commands/SqueezyLifter/SqueezyDefault.h"
+#include "Commands/Conveyor/SetConveyorDown.h"
 
 
 class Robot: public IterativeRobot
@@ -26,24 +26,14 @@ private:
 	void RobotInit()
 	{
 		CameraServer::GetInstance()->SetQuality(100);
-		//the camera name (ex "cam0") can be found through the roborio web interface
 		CameraServer::GetInstance()->StartAutomaticCapture("cam1");
 		CommandBase::init();
-//		autonomousCommand = new AutoTurn(0.6, -90);
-//		autonomousCommand = new DriveStraight(12, .75);
-//		autonomousCommand = new AutoThreeTote();
 		lw = LiveWindow::GetInstance();
 
 		chooser = new SendableChooser();
-		chooser->AddDefault("Auto Drive 05 Feet", new DriveStraight(60, 1.0));
-		chooser->AddObject("Auto Drive 10 Feet", new DriveStraight(120, 1.0));
-		chooser->AddObject("Auto Drive 15 Feet", new DriveStraight(180, 1.0));
-		chooser->AddObject("Auto Drive 20 Feet", new DriveStraight(240, 1.0));
-		chooser->AddObject("Auto Drive 25 Feet", new DriveStraight(300, 1.0));
-		chooser->AddObject("Auto Turn", new AutoTurn(0.75, 90));
-		chooser->AddObject("Auto Three Tote Collect", new AutoThreeTote(CommandBase::driveTrain->IsPracticeBot()));
-		chooser->AddObject("Do Nothing Auto", new DoNothing);
+		chooser->AddDefault("Do Nothing Auto", new DoNothing);
 		chooser->AddObject("Lower Conveyor", new LowerRaiseConveyor(LowerRaiseConveyor::kLower, 1.5));
+		chooser->AddObject("Set Conveyor Lowered", new SetConveyorDown());
 		SmartDashboard::PutData("Autonomous Modes", chooser);
 
 	}

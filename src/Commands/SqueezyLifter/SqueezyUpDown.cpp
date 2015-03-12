@@ -1,7 +1,11 @@
 #include "SqueezyUpDown.h"
 #include "../../RobotMap.h"
 #include "../../lib/library.h"
-
+/**
+ * Sets lifter to certain height based on values
+ * @param setHeight the goal position the lifter
+ * @param toteNumber is the number of totes in the lifter
+ */
 SqueezyUpDown::SqueezyUpDown(int16_t setHeight, int16_t toteNumber)
 {
 	Requires(squeezyLifter);
@@ -12,8 +16,6 @@ SqueezyUpDown::SqueezyUpDown(int16_t setHeight, int16_t toteNumber)
 
 void SqueezyUpDown::Initialize()
 {
-//	SmartDashboard::PutNumber("testing - init goal height", squeezyLifter->getLifterHeight());
-//	SmartDashboard::PutNumber("testing - goal height", m_goalHeight);
 	printf("testing - init height: %d, goal height: %d\n", squeezyLifter->getLifterHeight(), m_goalHeight);
 	if(abs(squeezyLifter->getLifterHeight() - m_goalHeight) > (squeezyLifter->isPracticeBot() ? HEIGHTTOLERANCE_PRACTICE : HEIGHTTOLERANCE_COMPETITION)) {
 		printf("Driving a little\n");

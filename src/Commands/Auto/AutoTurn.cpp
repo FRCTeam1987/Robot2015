@@ -3,10 +3,7 @@
 
 AutoTurn::AutoTurn(float speed, float angle)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(driveTrain);
-//	initialYaw = 0;
 	m_speed = speed;
 	m_angle = angle;
 }
@@ -14,14 +11,12 @@ AutoTurn::AutoTurn(float speed, float angle)
 // Called just before this Command runs the first time
 void AutoTurn::Initialize()
 {
-//	initialYaw = driveTrain->imu->GetYaw();
 	driveTrain->ResetGyro();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void AutoTurn::Execute()
 {
-//	driveTrain->AutoDrive(m_speed, m_angle);
 	if (m_angle < 0) {
 		driveTrain->AutoTankDrive(-m_speed, m_speed);
 	}
@@ -35,7 +30,6 @@ void AutoTurn::Execute()
 bool AutoTurn::IsFinished()
 {
 	float angle = abs(driveTrain->GetGyroAngle());
-//	return driveTrain->GetGyroAngle() >= m_angle || driveTrain->GetGyroAngle() <= -m_angle;
 	return angle >= abs(m_angle);
 }
 

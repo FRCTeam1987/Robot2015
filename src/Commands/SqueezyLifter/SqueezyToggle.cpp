@@ -2,11 +2,8 @@
 
 SqueezyToggle::SqueezyToggle()
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(squeezyLifter);
 	openClose = false;
-//	m_open = squeezyLifter->isOpen();
 }
 
 // Called just before this Command runs the first time

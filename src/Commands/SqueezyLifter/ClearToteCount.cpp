@@ -2,8 +2,7 @@
 
 ClearToteCount::ClearToteCount()
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
+
 }
 
 // Called just before this Command runs the first time

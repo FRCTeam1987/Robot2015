@@ -1,14 +1,10 @@
 #include "ConveyorDefault.h"
-
+/**
+ *Runs the Conveyor autonomously using a state machine.
+ */
 ConveyorDefault::ConveyorDefault()
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
-	printf("ConveyorDefault constructor\n");
 	Requires(conveyor);
-
-//	m_lifterWaitingForTote = false;
-//	m_exitWaitingForTote = false;
 }
 
 // Called just before this Command runs the first time
@@ -24,51 +20,14 @@ void ConveyorDefault::Execute()
 	bool conveyorExit = conveyor->IsToteAtExit();
 	bool conveyorEntrance = conveyor->IsToteAtEntrance();
 	bool lifterReady = conveyor->IsLifterReady();
-//
-//	if(!conveyorExit && conveyorEntrance)
-//	{
-//		m_exitWaitingForTote = true;
-//	}
-//
-//	if(!CommandBase::squeezyLifter->hasTote() && conveyorExit && lifterReady)  //Special Condition
-//		m_lifterWaitingForTote = true;                //The robot is now waiting for a tote, this condition is used later.
-//
-//	if(m_lifterWaitingForTote)
-//	{
-//		if(CommandBase::squeezyLifter->hasTote())   //Until the lifter has a tote ready to pick up,
-//		{                                           //this loop will drive the conveyor.
-//			m_lifterWaitingForTote = false;         //Once a tote is found, the condition becomes false
-//			conveyor->RunConveyor(false);           //and the conveyor stops.
-//		}
-//		else
-//			conveyor->RunConveyor(true);
-//	}
-//	else if(m_exitWaitingForTote)
-//	{
-//		if(conveyorExit)
-//		{
-//			m_exitWaitingForTote = false;
-//			conveyor->RunConveyor(false);
-//		}
-//		else
-//			conveyor->RunConveyor(true);
-//	}
-//	else if( (!conveyorExit && conveyorEntrance) ||
-//		(!CommandBase::squeezyLifter->hasTote() && conveyorExit && lifterReady))
-//	{
-//		conveyor->RunConveyor(true);
-//	}
-//	else{
-//		conveyor->RunConveyor(false);
-//	}
 	char state = conveyor->GetConveyorState();
 
-	if(state == 'A')
+	if(state == 'A')//this means we have 0 totes
 	{
 		conveyor->RunConveyor(false, true);
 		conveyor->DetermineConveyorState();
 	}
-	else if(state == 'B')
+	else if(state == 'B')//this means we have 1 totes
 	{
 		if(lifterReady)
 		{
@@ -93,7 +52,7 @@ void ConveyorDefault::Execute()
 			}
 		}
 	}
-	else if(state == 'C')
+	else if(state == 'C')//this means we have 2 totes
 	{
 		if(lifterReady)
 		{
@@ -109,7 +68,7 @@ void ConveyorDefault::Execute()
 			conveyor->SetConveyorState('E');
 		}
 	}
-	else if(state == 'D')
+	else if(state == 'D')//this means we have 3 totes
 	{
 		conveyor->RunConveyor(false, true);
 		conveyor->DetermineConveyorState();

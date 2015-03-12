@@ -4,8 +4,6 @@
 
 SetPause::SetPause()
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(squeezyLifter);
 	Requires(conveyor);
 }
@@ -13,13 +11,8 @@ SetPause::SetPause()
 // Called just before this Command runs the first time
 void SetPause::Initialize()
 {
-//	squeezyLifter->setPause(true);
-//	squeezyLifter->GetDefaultCommand()->Cancel();
 	squeezyLifter->GetCurrentCommand()->Cancel();
-//	squeezyLifter->SetDefaultCommand(new DoNothingSqueezy());
-//	conveyor->GetDefaultCommand()->Cancel();
 	conveyor->GetCurrentCommand()->Cancel();
-//	conveyor->SetDefaultCommand(new DoNothingConveyor());
 }
 
 // Called repeatedly when this Command is scheduled to run

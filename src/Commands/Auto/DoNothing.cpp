@@ -3,10 +3,7 @@
 
 DoNothing::DoNothing()
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
-//	Requires(squeezyLifter);
-//	Requires(conveyor);
+
 }
 
 // Called just before this Command runs the first time

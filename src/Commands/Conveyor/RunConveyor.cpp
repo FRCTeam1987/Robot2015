@@ -2,8 +2,6 @@
 
 RunConveyor::RunConveyor(bool On)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(conveyor);
 	m_On = On;
 }

@@ -2,8 +2,6 @@
 
 IncrementToteCount::IncrementToteCount()
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(squeezyLifter);
 }
 

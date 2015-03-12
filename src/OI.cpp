@@ -19,6 +19,8 @@
 #include "Commands/Conveyor/LowerRaiseConveyor.h"
 #include "Commands/SqueezyLifter/PlatformInOut.h"
 #include "Commands/Conveyor/ReverseConveyor.h"
+#include "Commands/Conveyor/SetConveyorDown.h"
+#include "Commands/SqueezyLifter/SixToteStackAuto.h"
 
 OI::OI(bool isPracticeBot)
 {
@@ -27,7 +29,6 @@ OI::OI(bool isPracticeBot)
 	// Process operator interface input here.
 
 	stick = new Joystick(0);
-//	printStuff = new JoystickButton(stick, PRINTSTUFFBUTTON);
 	pusher = new JoystickButton(stick, PUSHOUTINBUTTON);
 	grabHeightConveyorPlatform = new JoystickButton(stick, GRABHEIGHTCONVEYORPLATFORMBUTTON);
 	grabHeightScoringPlatform = new JoystickButton(stick, GRABHEIGHTSCORINGPLATFORMBUTTON);
@@ -41,15 +42,12 @@ OI::OI(bool isPracticeBot)
 	manualRaiseConveyor = new JoystickButton(stick, MANUALRAISECONVEYORBUTTON);
 
 	lowerConveyor = new JoystickButton(stick, LOWERCONVEYORBUTTON);
-//	raiseConveyor = new JoystickButton(stick, RAISECONVEYORBUTTON);
 
-//	printStuff->WhenPressed(new PrintStuff());
 	pusher->WhenPressed(new PushInOut(PushInOut::kOut));
 	pusher->WhenReleased(new PushInOut(PushInOut::kIn));
 	runConveyorForward->WhileHeld(new RunConveyor(true));
 	runConveyorForward->WhenReleased(new RunConveyor(false));
 	lowerConveyor->WhenPressed(new LowerRaiseConveyor(LowerRaiseConveyor::kLower, 1.5));
-//	raiseConveyor->WhenPressed(new LowerRaiseConveyor(LowerRaiseConveyor::kRaise, 1.25));
 	runConveyorBackward->WhileHeld(new ReverseConveyor(true));
 	runConveyorBackward->WhenReleased(new ReverseConveyor(false));
 	startFullAuto->WhenPressed(new StartFullyAuto);
@@ -85,8 +83,6 @@ OI::OI(bool isPracticeBot)
 	grabHeightScoringPlatform->WhenPressed(new SqueezyUpDown(GrabHeightPlatform, 1));
 	holdHeight->WhenPressed(new SqueezyUpDown(HoldHeight, 1));
 
-	SmartDashboard::PutData("Squeezy Lifter - Close Squeezy", new SqueezyOpenClose(SqueezyOpenClose::kClose));
-	SmartDashboard::PutData("Squeezy Lifter - Open Squeezy", new SqueezyOpenClose(SqueezyOpenClose::kOpen));
 	SmartDashboard::PutData("Print Stuff", new PrintStuff());
 	SmartDashboard::PutData("Pusher Push Out", new PushInOut(PushInOut::kOut));
 	SmartDashboard::PutData("Pusher In", new PushInOut(PushInOut::kIn));
@@ -100,7 +96,7 @@ OI::OI(bool isPracticeBot)
 	SmartDashboard::PutData("Squeezy Lifter - Release Brake", new ReleaseLifterBrake());
 	SmartDashboard::PutData("Squeezy Lifter - Tote Sequence", new LiftTote(m_isPracticeBot, 0));
 	SmartDashboard::PutData("Increment Tote Count", new IncrementToteCount());
-	SmartDashboard::PutData("Six Tote Push", new SixTotePush(m_isPracticeBot));
+	SmartDashboard::PutData("Six Tote Push", new SixToteStackAuto());
 	SmartDashboard::PutData("Conveyor - Lower Conveyor", new LowerRaiseConveyor(LowerRaiseConveyor::kLower, 2.35)); //kLower
 	SmartDashboard::PutData("Conveyor - Raise Conveyor", new LowerRaiseConveyor(LowerRaiseConveyor::kRaise, 1.85)); //kRaise
 	SmartDashboard::PutData("Conveyor - Conveyor Platform Out", new PlatformInOut(PlatformInOut::kOut));
@@ -110,6 +106,7 @@ OI::OI(bool isPracticeBot)
 	SmartDashboard::PutData("Squeezy Lifter - Pause", new SetPause());
 	SmartDashboard::PutData("Squeezy Lifter - Unpause", new ClearPause());
 	SmartDashboard::PutData("Start Fully Auto", new StartFullyAuto());
+	SmartDashboard::PutData("Conveyor - Set Conveyor to Lowered", new SetConveyorDown());
 }
 
 Joystick* OI::getStick()

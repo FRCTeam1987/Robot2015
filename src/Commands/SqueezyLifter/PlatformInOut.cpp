@@ -2,8 +2,6 @@
 
 PlatformInOut::PlatformInOut(PlatformDirection direction)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(squeezyLifter);
 	m_direction = direction;
 	SetTimeout(2);

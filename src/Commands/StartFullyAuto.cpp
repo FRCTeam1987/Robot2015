@@ -2,6 +2,9 @@
 #include "SqueezyLifter/SqueezyDefault.h"
 #include "Conveyor/ConveyorDefault.h"
 
+/**
+ * Runs Teleop Auto
+ */
 StartFullyAuto::StartFullyAuto()
 {
 	AddParallel(new SqueezyDefault);

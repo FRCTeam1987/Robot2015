@@ -22,10 +22,6 @@ void SqueezyOpenClose::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool SqueezyOpenClose::IsFinished()
 {
-//	if(m_direction == kOpen)
-//		return squeezyLifter->isOpen();
-//	else
-//		return !squeezyLifter->isOpen();
 	return IsTimedOut();
 }
 

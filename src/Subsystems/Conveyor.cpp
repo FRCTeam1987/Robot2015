@@ -109,7 +109,7 @@ void Conveyor::SetConveyorState(char state)
 	char buf[2];
 	buf[0] = state;
 	buf[1] = 0;
-	SmartDashboard::PutString("00 - Conveyor State", buf);
+	SmartDashboard::PutString("A - Conveyor State", buf);
 }
 
 bool Conveyor::IsDeployed()
@@ -120,5 +120,5 @@ bool Conveyor::IsDeployed()
 void Conveyor::SetDeployed(bool isDeployed)
 {
 	m_isDeployed = isDeployed;
-	SmartDashboard::PutString("01 - Conveyor Deployment", m_isDeployed ? "Conveyor Deployed" : "Conveyor Up");
+	SmartDashboard::PutString("B - Conveyor Deployment", m_isDeployed ? "Conveyor Deployed" : "Conveyor Up");
 }

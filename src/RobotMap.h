@@ -93,12 +93,6 @@ const int MANUALRAISECONVEYORBUTTON = 10; //Conveyor
 const int GRABHEIGHTCONVEYORPLATFORMBUTTON = 11; //Lifter
 const int MANUALLOWERCONVEYORBUTTON = 12;
 
-//const int BOTTOMSTACKBUTTON = 12; //Lifter
-
-
-
-//const int PRINTSTUFFBUTTON = 5; //Print Stuff
-
 
 //Variables
 const double DISTANCEPERPULSE = 0.07536;

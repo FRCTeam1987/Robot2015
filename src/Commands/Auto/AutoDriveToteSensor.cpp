@@ -4,8 +4,6 @@
 
 AutoDriveToteSensor::AutoDriveToteSensor(float speed)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(driveTrain);
 	Requires(squeezyLifter);
 	m_speed = speed;

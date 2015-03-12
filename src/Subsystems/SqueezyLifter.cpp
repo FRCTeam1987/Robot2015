@@ -53,13 +53,13 @@ bool SqueezyLifter::isDisabled()
 void SqueezyLifter::setDisabled()
 {
 	m_isDisabled = true;
-	SmartDashboard::PutString("02 - Lifter Disabled", "Lifter Disabled");
+	SmartDashboard::PutString("C - Lifter Disabled", "Lifter Disabled");
 }
 
 void SqueezyLifter::setEnabled()
 {
 	m_isDisabled = false;
-	SmartDashboard::PutString("03 - Lifter Enabled", "Lifter Enabled");
+	SmartDashboard::PutString("D - Lifter Enabled", "Lifter Enabled");
 }
 
 int16_t SqueezyLifter::getLifterHeight()
@@ -164,7 +164,7 @@ void SqueezyLifter::releaseBrake()
 void SqueezyLifter::setPause(bool isPaused)
 {
 	m_isPaused = isPaused;
-	SmartDashboard::PutString("04 - Lifter Disabled", m_isPaused ? "Lifter Enabled" : "Lifter Disabled");
+	SmartDashboard::PutString("E - Lifter Disabled", m_isPaused ? "Lifter Enabled" : "Lifter Disabled");
 }
 
 bool SqueezyLifter::isPaused()
@@ -175,7 +175,7 @@ bool SqueezyLifter::isPaused()
 void SqueezyLifter::SetPlatformDeployed(bool isDeployed)
 {
 	m_platformDeployed = isDeployed;
-	SmartDashboard::PutString("05 - Conveyor Platform State", m_platformDeployed ? "Platform Extended" : "Platform Retracted");
+	SmartDashboard::PutString("F - Conveyor Platform State", m_platformDeployed ? "Platform Extended" : "Platform Retracted");
 }
 
 bool SqueezyLifter::IsPlatformDeployed()

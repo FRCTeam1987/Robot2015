@@ -1,20 +1,16 @@
 #include "DriveStraight.h"
 
 DriveStraight::DriveStraight(float distance, float speed)
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 {
 	Requires(driveTrain);
 	m_distance = distance;
 	m_speed = speed;
 	kP = 0.03;
-//	initialYaw = 0;
 }
 
 // Called just before this Command runs the first time
 void DriveStraight::Initialize()
 {
-//	initialYaw = driveTrain->imu->GetYaw()
 	driveTrain->ResetGyro();
 	driveTrain->ResetEncoder();
 }
