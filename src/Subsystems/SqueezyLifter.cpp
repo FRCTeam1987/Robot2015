@@ -5,7 +5,8 @@
 SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 		Subsystem("ExampleSubsystem")
 {
-	setDisabled();
+//	setDisabled();
+	setEnabled();
 	setPause(false);
 	SetPlatformDeployed(false);
 
@@ -141,7 +142,7 @@ void SqueezyLifter::squeezyDown(int16_t toteNumber)
 //		m_motorLift->Set(SQUEEZYMOTORLIFTDOWNSPEED);
 		if(toteNumber == 0)
 		{
-			m_motorLift->Set(-0.35);
+			m_motorLift->Set(-0.45);
 		}
 		else
 		{

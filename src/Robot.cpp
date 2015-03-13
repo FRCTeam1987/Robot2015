@@ -25,8 +25,8 @@ private:
 
 	void RobotInit()
 	{
-		CameraServer::GetInstance()->SetQuality(100);
-		CameraServer::GetInstance()->StartAutomaticCapture("cam1");
+//		CameraServer::GetInstance()->SetQuality(100);
+//		CameraServer::GetInstance()->StartAutomaticCapture("cam1");
 		CommandBase::init();
 		lw = LiveWindow::GetInstance();
 

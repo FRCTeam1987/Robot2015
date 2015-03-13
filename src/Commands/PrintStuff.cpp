@@ -10,6 +10,7 @@ void PrintStuff::Initialize()
 {
 	printf("String Pot Values - %d\n", squeezyLifter->getLifterHeight());
 	printf("IsPracticeBot - %s\n", driveTrain->IsPracticeBot() ? "Yes" : "No");
+	printf("Is Lifter Disabled - %s\n", CommandBase::squeezyLifter->isDisabled() ? "Yes" : "No");
 //	printf("Squeezy is - %s\n", squeezyLifter->isOpen() ? "Open" : "Closed");
 //	printf("Do I have a tote? %s\n", squeezyLifter->hasTote() ? "Yup" : "Nope");
 //	printf("Pusher In or Out - %s\n", pusher->isRetracted() ? "Out" : "In");
