@@ -4,7 +4,8 @@
 #include "Commands/CommandGroup.h"
 #include "WPILib.h"
 #include "SixToteStackAuto.h"
-
+#include "FiveStackAuto.h"
+#include "FourStackAuto.h"
 
 class SqueezyDefault: public CommandGroup
 {

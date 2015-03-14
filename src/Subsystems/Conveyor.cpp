@@ -31,15 +31,15 @@ void Conveyor::RunConveyor(bool On, bool Forward)
 	if (On == true) {
 		if(Forward) {
 			motorConveyorBelt->Set(-1.0);
-			if(IsLifterReady() == true)
-			{
+//			if(IsLifterReady() == true)
+//			{
 				motorConveyorRoller->Set(-0.55);//changed and needs to be tested
-			}else{
-				motorConveyorRoller->Set(0);
-			}
+//			}else{
+//				motorConveyorRoller->Set(0);
+//			}
 		} else {
 			motorConveyorBelt->Set(1.0);
-			motorConveyorRoller->Set(0.55);//changed and needs to be tested
+			motorConveyorRoller->Set(1.0);//changed and needs to be tested
 		}
 	}
 	else {

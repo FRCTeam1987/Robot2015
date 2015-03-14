@@ -5,9 +5,23 @@
  */
 SqueezyDefault::SqueezyDefault()
 {
-	AddSequential(new SixToteStackAuto());
-	AddSequential(new SixToteStackAuto());
-	AddSequential(new SixToteStackAuto());
-	AddSequential(new SixToteStackAuto());
-	AddSequential(new SixToteStackAuto());
+	//Change this for different heights
+	AddSequential(new FourStackAuto());
+	AddSequential(new FourStackAuto());
+	AddSequential(new FourStackAuto());
+	AddSequential(new FourStackAuto());
+	AddSequential(new FourStackAuto());
+
+//	AddSequential(new FiveStackAuto());
+//	AddSequential(new FiveStackAuto());
+//	AddSequential(new FiveStackAuto());
+//	AddSequential(new FiveStackAuto());
+//	AddSequential(new FiveStackAuto());
+
+//	AddSequential(new SixToteStackAuto());
+//	AddSequential(new SixToteStackAuto());
+//	AddSequential(new SixToteStackAuto());
+//	AddSequential(new SixToteStackAuto());
+//	AddSequential(new SixToteStackAuto());
+
 }
