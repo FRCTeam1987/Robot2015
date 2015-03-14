@@ -4,6 +4,7 @@
 #include "Subsystems/SqueezyLifter.h"
 #include "Commands/PrintStuff.h"
 #include "Commands/StartFullyAuto.h"
+#include "Commands/EndStack.h"
 #include "Commands/SqueezyLifter/SqueezyOpenClose.h"
 #include "Commands/SqueezyLifter/SqueezyToggle.h"
 #include "Commands/SqueezyLifter/SqueezyUpDown.h"
@@ -37,10 +38,9 @@ OI::OI(bool isPracticeBot)
 	runConveyorBackward = new JoystickButton(stick, REVERSECONVEYORBUTTON);
 	startFullAuto = new JoystickButton(stick, STARTFULLAUTOBUTTON);
 	pauseAuto = new JoystickButton(stick, PAUSEAUTO);
-	unpauseAuto = new JoystickButton(stick, UNPAUSEAUTO);
+	endStack = new JoystickButton(stick, ENDSTACKBUTTON);
 	manualLowerConveyor = new JoystickButton(stick, MANUALLOWERCONVEYORBUTTON);
 	manualRaiseConveyor = new JoystickButton(stick, MANUALRAISECONVEYORBUTTON);
-
 	lowerConveyor = new JoystickButton(stick, LOWERCONVEYORBUTTON);
 
 	pusher->WhenPressed(new PushInOut(PushInOut::kOut));
@@ -52,7 +52,7 @@ OI::OI(bool isPracticeBot)
 	runConveyorBackward->WhenReleased(new ReverseConveyor(false));
 	startFullAuto->WhenPressed(new StartFullyAuto);
 	pauseAuto->WhenPressed(new SetPause);
-	unpauseAuto->WhenPressed(new ClearPause);
+	endStack->WhenPressed(new EndStack(CommandBase::driveTrain->IsPracticeBot()));
 	manualLowerConveyor->WhileHeld(new LowerRaiseConveyor(LowerRaiseConveyor::kLower, .1));
 	manualRaiseConveyor->WhileHeld(new LowerRaiseConveyor(LowerRaiseConveyor::kRaise, .1));
 

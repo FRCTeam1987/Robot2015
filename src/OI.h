@@ -16,7 +16,7 @@ private:
 	JoystickButton *lowerConveyor;
 	JoystickButton *startFullAuto;
 	JoystickButton *pauseAuto;
-	JoystickButton *unpauseAuto;
+	JoystickButton *endStack;
 	JoystickButton *manualLowerConveyor;
 	JoystickButton *manualRaiseConveyor;
 

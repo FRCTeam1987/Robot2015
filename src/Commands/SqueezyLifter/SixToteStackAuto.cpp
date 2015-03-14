@@ -6,6 +6,7 @@
 SixToteStackAuto::SixToteStackAuto()
 {
 		AddSequential(new PushInOut(PushInOut::kIn));
+		AddSequential(new WaitCommand(.25));
 		AddSequential(new PlatformInOut(PlatformInOut::kOut));
 
 		AddSequential(new LiftTote(CommandBase::squeezyLifter->isPracticeBot(), 0));

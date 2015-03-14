@@ -31,7 +31,12 @@ void Conveyor::RunConveyor(bool On, bool Forward)
 	if (On == true) {
 		if(Forward) {
 			motorConveyorBelt->Set(-1.0);
-			motorConveyorRoller->Set(-0.55);//changed and needs to be tested
+			if(IsLifterReady() == true)
+			{
+				motorConveyorRoller->Set(-0.55);//changed and needs to be tested
+			}else{
+				motorConveyorRoller->Set(0);
+			}
 		} else {
 			motorConveyorBelt->Set(1.0);
 			motorConveyorRoller->Set(0.55);//changed and needs to be tested
@@ -49,7 +54,7 @@ void Conveyor::LowerRaiseConveyor(bool direction)
 	{
 		motorLowerConveyor->Set(0.5);   //Raising is true
 	}else{
-		motorLowerConveyor->Set(-0.3);   //Lowering is false
+		motorLowerConveyor->Set(-0.2);   //Lowering is false
 	}
 }
 

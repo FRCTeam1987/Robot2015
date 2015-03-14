@@ -115,16 +115,13 @@ void SqueezyLifter::squeezyUp()
 	else
 	{
 		float speed;
-		if (m_numberOfTotes < 2) {
-			speed = -SQUEEZYMOTORLIFTUPSPEED_LOW;
-		}
-		else if(m_numberOfTotes < 4) {
-			speed = -SQUEEZYMOTORLIFTUPSPEED_MEDIUM;
+		if (m_numberOfTotes < 1) {
+			speed = SQUEEZYMOTORLIFTUPSPEED_LOW;
 		}
 		else {
-			speed = -SQUEEZYMOTORLIFTUPSPEED_HIGH;
+			speed = SQUEEZYMOTORLIFTUPSPEED_HIGH;
 		}
-		speed = 1.0;
+//		speed = 1.0;
 		m_motorLift->Set(speed);
 	}
 }

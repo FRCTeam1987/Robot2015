@@ -6,6 +6,7 @@
 #include "Commands/Auto/AutoTurn.h"
 #include "Commands/Auto/AutoThreeTote.h"
 #include "Commands/Auto/DoNothing.h"
+#include "Commands/Auto/LowerConveyorWait.h"
 #include "Commands/Conveyor/LowerRaiseConveyor.h"
 #include "Commands/SqueezyLifter/SetPause.h"
 #include "Commands/SqueezyLifter/ClearPause.h"
@@ -32,8 +33,9 @@ private:
 
 		chooser = new SendableChooser();
 		chooser->AddDefault("Do Nothing Auto", new DoNothing);
-		chooser->AddObject("Lower Conveyor", new LowerRaiseConveyor(LowerRaiseConveyor::kLower, 1.5));
+		chooser->AddObject("Lower Conveyor", new LowerRaiseConveyor(LowerRaiseConveyor::kLower, 3.25));
 		chooser->AddObject("Set Conveyor Lowered", new SetConveyorDown());
+		chooser->AddObject("Lower Conveyor After Waiting", new LowerConveyorWait());
 		SmartDashboard::PutData("Autonomous Modes", chooser);
 
 	}
