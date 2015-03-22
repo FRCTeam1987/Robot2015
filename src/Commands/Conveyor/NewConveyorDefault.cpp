@@ -18,12 +18,13 @@ void NewConveyorDefault::Execute()
 	bool conveyorEntrance = conveyor->IsToteAtEntrance();
 	bool lifterReady = conveyor->IsLifterReady();
 
-	if(lifterReady == false && conveyorExit)
-	{
-		conveyor->RunConveyor(false, true);
-	}else{
-		conveyor->RunConveyor(true, true);
-	}
+//	if(lifterReady == false && conveyorExit)
+//	{
+//		conveyor->RunConveyor(false, true);
+//	}else{
+//		conveyor->RunConveyor(true, true);
+//	}
+	(lifterReady == false && conveyorExit) ? conveyor->RunConveyor(false, true) : conveyor->RunConveyor(true, true);
 }
 
 // Make this return true when this Command no longer needs to run execute()

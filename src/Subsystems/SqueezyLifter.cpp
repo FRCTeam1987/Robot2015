@@ -137,9 +137,9 @@ void SqueezyLifter::squeezyDown(int16_t toteNumber)
 	{
 		printf("running motor down\n");
 //		m_motorLift->Set(SQUEEZYMOTORLIFTDOWNSPEED);
-		if(toteNumber == 0)
+		if(toteNumber == CommandBase::squeezyLifter->kFirstTote)
 		{
-			m_motorLift->Set(-0.45);
+			m_motorLift->Set(-0.35);
 		}
 		else
 		{
@@ -180,3 +180,4 @@ bool SqueezyLifter::IsPlatformDeployed()
 {
 	return m_platformDeployed;
 }
+

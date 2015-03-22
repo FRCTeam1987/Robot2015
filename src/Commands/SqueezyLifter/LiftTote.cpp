@@ -18,9 +18,10 @@ LiftTote::LiftTote(bool isPracticeBot, int toteNumber)
 	AddSequential(new SqueezyUpDown(isPracticeBot ? GRABHEIGHTCONVEYORPLATFORM_PRACTICE : GRABHEIGHTCONVEYORPLATFORM_COMPETITION, toteNumber));
 	AddSequential(new TakeABreak());
 	AddSequential(new IncrementToteCount());
-	if(toteNumber < 3){ //Change for height of stack  current number +1 = the number of totes in the stack
-		AddSequential(new SqueezyUpDown(isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION, toteNumber));
-	}else{//We don't need to go all the way up because it is the last tote in the stack
+	if(toteNumber == CommandBase::squeezyLifter->kLastTote){
 		AddSequential(new SqueezyUpDown(isPracticeBot ? PLATFORMHOLDHEIGHT_PRACTICE : PLATFORMHOLDHEIGHT_COMPETITION, toteNumber));
+	}else{
+		AddSequential(new SqueezyUpDown(isPracticeBot ? HOLDHEIGHT_PRACTICE : HOLDHEIGHT_COMPETITION, toteNumber));
 	}
+
 }

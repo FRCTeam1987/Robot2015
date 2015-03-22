@@ -50,6 +50,11 @@ void Conveyor::RunConveyor(bool On, bool Forward)
 
 void Conveyor::LowerRaiseConveyor(bool direction)
 {
+	if(CommandBase::squeezyLifter->IsPlatformDeployed())
+	{
+		return;
+	}
+
 	if(direction)
 	{
 		motorLowerConveyor->Set(0.5);   //Raising is true

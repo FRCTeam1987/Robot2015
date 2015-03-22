@@ -118,4 +118,5 @@ void SqueezyUpDown::End()
 void SqueezyUpDown::Interrupted()
 {
 	printf("Interrupted \n");
+	squeezyLifter->setLiftSpeed(0);
 }

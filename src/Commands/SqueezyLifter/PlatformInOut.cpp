@@ -4,7 +4,7 @@ PlatformInOut::PlatformInOut(PlatformDirection direction)
 {
 	Requires(squeezyLifter);
 	m_direction = direction;
-	SetTimeout(2);
+	SetTimeout(1.25);
 }
 
 // Called just before this Command runs the first time

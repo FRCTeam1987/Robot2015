@@ -29,6 +29,11 @@ private:
 public:
 	const bool kOpen = true;
 	const bool kClose = false;
+	enum{
+		kFirstTote,
+		kMiddleTote,
+		kLastTote
+	};
 
 	/**
 	 * Squeezy Lifter Constructor.
