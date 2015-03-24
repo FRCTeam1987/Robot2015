@@ -40,11 +40,13 @@ void LowerRaiseConveyor::End()
 	}else{
 		conveyor->SetDeployed(true);
 	}
+
+	conveyor->StopLoweringConveyor();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void LowerRaiseConveyor::Interrupted()
 {
-
+	conveyor->StopLoweringConveyor();
 }

@@ -14,7 +14,7 @@ void Drive::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void Drive::Execute()
 {
-	driveTrain->DriveArcade(oi->getStick());
+	driveTrain->DriveArcade(oi->getDriveStick());
 	SmartDashboard::PutNumber("Yaw", driveTrain->imu->GetYaw());
 	SmartDashboard::PutNumber("Angle", driveTrain->GetGyroAngle());
 }
