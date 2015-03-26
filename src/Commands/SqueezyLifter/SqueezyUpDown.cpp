@@ -67,6 +67,8 @@ void SqueezyUpDown::Execute()
 	}
 	else
 		squeezyLifter->setLiftSpeed(0);
+
+	SmartDashboard::PutNumber("Lifter Pot", CommandBase::squeezyLifter->getLifterHeight());
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -116,4 +118,5 @@ void SqueezyUpDown::End()
 void SqueezyUpDown::Interrupted()
 {
 	printf("Interrupted \n");
+	squeezyLifter->setLiftSpeed(0);
 }

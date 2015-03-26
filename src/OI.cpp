@@ -4,6 +4,7 @@
 #include "Subsystems/SqueezyLifter.h"
 #include "Commands/PrintStuff.h"
 #include "Commands/StartFullyAuto.h"
+#include "Commands/EndStack.h"
 #include "Commands/SqueezyLifter/SqueezyOpenClose.h"
 #include "Commands/SqueezyLifter/SqueezyToggle.h"
 #include "Commands/SqueezyLifter/SqueezyUpDown.h"
@@ -29,6 +30,7 @@ OI::OI(bool isPracticeBot)
 	// Process operator interface input here.
 
 	stick = new Joystick(0);
+	m_driveStick = new Joystick(1);
 	pusher = new JoystickButton(stick, PUSHOUTINBUTTON);
 	grabHeightConveyorPlatform = new JoystickButton(stick, GRABHEIGHTCONVEYORPLATFORMBUTTON);
 	grabHeightScoringPlatform = new JoystickButton(stick, GRABHEIGHTSCORINGPLATFORMBUTTON);
@@ -37,11 +39,12 @@ OI::OI(bool isPracticeBot)
 	runConveyorBackward = new JoystickButton(stick, REVERSECONVEYORBUTTON);
 	startFullAuto = new JoystickButton(stick, STARTFULLAUTOBUTTON);
 	pauseAuto = new JoystickButton(stick, PAUSEAUTO);
-	unpauseAuto = new JoystickButton(stick, UNPAUSEAUTO);
+	endStack = new JoystickButton(stick, ENDSTACKBUTTON);
 	manualLowerConveyor = new JoystickButton(stick, MANUALLOWERCONVEYORBUTTON);
 	manualRaiseConveyor = new JoystickButton(stick, MANUALRAISECONVEYORBUTTON);
-
 	lowerConveyor = new JoystickButton(stick, LOWERCONVEYORBUTTON);
+	platformInOut = new JoystickButton(stick, PLATFORMINOUTBUTTON);
+	setConveyorLowered = new JoystickButton(stick, SETCONVEYORLOWEREDBUTTON);
 
 	pusher->WhenPressed(new PushInOut(PushInOut::kOut));
 	pusher->WhenReleased(new PushInOut(PushInOut::kIn));
@@ -52,9 +55,12 @@ OI::OI(bool isPracticeBot)
 	runConveyorBackward->WhenReleased(new ReverseConveyor(false));
 	startFullAuto->WhenPressed(new StartFullyAuto);
 	pauseAuto->WhenPressed(new SetPause);
-	unpauseAuto->WhenPressed(new ClearPause);
+	endStack->WhenPressed(new EndStack(CommandBase::driveTrain->IsPracticeBot()));
 	manualLowerConveyor->WhileHeld(new LowerRaiseConveyor(LowerRaiseConveyor::kLower, .1));
 	manualRaiseConveyor->WhileHeld(new LowerRaiseConveyor(LowerRaiseConveyor::kRaise, .1));
+	platformInOut->WhenPressed(new PlatformInOut(PlatformInOut::kOut));
+	platformInOut->WhenReleased(new PlatformInOut(PlatformInOut::kIn));
+	setConveyorLowered->WhenPressed(new SetConveyorDown());
 
 
 	int GrabHeight, GrabHeightPlatform, GrabHeightConveyorPlatform, HoldHeight, PlaceHeight, PlaceHeightScoringPlatform, PlaceHeightConveyorPlatform;
@@ -112,4 +118,9 @@ OI::OI(bool isPracticeBot)
 Joystick* OI::getStick()
 {
 	return stick;
+}
+
+Joystick* OI::getDriveStick()
+{
+	return m_driveStick;
 }

@@ -5,7 +5,8 @@
 SqueezyLifter::SqueezyLifter(bool isPracticeBot) :
 		Subsystem("ExampleSubsystem")
 {
-	setDisabled();
+//	setDisabled();
+	setEnabled();
 	setPause(false);
 	SetPlatformDeployed(false);
 
@@ -114,16 +115,13 @@ void SqueezyLifter::squeezyUp()
 	else
 	{
 		float speed;
-		if (m_numberOfTotes < 2) {
-			speed = -SQUEEZYMOTORLIFTUPSPEED_LOW;
-		}
-		else if(m_numberOfTotes < 4) {
-			speed = -SQUEEZYMOTORLIFTUPSPEED_MEDIUM;
+		if (m_numberOfTotes < 1) {
+			speed = SQUEEZYMOTORLIFTUPSPEED_LOW;
 		}
 		else {
-			speed = -SQUEEZYMOTORLIFTUPSPEED_HIGH;
+			speed = SQUEEZYMOTORLIFTUPSPEED_HIGH;
 		}
-		speed = 1.0;
+//		speed = 1.0;
 		m_motorLift->Set(speed);
 	}
 }
@@ -139,7 +137,7 @@ void SqueezyLifter::squeezyDown(int16_t toteNumber)
 	{
 		printf("running motor down\n");
 //		m_motorLift->Set(SQUEEZYMOTORLIFTDOWNSPEED);
-		if(toteNumber == 0)
+		if(toteNumber == CommandBase::squeezyLifter->kFirstTote)
 		{
 			m_motorLift->Set(-0.35);
 		}
@@ -182,3 +180,4 @@ bool SqueezyLifter::IsPlatformDeployed()
 {
 	return m_platformDeployed;
 }
+

@@ -8,6 +8,7 @@ PushInOut::PushInOut(PushDirection direction)
 	Requires(pusher);
 	Requires(squeezyLifter);
 	m_pushDirection = direction;
+//	SetTimeout(2);
 }
 
 // Called just before this Command runs the first time
