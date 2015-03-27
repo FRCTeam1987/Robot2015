@@ -139,11 +139,11 @@ void SqueezyLifter::squeezyDown(int16_t toteNumber)
 //		m_motorLift->Set(SQUEEZYMOTORLIFTDOWNSPEED);
 		if(toteNumber == CommandBase::squeezyLifter->kFirstTote)
 		{
-			m_motorLift->Set(-0.35);
+			m_motorLift->Set(-0.4); //This was 35% when it was awesome
 		}
 		else
 		{
-			m_motorLift->Set(-0.5);
+			m_motorLift->Set(-0.55); //This was 50% when it worked awesome
 		}
 
 	}

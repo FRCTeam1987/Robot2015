@@ -12,7 +12,7 @@ SixToteStackAuto::SixToteStackAuto()
 
 
 		AddSequential(new LiftTote(CommandBase::squeezyLifter->isPracticeBot(), CommandBase::squeezyLifter->kFirstTote));
-		AddSequential(new LiftTote(CommandBase::squeezyLifter->isPracticeBot(), CommandBase::squeezyLifter->kFirstTote));
+		AddSequential(new LiftTote(CommandBase::squeezyLifter->isPracticeBot(), CommandBase::squeezyLifter->kMiddleTote));
 		AddSequential(new LiftTote(CommandBase::squeezyLifter->isPracticeBot(), CommandBase::squeezyLifter->kMiddleTote));
 		AddSequential(new LiftTote(CommandBase::squeezyLifter->isPracticeBot(), CommandBase::squeezyLifter->kMiddleTote));
 		AddSequential(new LiftTote(CommandBase::squeezyLifter->isPracticeBot(), CommandBase::squeezyLifter->kMiddleTote));

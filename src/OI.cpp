@@ -22,6 +22,7 @@
 #include "Commands/Conveyor/ReverseConveyor.h"
 #include "Commands/Conveyor/SetConveyorDown.h"
 #include "Commands/SqueezyLifter/SixToteStackAuto.h"
+#include "Commands/SqueezyLifter/PauseLifter.h"
 
 OI::OI(bool isPracticeBot)
 {
@@ -39,7 +40,8 @@ OI::OI(bool isPracticeBot)
 	runConveyorBackward = new JoystickButton(stick, REVERSECONVEYORBUTTON);
 	startFullAuto = new JoystickButton(stick, STARTFULLAUTOBUTTON);
 	pauseAuto = new JoystickButton(stick, PAUSEAUTO);
-	endStack = new JoystickButton(stick, ENDSTACKBUTTON);
+	pauseLifter = new JoystickButton(m_driveStick, PAUSELIFTERAUTO);
+	endStack = new JoystickButton(m_driveStick, ENDSTACKBUTTON);
 	manualLowerConveyor = new JoystickButton(stick, MANUALLOWERCONVEYORBUTTON);
 	manualRaiseConveyor = new JoystickButton(stick, MANUALRAISECONVEYORBUTTON);
 	lowerConveyor = new JoystickButton(stick, LOWERCONVEYORBUTTON);
@@ -61,6 +63,7 @@ OI::OI(bool isPracticeBot)
 	platformInOut->WhenPressed(new PlatformInOut(PlatformInOut::kOut));
 	platformInOut->WhenReleased(new PlatformInOut(PlatformInOut::kIn));
 	setConveyorLowered->WhenPressed(new SetConveyorDown());
+	pauseLifter->WhenPressed(new PauseLifter());
 
 
 	int GrabHeight, GrabHeightPlatform, GrabHeightConveyorPlatform, HoldHeight, PlaceHeight, PlaceHeightScoringPlatform, PlaceHeightConveyorPlatform;
