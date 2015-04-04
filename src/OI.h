@@ -22,6 +22,7 @@ private:
 	JoystickButton *manualRaiseConveyor;
 	JoystickButton *platformInOut;
 	JoystickButton *setConveyorLowered;
+	JoystickButton *pauseLifter;
 
 	bool m_isPracticeBot;
 

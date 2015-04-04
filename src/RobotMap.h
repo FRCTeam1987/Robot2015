@@ -85,7 +85,7 @@ const int RUNCONVEYORBUTTON = 2; //Conveyor
 const int REVERSECONVEYORBUTTON = 3;//Conveyor
 const int STARTFULLAUTOBUTTON = 4;//All
 const int PAUSEAUTO = 5;//All
-const int ENDSTACKBUTTON = 6;//All
+//No button on 6
 const int HOLDHEIGHTBUTTON = 7; //Lifter
 const int LOWERCONVEYORBUTTON = 8; //Conveyor
 const int GRABHEIGHTSCORINGPLATFORMBUTTON = 9; //Lifter
@@ -95,6 +95,9 @@ const int MANUALLOWERCONVEYORBUTTON = 12;
 const int SETCONVEYORLOWEREDBUTTON = 19;
 const int PLATFORMINOUTBUTTON = 20;
 
+//For drive controller
+const int ENDSTACKBUTTON = 2;//All
+const int PAUSELIFTERAUTO = 3;//All but conveyor
 
 //Variables
 const double DISTANCEPERPULSE = 0.07536;
